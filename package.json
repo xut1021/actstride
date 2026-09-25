@@ -1,0 +1,16 @@
+{
+  "name": "fastercomputeruse",
+  "version": "0.1.0",
+  "description": "Experimental browser control with Jev decisions and GPT-6 Luna planning through OpenRouter.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node cli.mjs",
+    "demo": "node cli.mjs --replay",
+    "test": "node --test test/*.test.mjs",
+    "test:browser": "node --test test/browser.test.mjs"
+  },
+  "dependencies": { "playwright": "1.63.0" }
+}

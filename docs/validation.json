@@ -1,0 +1,3288 @@
+{
+  "evaluated_at": "2026-09-26 Asia/Shanghai",
+  "environment": {
+    "os": "Windows",
+    "node": "v24.18.0",
+    "browser": "Microsoft Edge 153.0.4234.48",
+    "playwright": "1.63.0",
+    "headless": true,
+    "viewport": "1280x960"
+  },
+  "source_sha256": {
+    "controller.mjs": "4ebadeea696345c578f3cad6cbb94cdb92b5a13e8262ede3894ff39cd07cef5b",
+    "browser.mjs": "ccf969d743035c90b7388c223eab76f5bc5e4d67b657b57b3f4f9bbff99c63bd",
+    "candidates.mjs": "49423d8173145a554c68a1f4ea88742d9c7bfae44c1373d8f70f767c6d27bc38",
+    "cli.mjs": "709089cd2d970a259cda98ddf809cb1dcbf54d227589d5fc2e9b6f564afd439b",
+    "budget.mjs": "09ee9c1342524e1f2d21d442d3abe5b511977f9c281b66f5b8cbc90d6fdd40e8",
+    "index.html": "84f29a49ba12e628aa9d03deda3a4ab9f7ddd6cb66e71c12c426e77be6f29361"
+  },
+  "groups": {
+    "dual": {
+      "runs": 3,
+      "passed": 3,
+      "mean_duration_ms": 20311.333333333332,
+      "mean_api_duration_ms": 13632.666666666666,
+      "mean_cost_usd": 0.0015806953333333334
+    },
+    "s2-only": {
+      "runs": 3,
+      "passed": 3,
+      "mean_duration_ms": 68721.33333333333,
+      "mean_api_duration_ms": 63238.666666666664,
+      "mean_cost_usd": 0.006260088333333334
+    }
+  },
+  "total_cost_usd": 0.023522351,
+  "reports": [
+    {
+      "id": "2026-09-25T17-37-01.684Z-dual",
+      "mode": "dual",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 14,
+      "duration_ms": 25175,
+      "api_duration_ms": 15241,
+      "api_calls": 14,
+      "cost_usd": 0.0019436440000000002,
+      "role_calls": {
+        "s1": 12,
+        "s2": 2
+      },
+      "escalations": 1,
+      "verifier": {
+        "passed": true,
+        "selected": "S-102",
+        "name": "测试员",
+        "quantity": "2",
+        "filtered": true
+      },
+      "events": [
+        {
+          "event": "start",
+          "mode": "dual",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "openai/gpt-6-luna"
+          },
+          "request_bounds_usd": {
+            "s2": 0.211536,
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-25T17:37:08.696Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4741,
+          "cost": 0.000377075,
+          "input_tokens": 2435,
+          "output_tokens": 152,
+          "timestamp": "2026-09-25T17:37:13.856Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先聚焦关键词输入框，开始按任务搜索传感器。",
+            "plan": "输入关键词并执行搜索/筛选；选择符合价格和库存条件的 S-102，填写姓名与数量；核对确认弹窗后提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:37:13.857Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:14.017Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 542,
+          "cost": 0.00009114,
+          "input_tokens": 2170,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:37:14.562Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.96,
+          "timestamp": "2026-09-25T17:37:14.562Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:14.725Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 349,
+          "cost": 0.000093114,
+          "input_tokens": 2217,
+          "output_tokens": 124,
+          "timestamp": "2026-09-25T17:37:15.075Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.95,
+          "timestamp": "2026-09-25T17:37:15.075Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:15.241Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 375,
+          "cost": 0.000105756,
+          "input_tokens": 2518,
+          "output_tokens": 152,
+          "timestamp": "2026-09-25T17:37:15.618Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.68,
+          "timestamp": "2026-09-25T17:37:15.618Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:15.785Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 390,
+          "cost": 0.000108864,
+          "input_tokens": 2592,
+          "output_tokens": 150,
+          "timestamp": "2026-09-25T17:37:16.177Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.52,
+          "timestamp": "2026-09-25T17:37:16.177Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:16.340Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4307,
+          "cost": 0.000464825,
+          "input_tokens": 2677,
+          "output_tokens": 267,
+          "timestamp": "2026-09-25T17:37:20.649Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "key",
+            "x": 513,
+            "y": 496,
+            "text": "",
+            "key": "Enter",
+            "dy": 0,
+            "reason": "提交下拉菜单中高亮的“有库存”选项。",
+            "plan": "先确认库存筛选为“有库存”，再点击搜索/筛选；选择 S-102，填写姓名和数量，核对确认弹窗并提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:37:20.649Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:20.808Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 372,
+          "cost": 0.000108234,
+          "input_tokens": 2577,
+          "output_tokens": 149,
+          "timestamp": "2026-09-25T17:37:21.182Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.9,
+          "timestamp": "2026-09-25T17:37:21.182Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:21.346Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 353,
+          "cost": 0.000090174,
+          "input_tokens": 2147,
+          "output_tokens": 115,
+          "timestamp": "2026-09-25T17:37:21.701Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_4",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:37:21.701Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:21.853Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1401,
+          "cost": 0.000090636,
+          "input_tokens": 2158,
+          "output_tokens": 115,
+          "timestamp": "2026-09-25T17:37:23.256Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:37:23.256Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:23.420Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 988,
+          "cost": 0.0000966,
+          "input_tokens": 2300,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:37:24.410Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "测试员",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_1",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:37:24.411Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:24.570Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 394,
+          "cost": 0.000090552,
+          "input_tokens": 2156,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:37:24.966Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:37:24.967Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:25.133Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 348,
+          "cost": 0.000091392,
+          "input_tokens": 2176,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:37:25.483Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "2",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_2",
+          "confidence": 0.98,
+          "timestamp": "2026-09-25T17:37:25.484Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:25.649Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 344,
+          "cost": 0.000089838,
+          "input_tokens": 2139,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:37:25.995Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_7",
+          "confidence": 0.55,
+          "timestamp": "2026-09-25T17:37:25.996Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:26.158Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 337,
+          "cost": 0.000045444,
+          "input_tokens": 1082,
+          "output_tokens": 61,
+          "timestamp": "2026-09-25T17:37:26.496Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.89,
+          "timestamp": "2026-09-25T17:37:26.496Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:37:26.654Z"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-25T17-38-08.031Z-s2-only",
+      "mode": "s2-only",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 15,
+      "duration_ms": 71922,
+      "api_duration_ms": 67005,
+      "api_calls": 15,
+      "cost_usd": 0.006493654999999999,
+      "role_calls": {
+        "s1": 0,
+        "s2": 15
+      },
+      "escalations": 0,
+      "verifier": {
+        "passed": true,
+        "selected": "S-102",
+        "name": "测试员",
+        "quantity": "2",
+        "filtered": true
+      },
+      "events": [
+        {
+          "event": "start",
+          "mode": "s2-only",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "openai/gpt-6-luna"
+          },
+          "request_bounds_usd": {
+            "s2": 0.211536
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-25T17:38:09.778Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3908,
+          "cost": 0.00009523,
+          "input_tokens": 2435,
+          "output_tokens": 118,
+          "timestamp": "2026-09-25T17:38:14.107Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "开始按要求检索传感器，并随后设置库存筛选。",
+            "plan": "输入关键词，然后用下拉菜单选择“有库存”并执行搜索筛选；选择符合价格条件的 S-102，填写姓名与数量，检查确认弹窗并提交；只有看到页面显示 PASS 才完成。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:14.107Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:14.283Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3591,
+          "cost": 0.000425325,
+          "input_tokens": 2629,
+          "output_tokens": 200,
+          "timestamp": "2026-09-25T17:38:17.875Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 301,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先聚焦关键词输入框，再逐步设置筛选并完成申请。",
+            "plan": "输入“传感器”，选择库存“有库存”并搜索；选取价格 ¥79 的 S-102，填写姓名和数量，核对确认弹窗后提交。仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:17.875Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:18.125Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 5692,
+          "cost": 0.000493575,
+          "input_tokens": 2751,
+          "output_tokens": 306,
+          "timestamp": "2026-09-25T17:38:23.818Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 258,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先重新聚焦关键词框；之前在框内点击未产生可见变化，改点输入框左侧区域。",
+            "plan": "搜索“传感器”，将库存筛选设为“有库存”并执行搜索；选择 S-102，填写姓名和数量，检查确认弹窗后提交。仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:23.818Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:23.980Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4173,
+          "cost": 0.000452575,
+          "input_tokens": 2883,
+          "output_tokens": 191,
+          "timestamp": "2026-09-25T17:38:28.154Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 302,
+            "y": 495,
+            "text": "传感器",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "关键词框当前已聚焦，直接输入搜索词。",
+            "plan": "先输入“传感器”，再选择库存筛选“有库存”并点击搜索/筛选；选择价格 ¥79 的 S-102，填写姓名“测试员”和数量“2”，检查确认弹窗并提交。仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:28.154Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:28.313Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4305,
+          "cost": 0.00049695,
+          "input_tokens": 3034,
+          "output_tokens": 242,
+          "timestamp": "2026-09-25T17:38:32.619Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 514,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "关键词已输入；先打开库存下拉框以选择“有库存”。",
+            "plan": "选择下拉项“有库存”，点击“搜索 / 筛选”，再选 S-102（¥79）。向下滚动到申请表，填写姓名“测试员”和数量“2”，点击检查并提交；核对确认弹窗内容后确认提交。只有页面显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:32.619Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:32.793Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4863,
+          "cost": 0.000503075,
+          "input_tokens": 3087,
+          "output_tokens": 241,
+          "timestamp": "2026-09-25T17:38:37.658Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "key",
+            "x": 513,
+            "y": 496,
+            "text": "",
+            "key": "ArrowDown",
+            "dy": 0,
+            "reason": "库存下拉菜单已展开并聚焦；向下选择“有库存”。",
+            "plan": "将库存设为“有库存”，点击“搜索 / 筛选”，选择 S-102（¥79），向下滚动到申请表填写姓名和数量，检查确认弹窗并确认提交。仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:37.658Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:37.827Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 6143,
+          "cost": 0.000498325,
+          "input_tokens": 3077,
+          "output_tokens": 234,
+          "timestamp": "2026-09-25T17:38:43.971Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "key",
+            "x": 513,
+            "y": 496,
+            "text": "",
+            "key": "Enter",
+            "dy": 0,
+            "reason": "下拉列表已展开且“有库存”项高亮；按 Enter 提交筛选选择。",
+            "plan": "提交“有库存”筛选后点击“搜索 / 筛选”，选择 S-102（¥79）；向下滚动填写姓名与数量，检查确认弹窗内容后确认提交。仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:43.971Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:44.134Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4410,
+          "cost": 0.0004722,
+          "input_tokens": 3072,
+          "output_tokens": 183,
+          "timestamp": "2026-09-25T17:38:48.546Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "库存已显示为“有库存”，关键词为“传感器”；点击搜索/筛选应用条件后再选择符合价格的型号。",
+            "plan": "应用搜索筛选，选择 S-102（¥79），向下滚动填写姓名和数量，核对确认弹窗并提交；仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:48.547Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:48.717Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4107,
+          "cost": 0.000443575,
+          "input_tokens": 2935,
+          "output_tokens": 160,
+          "timestamp": "2026-09-25T17:38:52.826Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 930,
+            "y": 693,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已应用传感器与有库存筛选；S-102 售价 ¥79，符合不超过 100 元的条件，选择它。",
+            "plan": "选择 S-102 后填写姓名“测试员”和数量“2”，点击检查并提交；核对确认弹窗的信息后确认提交。只有页面实际显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:52.826Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:52.979Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4695,
+          "cost": 0.0004882,
+          "input_tokens": 2932,
+          "output_tokens": 250,
+          "timestamp": "2026-09-25T17:38:57.675Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 282,
+            "y": 926,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已筛选有库存并选择符合价格条件的 S-102；先聚焦姓名输入框以填写申请信息。",
+            "plan": "依次填写姓名“测试员”和数量“2”，点击检查并提交；核对确认弹窗信息后确认提交。只有页面显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:38:57.676Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:38:57.835Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 6022,
+          "cost": 0.00045595,
+          "input_tokens": 2942,
+          "output_tokens": 183,
+          "timestamp": "2026-09-25T17:39:03.859Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 288,
+            "y": 927,
+            "text": "测试员",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "姓名输入框已聚焦，填写指定姓名。",
+            "plan": "填写姓名后将数量改为 2，点击检查并提交；核对确认弹窗中的型号、姓名和数量后确认。仅在页面显示 PASS 后结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:03.859Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:04.016Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3316,
+          "cost": 0.000438325,
+          "input_tokens": 2929,
+          "output_tokens": 151,
+          "timestamp": "2026-09-25T17:39:07.334Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已选择符合价格与库存条件的 S-102，姓名已填写；数量仍为 1，先聚焦数量框以改为指定的 2。",
+            "plan": "将数量改为 2，点击“检查并提交”；核对确认弹窗中的型号、姓名和数量后确认提交。只有页面显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:07.334Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:07.488Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3467,
+          "cost": 0.00043195,
+          "input_tokens": 2930,
+          "output_tokens": 138,
+          "timestamp": "2026-09-25T17:39:10.956Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 574,
+            "y": 927,
+            "text": "2",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "数量输入框已聚焦，当前值为 1；将其替换为指定数量 2。",
+            "plan": "填写数量后点击“检查并提交”，核对确认弹窗中的 S-102、姓名“测试员”和数量 2，再确认提交。只有页面显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:10.956Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:11.108Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 5816,
+          "cost": 0.00044445,
+          "input_tokens": 2926,
+          "output_tokens": 164,
+          "timestamp": "2026-09-25T17:39:16.925Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "搜索词、库存筛选、S-102 选择及姓名和数量均已符合任务；点击检查并提交以打开确认弹窗。",
+            "plan": "检查确认弹窗显示型号 S-102、姓名“测试员”和数量 2；若正确，点击弹窗确认提交。仅当页面显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:16.926Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:17.092Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 2497,
+          "cost": 0.00035395,
+          "input_tokens": 2458,
+          "output_tokens": 100,
+          "timestamp": "2026-09-25T17:39:19.590Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "确认弹窗可见并核对内容为 S-102、测试员、数量 2，均符合任务；点击确认测试提交。",
+            "plan": "等待提交结果显示；仅当页面明确显示 PASS 才结束。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:19.590Z"
+        },
+        {
+          "event": "action_result",
+          "step": 15,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:19.754Z"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-25T17-39-20.182Z-dual",
+      "mode": "dual",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 14,
+      "duration_ms": 17364,
+      "api_duration_ms": 12881,
+      "api_calls": 14,
+      "cost_usd": 0.0015649779999999999,
+      "role_calls": {
+        "s1": 12,
+        "s2": 2
+      },
+      "escalations": 1,
+      "verifier": {
+        "passed": true,
+        "selected": "S-102",
+        "name": "测试员",
+        "quantity": "2",
+        "filtered": true
+      },
+      "events": [
+        {
+          "event": "start",
+          "mode": "dual",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "openai/gpt-6-luna"
+          },
+          "request_bounds_usd": {
+            "s2": 0.211536,
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-25T17:39:21.792Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3068,
+          "cost": 0.00008673,
+          "input_tokens": 2435,
+          "output_tokens": 101,
+          "timestamp": "2026-09-25T17:39:25.304Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先输入任务要求的关键词，再进行库存筛选。",
+            "plan": "在关键词框输入“传感器”，并提交当前动作；随后选择“有库存”并点搜索筛选，选择 S-102。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:25.304Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:25.476Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 559,
+          "cost": 0.000091308,
+          "input_tokens": 2174,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:39:26.037Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.85,
+          "timestamp": "2026-09-25T17:39:26.037Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:26.192Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 370,
+          "cost": 0.000093282,
+          "input_tokens": 2221,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:39:26.563Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.92,
+          "timestamp": "2026-09-25T17:39:26.563Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:26.731Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 362,
+          "cost": 0.00010479,
+          "input_tokens": 2495,
+          "output_tokens": 152,
+          "timestamp": "2026-09-25T17:39:27.095Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.64,
+          "timestamp": "2026-09-25T17:39:27.096Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:27.255Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 358,
+          "cost": 0.000107898,
+          "input_tokens": 2569,
+          "output_tokens": 150,
+          "timestamp": "2026-09-25T17:39:27.615Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.62,
+          "timestamp": "2026-09-25T17:39:27.615Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:27.774Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1017,
+          "cost": 0.000102858,
+          "input_tokens": 2449,
+          "output_tokens": 149,
+          "timestamp": "2026-09-25T17:39:28.793Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.91,
+          "timestamp": "2026-09-25T17:39:28.794Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:28.945Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 375,
+          "cost": 0.000085302,
+          "input_tokens": 2031,
+          "output_tokens": 115,
+          "timestamp": "2026-09-25T17:39:29.322Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_4",
+          "confidence": 0.96,
+          "timestamp": "2026-09-25T17:39:29.322Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:29.483Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 342,
+          "cost": 0.000085638,
+          "input_tokens": 2039,
+          "output_tokens": 115,
+          "timestamp": "2026-09-25T17:39:29.826Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 0.98,
+          "timestamp": "2026-09-25T17:39:29.826Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:29.987Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 379,
+          "cost": 0.00009219,
+          "input_tokens": 2195,
+          "output_tokens": 151,
+          "timestamp": "2026-09-25T17:39:30.368Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "测试员",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_2",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:39:30.368Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:30.529Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 371,
+          "cost": 0.000091182,
+          "input_tokens": 2171,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:39:30.901Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.98,
+          "timestamp": "2026-09-25T17:39:30.901Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:31.058Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 425,
+          "cost": 0.000092022,
+          "input_tokens": 2191,
+          "output_tokens": 151,
+          "timestamp": "2026-09-25T17:39:31.485Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "2",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_3",
+          "confidence": 0.95,
+          "timestamp": "2026-09-25T17:39:31.485Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:31.645Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 359,
+          "cost": 0.000090468,
+          "input_tokens": 2154,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:39:32.006Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "click_7",
+          "confidence": 0.49,
+          "timestamp": "2026-09-25T17:39:32.006Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:32.154Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4511,
+          "cost": 0.0003907,
+          "input_tokens": 2572,
+          "output_tokens": 145,
+          "timestamp": "2026-09-25T17:39:36.666Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "text": "",
+            "key": "Enter",
+            "dy": 0,
+            "reason": "点击“检查并提交”，进入确认弹窗核对姓名、数量和所选型号。",
+            "plan": "当前已筛选有库存、选择 S-102（¥79），并填写姓名测试员、数量2。打开确认弹窗，核对内容后确认提交；只有页面显示 PASS 才完成。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-25T17:39:36.666Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:36.825Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 385,
+          "cost": 0.00005061,
+          "input_tokens": 1205,
+          "output_tokens": 61,
+          "timestamp": "2026-09-25T17:39:37.213Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:39:37.213Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:37.366Z"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-25T17-39-37.772Z-s2-only",
+      "mode": "s2-only",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 15,
+      "duration_ms": 69328,
+      "api_duration_ms": 63310,
+      "api_calls": 15,
+      "cost_usd": 0.00644678,
+      "role_calls": {
+        "s1": 0,
+        "s2": 15
+      },
+      "escalations": 0,
+      "verifier": {
+        "passed": true,
+        "selected": "S-102",
+        "name": "测试员",
+        "quantity": "2",
+        "filtered": true
+      },
+      "events": [
+        {
+          "event": "start",
+          "mode": "s2-only",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "openai/gpt-6-luna"
+          },
+          "request_bounds_usd": {
+            "s2": 0.211536
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-25T17:39:40.795Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 6385,
+          "cost": 0.00013523,
+          "input_tokens": 2435,
+          "output_tokens": 198,
+          "timestamp": "2026-09-25T17:39:47.599Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先聚焦关键词输入框，准备搜索传感器。",
+            "plan": "搜索“传感器”，将库存筛选设为“有库存”并搜索；选择符合价格限制的 S-102；向下滚动填写姓名“测试员”和数量“2”，检查确认弹窗后提交，并确认页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:47.599Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:47.755Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3682,
+          "cost": 0.000412075,
+          "input_tokens": 2639,
+          "output_tokens": 171,
+          "timestamp": "2026-09-25T17:39:51.439Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 302,
+            "y": 495,
+            "text": "传感器",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "在已聚焦的关键词框中输入任务要求的搜索词。",
+            "plan": "搜索“传感器”，将库存筛选设为“有库存”并执行筛选；选择价格不超过 100 元且有库存的 S-102。随后填写姓名“测试员”和数量“2”，核对确认弹窗并提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:51.440Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:51.604Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4445,
+          "cost": 0.000463825,
+          "input_tokens": 2793,
+          "output_tokens": 236,
+          "timestamp": "2026-09-25T17:39:56.051Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先打开库存下拉框，下一步用方向键选择“有库存”。",
+            "plan": "设置库存筛选为“有库存”并执行搜索；选择有库存且价格不超过 100 元的 S-102；填写姓名“测试员”和数量“2”，核对确认弹窗并提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:39:56.051Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:39:56.222Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4355,
+          "cost": 0.000463575,
+          "input_tokens": 2935,
+          "output_tokens": 200,
+          "timestamp": "2026-09-25T17:40:00.579Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "key",
+            "x": 513,
+            "y": 496,
+            "text": "",
+            "key": "ArrowDown",
+            "dy": 0,
+            "reason": "库存下拉已展开，向下选择“有库存”。",
+            "plan": "将库存筛选选为“有库存”并执行筛选；选择 S-102（¥79）；填写姓名“测试员”和数量“2”，核对确认弹窗后提交，直至页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:00.580Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:00.737Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4636,
+          "cost": 0.00047645,
+          "input_tokens": 3050,
+          "output_tokens": 197,
+          "timestamp": "2026-09-25T17:40:05.374Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "库存下拉框已显示“有库存”；点击搜索/筛选以应用关键词和库存条件。",
+            "plan": "应用“传感器”与“有库存”筛选；选择符合条件的 S-102（¥79）；填写姓名“测试员”和数量“2”，核对确认弹窗后提交，并以页面显示 PASS 为完成。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:05.374Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:05.529Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3524,
+          "cost": 0.00044645,
+          "input_tokens": 2938,
+          "output_tokens": 165,
+          "timestamp": "2026-09-25T17:40:09.055Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "选择价格为 ¥79 且有库存的 S-102，符合不超过 100 元的条件。",
+            "plan": "选择 S-102 后填写姓名“测试员”和数量“2”，点击检查并提交；核对确认弹窗内容后确认提交，直至页面显示 PASS。",
+            "text_values": [
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:09.056Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:09.213Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4118,
+          "cost": 0.0004687,
+          "input_tokens": 2904,
+          "output_tokens": 218,
+          "timestamp": "2026-09-25T17:40:13.333Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已选中符合条件的 S-102；先聚焦姓名输入框，填写申请信息后再检查并提交。",
+            "plan": "填写姓名“测试员”和数量“2”，点击检查并提交；核对确认弹窗中的型号、姓名和数量后确认，直至页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:13.333Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:13.493Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4067,
+          "cost": 0.000460075,
+          "input_tokens": 2919,
+          "output_tokens": 197,
+          "timestamp": "2026-09-25T17:40:17.562Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "型号 S-102 已选中，库存筛选为有库存；先聚焦姓名输入框。",
+            "plan": "填写姓名“测试员”和数量“2”，再检查并提交；核对确认弹窗显示的型号、姓名和数量后确认提交，直至页面显示 PASS。",
+            "text_values": [
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:17.562Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:17.721Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3619,
+          "cost": 0.000455575,
+          "input_tokens": 2919,
+          "output_tokens": 188,
+          "timestamp": "2026-09-25T17:40:21.342Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 287,
+            "y": 926,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "姓名输入框当前值为空；先重新点击输入框聚焦，再填写姓名。",
+            "plan": "填写姓名“测试员”，然后将数量改为“2”；点击检查并提交，核对确认弹窗中的型号、姓名和数量后确认，直至页面显示 PASS。",
+            "text_values": [
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:21.342Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:21.492Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4319,
+          "cost": 0.00050445,
+          "input_tokens": 2906,
+          "output_tokens": 289,
+          "timestamp": "2026-09-25T17:40:25.812Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 280,
+            "y": 926,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "姓名框虽显示焦点边框，但上次点击没有产生可见变化；改点输入框靠左的文字输入区域以确保聚焦。",
+            "plan": "先在姓名框输入“测试员”，再聚焦数量框并输入“2”；点击检查并提交，核对确认弹窗中的型号、姓名和数量后确认，直到页面显示 PASS。",
+            "text_values": [
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:25.812Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:25.962Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 5083,
+          "cost": 0.000498575,
+          "input_tokens": 2931,
+          "output_tokens": 271,
+          "timestamp": "2026-09-25T17:40:31.047Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 288,
+            "y": 927,
+            "text": "测试员",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "界面状态确认姓名输入框已聚焦；此前重复点击没有变化，改为直接输入姓名。",
+            "plan": "在已聚焦的姓名框输入“测试员”；随后填写数量“2”，点击检查并提交，核对确认弹窗内容并确认，直到页面显示 PASS。",
+            "text_values": [
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:31.047Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:31.200Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4325,
+          "cost": 0.000440325,
+          "input_tokens": 2929,
+          "output_tokens": 155,
+          "timestamp": "2026-09-25T17:40:35.526Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 569,
+            "y": 927,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "姓名已正确显示为“测试员”；数量仍为 1。点击数量输入框以聚焦后改为 2。",
+            "plan": "将数量输入为“2”，点击“检查并提交”；核对确认弹窗显示的型号、姓名和数量正确后确认提交，并检查页面是否显示 PASS。",
+            "text_values": [
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:35.527Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:35.687Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4003,
+          "cost": 0.000441825,
+          "input_tokens": 2925,
+          "output_tokens": 159,
+          "timestamp": "2026-09-25T17:40:39.691Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 574,
+            "y": 927,
+            "text": "2",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "数量框已聚焦且当前为 1；将其替换为任务要求的 2。",
+            "plan": "填写数量“2”，点击“检查并提交”；核对确认弹窗显示 S-102、姓名“测试员”和数量 2 后确认提交，并检查页面是否显示 PASS。",
+            "text_values": [
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:39.692Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:39.846Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3635,
+          "cost": 0.000437575,
+          "input_tokens": 2927,
+          "output_tokens": 150,
+          "timestamp": "2026-09-25T17:40:43.483Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已确认筛选为有库存、所选型号为 S-102（¥79），姓名为“测试员”、数量为 2；点击提交检查以查看确认弹窗。",
+            "plan": "核对确认弹窗中的型号、姓名和数量均正确后确认提交；只有页面显示 PASS 才完成。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-25T17:40:43.483Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:43.642Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3114,
+          "cost": 0.000342075,
+          "input_tokens": 2419,
+          "output_tokens": 86,
+          "timestamp": "2026-09-25T17:40:46.757Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 651,
+            "y": 553,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "确认弹窗显示 S-102、测试员、数量 2，与任务要求完全一致；点击确认测试提交。",
+            "plan": "提交确认申请后检查页面结果，只有显示 PASS 才结束。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-25T17:40:46.758Z"
+        },
+        {
+          "event": "action_result",
+          "step": 15,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:46.921Z"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-25T17-40-47.323Z-dual",
+      "mode": "dual",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 13,
+      "duration_ms": 18395,
+      "api_duration_ms": 12776,
+      "api_calls": 13,
+      "cost_usd": 0.0012334639999999999,
+      "role_calls": {
+        "s1": 12,
+        "s2": 1
+      },
+      "escalations": 0,
+      "verifier": {
+        "passed": true,
+        "selected": "S-102",
+        "name": "测试员",
+        "quantity": "2",
+        "filtered": true
+      },
+      "events": [
+        {
+          "event": "start",
+          "mode": "dual",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "openai/gpt-6-luna"
+          },
+          "request_bounds_usd": {
+            "s2": 0.211536,
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-25T17:40:50.209Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4037,
+          "cost": 0.00013823,
+          "input_tokens": 2435,
+          "output_tokens": 204,
+          "timestamp": "2026-09-25T17:40:54.661Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 301,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先聚焦关键词输入框，按要求开始搜索。",
+            "plan": "搜索“传感器”，将库存筛选设为“有库存”并应用筛选；选择符合价格条件且有库存的 S-102；向下填写姓名和数量，检查确认弹窗后提交；仅在页面显示 PASS 后完成。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:40:54.661Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:54.823Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1356,
+          "cost": 0.000092526,
+          "input_tokens": 2203,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:40:56.184Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.93,
+          "timestamp": "2026-09-25T17:40:56.185Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:56.356Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1770,
+          "cost": 0.0000945,
+          "input_tokens": 2250,
+          "output_tokens": 124,
+          "timestamp": "2026-09-25T17:40:58.128Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.97,
+          "timestamp": "2026-09-25T17:40:58.129Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:58.303Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 333,
+          "cost": 0.000107142,
+          "input_tokens": 2551,
+          "output_tokens": 152,
+          "timestamp": "2026-09-25T17:40:58.638Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.69,
+          "timestamp": "2026-09-25T17:40:58.638Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:58.796Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 747,
+          "cost": 0.00011025,
+          "input_tokens": 2625,
+          "output_tokens": 150,
+          "timestamp": "2026-09-25T17:40:59.544Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.65,
+          "timestamp": "2026-09-25T17:40:59.545Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:40:59.697Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 469,
+          "cost": 0.000104202,
+          "input_tokens": 2481,
+          "output_tokens": 149,
+          "timestamp": "2026-09-25T17:41:00.167Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.94,
+          "timestamp": "2026-09-25T17:41:00.167Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:00.326Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 339,
+          "cost": 0.000086646,
+          "input_tokens": 2063,
+          "output_tokens": 115,
+          "timestamp": "2026-09-25T17:41:00.667Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_4",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:41:00.667Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:00.819Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 382,
+          "cost": 0.000086982,
+          "input_tokens": 2071,
+          "output_tokens": 115,
+          "timestamp": "2026-09-25T17:41:01.203Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:41:01.204Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:01.373Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 342,
+          "cost": 0.0000924,
+          "input_tokens": 2200,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:41:01.717Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "测试员",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_1",
+          "confidence": 1,
+          "timestamp": "2026-09-25T17:41:01.717Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:01.886Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 340,
+          "cost": 0.000091392,
+          "input_tokens": 2176,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:41:02.228Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.99,
+          "timestamp": "2026-09-25T17:41:02.228Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:02.381Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1955,
+          "cost": 0.000092232,
+          "input_tokens": 2196,
+          "output_tokens": 142,
+          "timestamp": "2026-09-25T17:41:04.338Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "2",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_2",
+          "confidence": 0.96,
+          "timestamp": "2026-09-25T17:41:04.338Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:04.501Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 340,
+          "cost": 0.000090678,
+          "input_tokens": 2159,
+          "output_tokens": 133,
+          "timestamp": "2026-09-25T17:41:04.843Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_7",
+          "confidence": 0.62,
+          "timestamp": "2026-09-25T17:41:04.843Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:05.009Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 366,
+          "cost": 0.000046284,
+          "input_tokens": 1102,
+          "output_tokens": 61,
+          "timestamp": "2026-09-25T17:41:05.376Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.89,
+          "timestamp": "2026-09-25T17:41:05.376Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:05.534Z"
+        }
+      ]
+    },
+    {
+      "id": "2026-09-25T17-41-05.950Z-s2-only",
+      "mode": "s2-only",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 14,
+      "duration_ms": 64914,
+      "api_duration_ms": 59401,
+      "api_calls": 14,
+      "cost_usd": 0.00583983,
+      "role_calls": {
+        "s1": 0,
+        "s2": 14
+      },
+      "escalations": 0,
+      "verifier": {
+        "passed": true,
+        "selected": "S-102",
+        "name": "测试员",
+        "quantity": "2",
+        "filtered": true
+      },
+      "events": [
+        {
+          "event": "start",
+          "mode": "s2-only",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "openai/gpt-6-luna"
+          },
+          "request_bounds_usd": {
+            "s2": 0.211536
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-25T17:41:08.618Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 5047,
+          "cost": 0.00014473,
+          "input_tokens": 2435,
+          "output_tokens": 217,
+          "timestamp": "2026-09-25T17:41:14.091Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "先聚焦关键词输入框，随后输入传感器并执行库存筛选。",
+            "plan": "搜索传感器、将库存设为有库存并筛选；选择 S-102（¥79）；填写姓名测试员和数量2；核对确认弹窗后提交，并确认页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:14.091Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:14.251Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 6353,
+          "cost": 0.0004192,
+          "input_tokens": 2624,
+          "output_tokens": 189,
+          "timestamp": "2026-09-25T17:41:20.606Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "聚焦关键词框后输入“传感器”，再将库存切换为“有库存”并搜索筛选。",
+            "plan": "先搜索“传感器”并筛选“有库存”，选择 S-102；向下滚动填写姓名“测试员”和数量“2”，核对确认弹窗后提交，直至页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:20.606Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:20.764Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4048,
+          "cost": 0.00043845,
+          "input_tokens": 2762,
+          "output_tokens": 193,
+          "timestamp": "2026-09-25T17:41:24.813Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 302,
+            "y": 495,
+            "text": "传感器",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "上一步点击已聚焦关键词框；先输入搜索词，再按界面控件完成库存筛选与型号选择。",
+            "plan": "搜索传感器并筛选有库存；选择 S-102（¥79）。随后填写姓名测试员、数量2，核对确认弹窗并提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:24.813Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:24.967Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4223,
+          "cost": 0.0004757,
+          "input_tokens": 2892,
+          "output_tokens": 235,
+          "timestamp": "2026-09-25T17:41:29.191Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 512,
+            "y": 495,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "库存仍为“全部”。先聚焦库存下拉框，再用方向键选择“有库存”并执行筛选。",
+            "plan": "把库存切换为“有库存”并点击搜索/筛选；选择价格不超过100元的 S-102。向下滚动填写姓名“测试员”和数量“2”，核对确认弹窗后提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:29.191Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:29.365Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4471,
+          "cost": 0.00047195,
+          "input_tokens": 3070,
+          "output_tokens": 183,
+          "timestamp": "2026-09-25T17:41:33.838Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "key",
+            "x": 513,
+            "y": 496,
+            "text": "",
+            "key": "ArrowDown",
+            "dy": 0,
+            "reason": "库存下拉框已聚焦；向下移动到“有库存”选项。",
+            "plan": "选择库存“有库存”，点击“搜索 / 筛选”，再选择 S-102。向下滚动填写姓名和数量，检查确认弹窗内容后提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:33.838Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:33.993Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4207,
+          "cost": 0.00046895,
+          "input_tokens": 3058,
+          "output_tokens": 180,
+          "timestamp": "2026-09-25T17:41:38.202Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "key",
+            "x": 513,
+            "y": 496,
+            "text": "",
+            "key": "Enter",
+            "dy": 0,
+            "reason": "库存菜单中“有库存”已高亮；按 Enter 确认选择，再执行筛选。",
+            "plan": "确认库存“有库存”并点击搜索/筛选；选择 S-102（¥79）。向下滚动填写姓名“测试员”和数量“2”，检查确认弹窗内容后提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:38.203Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:38.355Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3945,
+          "cost": 0.00046695,
+          "input_tokens": 3058,
+          "output_tokens": 176,
+          "timestamp": "2026-09-25T17:41:42.302Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "库存已显示为“有库存”，关键词为“传感器”；点击搜索/筛选应用条件后再选符合价格要求的 S-102。",
+            "plan": "应用搜索筛选，选择 S-102（¥79）；向下滚动填写姓名和数量，检查确认弹窗并提交，直到页面显示 PASS。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:42.302Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:42.455Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3284,
+          "cost": 0.0004377,
+          "input_tokens": 2920,
+          "output_tokens": 152,
+          "timestamp": "2026-09-25T17:41:45.740Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "筛选结果中 S-102 温度传感器 Mini 售价 ¥79 且有库存，符合不超过100元的条件；选择它。",
+            "plan": "选择 S-102 后填写姓名和数量，检查确认弹窗内容并确认提交；仅在页面显示 PASS 后完成。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:45.740Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:45.904Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3974,
+          "cost": 0.0004392,
+          "input_tokens": 2900,
+          "output_tokens": 160,
+          "timestamp": "2026-09-25T17:41:49.880Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已筛选有库存并选中符合价格条件的 S-102；先聚焦姓名输入框并填写指定姓名。",
+            "plan": "填写姓名“测试员”和数量“2”，点击“检查并提交”；核对确认弹窗中的型号、姓名、数量后确认提交，仅在页面显示 PASS 后完成。",
+            "text_values": [
+              "传感器",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:49.880Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:50.042Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 3258,
+          "cost": 0.000426825,
+          "input_tokens": 2937,
+          "output_tokens": 126,
+          "timestamp": "2026-09-25T17:41:53.301Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 288,
+            "y": 927,
+            "text": "测试员",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已选型号 S-102；姓名输入框已聚焦，填写指定姓名。",
+            "plan": "填写姓名后将数量改为 2，点击“检查并提交”；检查确认弹窗中的型号、姓名和数量并确认。页面显示 PASS 后再完成。",
+            "text_values": [
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:53.301Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:53.463Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4504,
+          "cost": 0.000458575,
+          "input_tokens": 2923,
+          "output_tokens": 193,
+          "timestamp": "2026-09-25T17:41:57.968Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "已验证选中 S-102（¥79）、关键词和有库存条件正确，姓名已填“测试员”；数量仍为 1，先聚焦数量输入框。",
+            "plan": "将数量改为 2，点击“检查并提交”；核对确认弹窗中的型号、姓名和数量后确认提交。仅在页面显示 PASS 后完成。",
+            "text_values": [
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:41:57.968Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:41:58.121Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4275,
+          "cost": 0.00041895,
+          "input_tokens": 2922,
+          "output_tokens": 114,
+          "timestamp": "2026-09-25T17:42:02.397Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "type",
+            "x": 574,
+            "y": 927,
+            "text": "2",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "数量输入框当前聚焦且仍为 1；将其设为任务要求的 2。",
+            "plan": "数量改为 2 后点击“检查并提交”；检查确认弹窗中 S-102、姓名测试员及数量 2 正确，再确认提交。仅在页面显示 PASS 后完成。",
+            "text_values": [
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-25T17:42:02.397Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:42:02.550Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 2957,
+          "cost": 0.00041595,
+          "input_tokens": 2926,
+          "output_tokens": 107,
+          "timestamp": "2026-09-25T17:42:05.508Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 768,
+            "y": 926,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "当前页面已显示选中 S-102、姓名测试员及数量 2；点击检查并提交进入确认弹窗。",
+            "plan": "检查确认弹窗中的型号 S-102、姓名测试员和数量 2 是否正确；若正确，确认提交。仅在页面显示 PASS 后完成。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-25T17:42:05.509Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:42:05.663Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "elapsed_ms": 4855,
+          "cost": 0.0003567,
+          "input_tokens": 2432,
+          "output_tokens": 112,
+          "timestamp": "2026-09-25T17:42:10.519Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "openai/gpt-6-luna",
+          "action": {
+            "action": "click",
+            "x": 651,
+            "y": 554,
+            "text": "",
+            "key": "Tab",
+            "dy": 0,
+            "reason": "确认弹窗显示 S-102、测试员、数量 2，与任务要求一致；点击确认测试提交。",
+            "plan": "提交后检查页面是否显示 PASS；仅在可见 PASS 时完成。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-25T17:42:10.519Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-25T17:42:10.684Z"
+        }
+      ]
+    }
+  ]
+}
