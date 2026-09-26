@@ -140,7 +140,7 @@ try {
     await page.reload(); await page.addStyleTag({ content: 'header{margin-bottom:180px}' });
     await execute(page, { action: 'scroll', x: 1100, y: 800, dy: 480, reason: 'shift fixture' });
     const { ui } = await observe(page);
-    for (const control of ui.controls) {
+    for (const control of ui.controls.filter(c => c.inViewport)) {
       const tag = await page.evaluate(({ x, y }) => document.elementFromPoint(x, y)?.tagName.toLowerCase(), control);
       assert.equal(tag, control.tag);
     }

@@ -8,6 +8,9 @@ export function assessProgress(before, after, action, execution = { ok: true, de
   if (action.action === 'type' && after.ui.focused?.value !== action.text) {
     return { ok: false, changed, detail: 'Focused input does not contain the requested value' };
   }
+  if (['fill', 'select'].includes(action.action) && after.ui.controls.find(c => c.ref === action.ref)?.value !== (action.text ?? action.value)) {
+    return { ok: false, changed, replan: true, detail: 'Target control does not contain the requested value' };
+  }
   const expected = ['key', 'escalate', 'done'].includes(action.action) || (action.action === 'wait' && before.ui.busy);
   return { ok: changed || expected, changed, detail: changed || expected ? '' : 'No observed UI progress after action' };
 }

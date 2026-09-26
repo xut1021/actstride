@@ -6,7 +6,7 @@
 
 Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不复刻它的记忆系统，也不把它的实验数字当作 computer use 的提速证据。
 
-目前支持仓库自带的十一种本地合成场景，覆盖物品搜索与填表、工单分派、会议室预约、通知设置，并包含布局变化、延迟加载和提交失败恢复。通过 Playwright 的鼠标和键盘操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。通用桌面和任意网站尚未支持。
+目前支持仓库自带的十一种本地合成场景，覆盖物品搜索与填表、工单分派、会议室预约、通知设置，并包含布局变化、延迟加载和提交失败恢复。通过 Playwright 的鼠标、键盘和受控的语义填表/选择操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。通用桌面和任意网站尚未支持。
 
 ## 快速开始
 
@@ -38,17 +38,30 @@ npm start -- --mode s2-only --scenario baseline
 
 所有真实运行共享 `runs/budget.json`。5 美元是累计上限，不是消费目标。请求前预留费用，按提供方返回的费用结算；未知费用或中断保留预留并阻止后续消费，不自动重试。此限制依赖提供方价格和用量信息，是客户端记账，不是服务端硬限额。不要删除账本绕过限制。
 
+## 参数化技能（实验功能）
+
+增加 `--skills` 后，规划模型根据任务绑定参数，快速模型可选择工单分派、会议室预约填表、通知设置三个流程。执行器逐步检查控件和确认内容；出现歧义、目标变化或新弹窗字段时立即交回规划模型。技能使用语义目标与参数，不保存固定坐标或测试答案。
+
+```sh
+npm start -- --mode dual --scenario tickets_b --skills --headless --channel msedge
+node scripts/benchmark.mjs --skills --channel msedge
+```
+
+技能默认关闭，目前需要 Codex 规划路线。第二条命令比较「仅规划模型」「双模型无技能」「双模型有技能」三组，共 18 次计划运行，所有组共享同一套执行接口。有未结算 API 请求时跳过付费组合。技能内部操作也逐条记录，不能将一次技能调用算作一次实际页面操作。
+
+这三个技能是手工编写的第一版。`runs/skills/experiences.jsonl` 保存任务、绑定参数、成败与对应运行；具体步骤保留在该次运行的 `events.jsonl`。记录不会自动变成新技能，也没有训练模型。能力范围与验证结果见[技能说明](docs/skills.md)。尚不能据此宣称已测得真实双模型提速。
+
 ## 工作流程
 
 ```mermaid
 flowchart LR
   Page[本地页面] --> Observe[截图与可见控件]
   Observe --> Planner[System 2 规划与纠错]
-  Planner --> Plan[计划与输入文字]
+  Planner --> Plan[计划、输入文字与可选技能参数]
   Observe --> Choices[当前动作候选]
   Plan --> Fast[System 1 快速决策]
   Choices --> Fast
-  Fast --> Execute[鼠标与键盘]
+  Fast --> Execute[原子动作或有检查的技能步骤]
   Execute --> Page
   Fast -->|不确定或失败| Planner
   Page --> Verify[独立完成验证]
@@ -59,6 +72,7 @@ flowchart LR
 - 出现新的页面错误立即请求重新规划；连续两次无进展也会交回规划模型。低置信度阈值 0.55 尚未经过校准。
 - 完成只能由独立验证器确认，模型说“完成”不算成功；后续修改表单会清除旧 PASS。
 - 隐藏答案和验证状态不进入模型输入。页面展示任务要求，属于透明的集成实验，而非盲测。
+- 元素引用绑定当前节点及语义版本；执行前检查节点、值、选项与遮挡。视口外的可见布局控件会自动滚入视口；滚动动作的坐标可省略。填表与下拉框选择为受控 DOM 操作，两种模式均可使用。
 
 ## 验证与边界
 
@@ -96,6 +110,9 @@ npm run demo -- --headless
 ## 参考与许可
 
 - [Jev-Mem](https://github.com/libingzheren/Jev-Mem)：System 1 / System 2 分工的参考来源。
+- [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver)、[Agent Skill Induction](https://github.com/zorazrw/agent-skill-induction)：可执行、经过验证的流程技能设计参考。
+- [Agent Workflow Memory](https://github.com/zorazrw/agent-workflow-memory)：流程经验记录的参考；当前尚未实现自动归纳与检索。
+- [jev-ultrafast-mcp](https://github.com/jiawei686/jev-ultrafast-mcp)：稳定引用、语义操作和执行检查的参考。上述项目代码未复制进本仓库。
 - [OpenRouter Jev 使用说明](https://openrouter.ai/blog/tutorials/how-to-use-jev/)
 - [OpenRouter Decisions API](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request)
 

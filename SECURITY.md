@@ -4,6 +4,8 @@ This prototype is intended only for its bundled synthetic scenarios. The isolate
 
 The model cannot execute JavaScript or shell commands. Coordinates, keys and text are validated, typed text replaces only a focused non-password input, and popups are closed. These restrictions are not a complete security boundary against arbitrary untrusted web content. Playwright and Node run with the permissions of their host process.
 
+Semantic click/fill/select actions use a node reference and observed revision, with fresh state and occlusion checks. Fill only accepts editable non-password inputs; select only accepts an available option. Layout-visible offscreen controls can be scrolled into view. Both baseline and dual modes share these actions. Optional skills run only the three hand-authored workflows in `skill-runner.mjs`; model-supplied code is never evaluated. Each workflow stops on a mismatch and checks completion through the separate lab verifier. Skills are scoped to the bundled pages, not arbitrary websites. Experience records stay under ignored `runs/` and are never automatically promoted into executable skills.
+
 `runs/` and `.env` are ignored by Git. Check artifacts before sharing them. The shared budget ledger and lock apply within one checkout only. Provider metadata and billing remain external dependencies; a client-side limit is not equivalent to a provider-enforced key limit. Unknown charges stop execution rather than retrying.
 
 Do not publish API keys in bug reports. For reproducible bugs, share a sanitized report and synthetic inputs only.

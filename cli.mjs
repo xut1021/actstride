@@ -8,6 +8,7 @@ import { assessProgress } from './progress.mjs';
 import { scenarios } from './scenarios.mjs';
 import { Replay } from './replay.mjs';
 import { CodexPlanner, CODEX_MODEL } from './codex-planner.mjs';
+import { runSkill } from './skill-runner.mjs';
 
 const { values: args } = parseArgs({ options: {
   replay: { type: 'boolean', default: false }, headless: { type: 'boolean', default: false },
@@ -16,13 +17,15 @@ const { values: args } = parseArgs({ options: {
   fast: { type: 'string', default: DEFAULT_MODELS.s1 }, slow: { type: 'string' },
   'planner-provider': { type: 'string', default: 'codex' },
   scenario: { type: 'string', default: 'baseline' },
+  skills: { type: 'boolean', default: false },
   help: { type: 'boolean', default: false },
 } });
 if (args.help) {
-  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode dual --scenario recovery\n  npm start -- --mode s2-only\nScenarios: baseline, alternate, shifted, delayed, recovery. Default planner: codex.\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
+  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode dual --scenario tickets_b --skills\n  npm start -- --mode s2-only\nScenarios: ' + Object.keys(scenarios).join(', ') + '. Default planner: codex.\n--skills enables three hand-authored workflows (dual + codex only).\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
   process.exit(0);
 }
 if (!Object.hasOwn(scenarios, args.scenario)) throw Error('Unknown scenario: ' + args.scenario);
+if (args.skills && (args.replay || args.mode !== 'dual' || args['planner-provider'] !== 'codex')) throw Error('--skills requires dual mode and the Codex planner');
 if (args.replay && args.scenario !== 'baseline') throw Error('Scripted replay supports baseline only');
 const maxSteps = Number(args.steps), limit = Number(args.budget);
 if (!Number.isInteger(maxSteps) || maxSteps < 1 || maxSteps > 100) throw Error('steps must be 1..100');
@@ -76,8 +79,8 @@ try {
       pricing.s1 = { bound: Math.max(...bounds) };
     }
     console.log(`System 1: ${args.mode === 'dual' ? models.s1 + ' (OpenRouter paid)' : 'disabled'}; System 2: ${models.s2} (${args['planner-provider'] === 'codex' ? 'Codex subscription' : 'OpenRouter paid'})`);
-    record({ event: 'start', scenario: args.scenario, mode: args.mode, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
-    controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, record, signal: abort.signal, planner });
+    record({ event: 'start', scenario: args.scenario, mode: args.mode, skills: args.skills, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
+    controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, skills: args.skills, record, signal: abort.signal, planner });
   } else record({ event: 'start', mode: 'scripted-replay', note: 'No AI calls; fixture may use DOM to generate test coordinates' });
   timings.setup_ms = Date.now() - started;
   lab = await timed('browser_ms', () => openLab({ headless: args.headless, channel: args.channel, scenario: args.scenario }));
@@ -90,12 +93,20 @@ try {
     if (abort.signal.aborted) throw Error('Stopped by user before action');
     if (args.replay) record({ event: 'decision', ...decision });
     console.log(`${step}/${maxSteps} ${decision.role} ${decision.action.action}: ${decision.action.reason}`);
-    let ok = true, detail = '';
-    try { await timed('execution_ms', () => execute(lab.page, decision.action)); actions++; }
+    let ok = true, detail = '', skillResult;
+    try {
+      if (decision.action.action === 'skill') {
+        skillResult = await timed('execution_ms', () => runSkill(lab.page, decision.action.skill, { record, signal: abort.signal }));
+        actions += skillResult.steps;
+        ({ ok, detail } = skillResult);
+        mkdirSync('runs/skills', { recursive: true });
+        appendFileSync('runs/skills/experiences.jsonl', JSON.stringify({ timestamp: new Date().toISOString(), run: out, task: before.task, binding: decision.action.skill, ...skillResult, source: 'hand-authored-v1', promotion: 'none' }) + '\n');
+      } else { await timed('execution_ms', () => execute(lab.page, decision.action)); actions++; }
+    }
     catch (error) { ok = false; detail = error.message; }
     const after = await timed('observation_ms', () => observe(lab.page));
     writeFileSync(join(out, `${String(step).padStart(3, '0')}-after.png`), after.png);
-    const feedback = assessProgress(before, after, decision.action, { ok, detail });
+    const feedback = skillResult || assessProgress(before, after, decision.action, { ok, detail });
     controller.feedback(feedback);
     record({ event: 'action_result', step, ...feedback });
     result = await verify(lab.page);
@@ -109,7 +120,7 @@ finally {
   if (lab) await lab.browser.close();
   const usage = events.filter(e => e.event === 'usage');
   const report = {
-    scenario: args.scenario, timings, mode: args.replay ? 'scripted-replay' : args.mode, planner_provider: args.replay ? null : args['planner-provider'], passed: result.passed,
+    scenario: args.scenario, skills: args.skills, skill_attempts: events.filter(e => e.event === 'skill_result').length, skill_failures: events.filter(e => e.event === 'skill_result' && !e.ok).length, timings, mode: args.replay ? 'scripted-replay' : args.mode, planner_provider: args.replay ? null : args['planner-provider'], passed: result.passed,
     ai_verified: !args.replay && result.passed, failure, actions,
     duration_ms: Date.now() - started, model_duration_ms: usage.reduce((s, e) => s + e.elapsed_ms, 0),
     api_duration_ms: usage.filter(e => e.billing !== 'codex-subscription').reduce((s, e) => s + e.elapsed_ms, 0),

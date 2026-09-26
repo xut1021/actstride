@@ -1,0 +1,535 @@
+{
+  "date": "2026-09-26T05:01:29.573Z",
+  "kind": "skill-v1-validation",
+  "final_sources_sha256": {
+    "browser.mjs": "e6ebcc245c1e1376548ef9d2768048d66f1ff5d0203078318d3a701edda1a2a0",
+    "candidates.mjs": "e9b2ac99928ba89a2cdb34b3870e6d348d2fd02f7cba0c707472e47ed5f53a51",
+    "cli.mjs": "18f06111422bb57416cf32f8ffc1898e9fd5c9107ad41b478c4ee58cc682105e",
+    "codex-planner.mjs": "fac65b0093b2628e509807a64c728573c0e65758a5d0398a6c2fd5a9a385059a",
+    "controller.mjs": "8d575596b4c2c592de14ccfaa0639b04afc9c32f098a8a0a86967ec76b9a32d1",
+    "progress.mjs": "04aa31a9d0c8b27dee1f3fd3c76164f6ea705f6c5777a82fff6d1caa267a93a0",
+    "skills.mjs": "b41a618410ee758b8f92e36d26ba5c6fe7ea988369709e7efceb98c724f2bc98",
+    "skill-runner.mjs": "ad8ad249234d98b79a3eb67348d3a9dfac1849057711c23278fdf5f1c54261be",
+    "scripts/benchmark.mjs": "5b7f421f9d9ed6f6a793b6832c87ac38549c028c9eb51432f605edd3060a0695",
+    "scripts/skill-planner-check.mjs": "c7ebd50c749c4310c88293e572eb550b9a1d8b2e25b260c7d66a26512406a842",
+    "test/skills.test.mjs": "d1b8f2098f080419e046b0d8f76d526e88acca0c64fb77cb25f81c15e0096ae8"
+  },
+  "deterministic": {
+    "browser": "Microsoft Edge, headless",
+    "command": "FCU_TEST_CHANNEL=msedge node --test --test-reporter=tap test/*.test.mjs",
+    "total": 54,
+    "passed": 54,
+    "failed": 0,
+    "live_model_calls": 0,
+    "cases": [
+      {
+        "name": "real browser: local task passes via mouse and keyboard; outside requests blocked",
+        "passed": true
+      },
+      {
+        "name": "quantity",
+        "passed": true
+      },
+      {
+        "name": "name",
+        "passed": true
+      },
+      {
+        "name": "search",
+        "passed": true
+      },
+      {
+        "name": "stock",
+        "passed": true
+      },
+      {
+        "name": "selection",
+        "passed": true
+      },
+      {
+        "name": "cancellation",
+        "passed": true
+      },
+      {
+        "name": "a completed result is invalidated when the form or confirmation changes",
+        "passed": true
+      },
+      {
+        "name": "invisible controls do not become candidate click targets",
+        "passed": true
+      },
+      {
+        "name": "subscription subprocess receives no API key or API base override",
+        "passed": true
+      },
+      {
+        "name": "Codex planner works without OpenRouter key and reports subscription usage separately",
+        "passed": true
+      },
+      {
+        "name": "Codex failure halts instead of falling back to a paid API",
+        "passed": true
+      },
+      {
+        "name": "Codex action validation still rejects out-of-viewport coordinates",
+        "passed": true
+      },
+      {
+        "name": "planner -> operator -> escalation -> planner",
+        "passed": true
+      },
+      {
+        "name": "uncertain billing survives process restart and blocks spending",
+        "passed": true
+      },
+      {
+        "name": "unknown usage.cost stops; no automatic retry",
+        "passed": true
+      },
+      {
+        "name": "budget checks before network, settled cost persists",
+        "passed": true
+      },
+      {
+        "name": "invalid mouse/key/text cannot reach execution",
+        "passed": true
+      },
+      {
+        "name": "two failed observations force replanning",
+        "passed": true
+      },
+      {
+        "name": "fast choices use fresh controls and planner text, not fixture answers",
+        "passed": true
+      },
+      {
+        "name": "low-confidence Jev escalates; stale choice is rejected after billing",
+        "passed": true
+      },
+      {
+        "name": "s2-only baseline never calls Jev",
+        "passed": true
+      },
+      {
+        "name": "extended tickets_a: wrong state rejected, correct confirmation passes, edits invalidate",
+        "passed": true
+      },
+      {
+        "name": "extended tickets_b: wrong state rejected, correct confirmation passes, edits invalidate",
+        "passed": true
+      },
+      {
+        "name": "extended booking_a: wrong state rejected, correct confirmation passes, edits invalidate",
+        "passed": true
+      },
+      {
+        "name": "extended booking_b: wrong state rejected, correct confirmation passes, edits invalidate",
+        "passed": true
+      },
+      {
+        "name": "extended settings_a: wrong state rejected, correct confirmation passes, edits invalidate",
+        "passed": true
+      },
+      {
+        "name": "extended settings_b: wrong state rejected, correct confirmation passes, edits invalidate",
+        "passed": true
+      },
+      {
+        "name": "progress ignores decorative pixels and verifies typing and recovery",
+        "passed": true
+      },
+      {
+        "name": "scenario baseline: actual criteria, no disclosed answer, fresh verification",
+        "passed": true
+      },
+      {
+        "name": "scenario alternate: actual criteria, no disclosed answer, fresh verification",
+        "passed": true
+      },
+      {
+        "name": "scenario shifted: actual criteria, no disclosed answer, fresh verification",
+        "passed": true
+      },
+      {
+        "name": "scenario delayed: actual criteria, no disclosed answer, fresh verification",
+        "passed": true
+      },
+      {
+        "name": "scenario recovery: actual criteria, no disclosed answer, fresh verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow tickets_a: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow tickets_b: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow booking_a: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow booking_b: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow settings_a: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow settings_b: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow skill_ticket_holdout: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow skill_booking_holdout: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "skill workflow skill_settings_holdout: independent browser verification",
+        "passed": true
+      },
+      {
+        "name": "control refs survive reordering, reject changed/replaced targets and old revisions",
+        "passed": true
+      },
+      {
+        "name": "select rejects unavailable options; coordinate-free scroll and offscreen refs work",
+        "passed": true
+      },
+      {
+        "name": "ambiguous target does not activate any step; unknown page offers no skills",
+        "passed": true
+      },
+      {
+        "name": "changed dialog extra-control stops before confirmation",
+        "passed": true
+      },
+      {
+        "name": "changed dialog extra-password stops before confirmation",
+        "passed": true
+      },
+      {
+        "name": "changed dialog extra-textarea stops before confirmation",
+        "passed": true
+      },
+      {
+        "name": "changed dialog wrong-summary stops before confirmation",
+        "passed": true
+      },
+      {
+        "name": "changed dialog occluded-confirm stops before confirmation",
+        "passed": true
+      },
+      {
+        "name": "correct existing preferences are not toggled; wrong parameters fail independent verification",
+        "passed": true
+      },
+      {
+        "name": "planner binding -> bounded Jev choice -> browser skill; failure feedback hands back to planner",
+        "passed": true
+      },
+      {
+        "name": "disabled skills cannot leak planner binding into fast candidates; malformed parameters rejected",
+        "passed": true
+      }
+    ],
+    "note": "Real browser execution. Controller routing uses mock model responses. Nine positive skill cases include three new parameter/layout combinations; negative cases assert rejection or handoff."
+  },
+  "audit": {
+    "timestamp": "2026-09-26T04:59:09.635Z",
+    "kind": "deterministic-no-api-audit",
+    "paid_model_calls": 0,
+    "source_sha256": {
+      "browser.mjs": "e6ebcc245c1e1376548ef9d2768048d66f1ff5d0203078318d3a701edda1a2a0",
+      "controller.mjs": "8d575596b4c2c592de14ccfaa0639b04afc9c32f098a8a0a86967ec76b9a32d1",
+      "codex-planner.mjs": "fac65b0093b2628e509807a64c728573c0e65758a5d0398a6c2fd5a9a385059a",
+      "candidates.mjs": "e9b2ac99928ba89a2cdb34b3870e6d348d2fd02f7cba0c707472e47ed5f53a51",
+      "budget.mjs": "09ee9c1342524e1f2d21d442d3abe5b511977f9c281b66f5b8cbc90d6fdd40e8",
+      "cli.mjs": "18f06111422bb57416cf32f8ffc1898e9fd5c9107ad41b478c4ee58cc682105e",
+      "index.html": "c424e3ad2bf3488da203d441e2d203b6969de4a534b19ff3f16e51b32f8f8728"
+    },
+    "counts": {
+      "passed": 33,
+      "failed": 0
+    },
+    "results": [
+      {
+        "name": "s1: http429 retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s1: invalid-json retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s1: network-error retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s1: missing-cost retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s2: http429 retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s2: invalid-json retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s2: network-error retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "s2: missing-cost retains reservation and stops retry",
+        "status": "pass"
+      },
+      {
+        "name": "concurrent decide calls do not create two paid requests",
+        "status": "pass"
+      },
+      {
+        "name": "exhausted budget blocks before transport",
+        "status": "pass"
+      },
+      {
+        "name": "paid invalid action is billed but never returned for execution",
+        "status": "pass"
+      },
+      {
+        "name": "invalid billing types retain the reservation",
+        "status": "pass"
+      },
+      {
+        "name": "tiered pricing reserves the most expensive advertised tier",
+        "status": "pass"
+      },
+      {
+        "name": "invalid action boundaries and text lengths are rejected",
+        "status": "pass"
+      },
+      {
+        "name": "empty initial submission cannot open confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "invalid quantity \"\" cannot open confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "invalid quantity \"0\" cannot open confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "invalid quantity \"10\" cannot open confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "invalid quantity \"1.5\" cannot open confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "wrong name produces FAIL after confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "wrong valid quantity produces FAIL after confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "wrong SKU produces FAIL after confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "skipped filter produces FAIL after confirmation",
+        "status": "pass"
+      },
+      {
+        "name": "cancel confirmation does not complete the task",
+        "status": "pass"
+      },
+      {
+        "name": "open modal exposes only modal controls to Jev",
+        "status": "pass"
+      },
+      {
+        "name": "correct submission completes the task",
+        "status": "pass"
+      },
+      {
+        "name": "editing quantity after PASS invalidates current completion",
+        "status": "pass"
+      },
+      {
+        "name": "changing selected SKU after PASS invalidates current completion",
+        "status": "pass"
+      },
+      {
+        "name": "visibility:hidden controls are excluded from observation",
+        "status": "pass"
+      },
+      {
+        "name": "disabled controls are excluded from observation",
+        "status": "pass"
+      },
+      {
+        "name": "typing without an editable focus is rejected",
+        "status": "pass"
+      },
+      {
+        "name": "fresh control coordinates adapt to shifted layout and scrolling",
+        "status": "pass"
+      },
+      {
+        "name": "live OpenRouter ledger is byte-for-byte unchanged",
+        "status": "pass"
+      }
+    ],
+    "note": "Deterministic audit, no paid calls. Live budget ledger remained byte-for-byte unchanged."
+  },
+  "subscription_planner": {
+    "kind": "subscription-planner-skill-integration-no-jev",
+    "live_jev_calls": 0,
+    "openrouter_calls": 0,
+    "full_dual_validation": false,
+    "sources": {
+      "browser.mjs": "06a3a604f4032914b2f95e9a7221ad0d564bfe5fcf857e5260c2b7125449e4be",
+      "skills.mjs": "b41a618410ee758b8f92e36d26ba5c6fe7ea988369709e7efceb98c724f2bc98",
+      "skill-runner.mjs": "1ed268f57e5d72fac0f42544d4a62ad499be294a1a1c19bbf3acf1008a1bacb6",
+      "codex-planner.mjs": "fac65b0093b2628e509807a64c728573c0e65758a5d0398a6c2fd5a9a385059a",
+      "controller.mjs": "028a10c89da18e2aac13197de3ad25847f9decdfd756a218c6f6f76f144136a3",
+      "extended.html": "9a411a8aad8cae6d3bc44a761fdae41590aa324f684467a1bb50dc4f59dc2612",
+      "scenarios.mjs": "229b8116a4277518417fe33b96727774ff82faffd7431af2905878d07be4c2c7"
+    },
+    "cases": [
+      {
+        "scenario": "tickets_b",
+        "passed": true,
+        "planner_ms": 27512,
+        "usage": {
+          "input_tokens": 18814,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 126,
+          "reasoning_output_tokens": 0
+        },
+        "action": {
+          "action": "wait",
+          "skill": {
+            "id": "assign_ticket",
+            "params": {
+              "department": "财务",
+              "priority": "普通",
+              "owner": "林禾"
+            }
+          },
+          "reason": "可用技能完整覆盖任务，参数均来自用户要求。",
+          "plan": "找到财务部门普通工单 T-28，设置负责人为林禾，确认分派并检查 PASS。",
+          "text_values": [
+            "财务",
+            "普通",
+            "林禾"
+          ]
+        },
+        "workflow": {
+          "ok": true,
+          "replan": false,
+          "detail": "Skill completed and independently verified",
+          "steps": 4
+        }
+      },
+      {
+        "scenario": "booking_b",
+        "passed": true,
+        "planner_ms": 28792,
+        "usage": {
+          "input_tokens": 18975,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 129,
+          "reasoning_output_tokens": 0
+        },
+        "action": {
+          "action": "wait",
+          "skill": {
+            "id": "book_room",
+            "params": {
+              "day": "周三",
+              "period": "下午",
+              "capacity": 10,
+              "name": "许川"
+            }
+          },
+          "reason": "提供的技能完整覆盖预约及弹窗核对任务。",
+          "plan": "选择符合条件的可用会议室，填写许川，核对弹窗后确认，检查 PASS。",
+          "text_values": [
+            "周三",
+            "下午",
+            "许川"
+          ]
+        },
+        "workflow": {
+          "ok": true,
+          "replan": false,
+          "detail": "Skill completed and independently verified",
+          "steps": 4
+        }
+      },
+      {
+        "scenario": "settings_b",
+        "passed": true,
+        "planner_ms": 31881,
+        "usage": {
+          "input_tokens": 18606,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 121,
+          "reasoning_output_tokens": 0
+        },
+        "action": {
+          "action": "wait",
+          "skill": {
+            "id": "notification_preferences",
+            "params": {
+              "email": false,
+              "sms": true,
+              "zone": "伦敦"
+            }
+          },
+          "reason": "可用技能覆盖完整任务，参数均来自用户要求。",
+          "plan": "打开通知设置，关闭邮件通知、开启短信通知，选择伦敦时区，保存并确认，检查 PASS。",
+          "text_values": [
+            "伦敦"
+          ]
+        },
+        "workflow": {
+          "ok": true,
+          "replan": false,
+          "detail": "Skill completed and independently verified",
+          "steps": 4
+        }
+      }
+    ],
+    "ledger_unchanged": true,
+    "passed": true,
+    "note": "Three real subscription planner calls, followed by direct workflow execution. No live Jev choice. Recorded source hashes are from before final document-ref and extra-modal-field guards; final browser regression covers those changes."
+  },
+  "live_three_group_comparison": {
+    "status": "unrun",
+    "reason": "Existing unsettled OpenRouter reservation; no additional paid calls or ledger reset.",
+    "speedup": null
+  },
+  "budget": {
+    "limit_usd": 5,
+    "charged_usd": 0.03802335499999996,
+    "pending_usd": 0.001344,
+    "new_openrouter_calls": 0
+  }
+}

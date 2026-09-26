@@ -5,8 +5,20 @@ export function candidatesFor(ui, textValues = []) {
   for (const c of ui.controls) {
     choices[`click_${c.index}`] = {
       description: `Click ${c.tag} ${JSON.stringify(c.label)}; value=${JSON.stringify(c.value)}; context=${c.context || ''}`,
-      action: { action: 'click', x: c.x, y: c.y, reason: `Click ${c.label}` },
+      action: { action: 'click', ...(c.ref ? { ref: c.ref, revision: c.revision } : { x: c.x, y: c.y }), reason: `Click ${c.label}` },
     };
+    if (c.ref && c.tag === 'select') for (const [i, option] of c.options.entries()) {
+      if (!option.disabled && option.value !== c.value) choices[`select_${c.index}_${i}`] = {
+        description: `Set ${JSON.stringify(c.label)} to option ${JSON.stringify(option.label)}`,
+        action: { action: 'select', ref: c.ref, revision: c.revision, value: option.value, reason: `Set ${c.label}=${option.label}` },
+      };
+    }
+    if (c.ref && c.tag === 'input') textValues.forEach((text, i) => {
+      if (text !== c.value) choices[`fill_${c.index}_${i}`] = {
+        description: `Fill input ${JSON.stringify(c.label)} with ${JSON.stringify(text)}`,
+        action: { action: 'fill', ref: c.ref, revision: c.revision, text, reason: `Fill ${c.label}` },
+      };
+    });
   }
   if (ui.focused?.tag === 'input') {
     textValues.forEach((text, i) => {
@@ -23,7 +35,7 @@ export function candidatesFor(ui, textValues = []) {
     };
   }
   for (const [name, available, dy] of [['up', ui.canScrollUp, -480], ['down', ui.canScrollDown, 480]]) {
-    if (available) choices[`scroll_${name}`] = { description: `Scroll ${name} to see more controls`, action: { action: 'scroll', x: 1200, y: 800, dy, reason: `Scroll ${name}` } };
+    if (available) choices[`scroll_${name}`] = { description: `Scroll ${name} to see more controls`, action: { action: 'scroll', dy, reason: `Scroll ${name}` } };
   }
   if (ui.busy) choices.wait = { description: 'Wait 500 milliseconds for the visible loading state to finish', action: { action: 'wait', reason: 'Wait for loading' } };
   choices.escalate = { description: 'Ask System 2 to replan: ambiguous next action, missing required text, or repeated failure', action: { action: 'escalate', reason: 'Jev requests replanning' } };
