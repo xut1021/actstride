@@ -31,3 +31,26 @@ test('ambiguous or disabled semantic targets are rejected before execution', () 
   assert.throws(() => control({ controls: [{ name: 'Review', type: 'button', enabled: false }] }, 'Review', 'button'), /got 0/);
   assert.throws(() => control({ controls: Array(2).fill({ name: 'Review', type: 'button', enabled: true }) }, 'Review', 'button'), /got 2/);
 });
+
+test('judgment fixture independently accepts correct choices and rejects wrong choices', { skip: !enabled }, async () => {
+  const executable = buildDesktopLab();
+  const directory = mkdtempSync(join(tmpdir(), 'actstride-judgment-'));
+  for (const [scenario, selected, passed] of [
+    ['judgment_1', 'Hardware', true], ['judgment_2', 'Hardware', false],
+    ['judgment_3', 'Supplier B', true], ['judgment_4', 'Supplier C', true],
+    ['judgment_5', 'Manual review', true], ['judgment_6', 'Approve', true],
+  ]) {
+    const receipt = join(directory, scenario + '.json');
+    const lab = new WindowsLab(executable, scenario, receipt);
+    try {
+      const state = await lab.waitFor(s => s.controls.some(c => c.name.startsWith('Choose: ')));
+      assert.equal(existsSync(receipt), false);
+      assert.equal(JSON.stringify(state).includes('expected'), false);
+      assert.equal(JSON.stringify(state).includes(scenario), false);
+      await lab.act(state, { action: 'invoke', reference: control(state, 'Choose: ' + selected, 'button').reference });
+      await lab.waitFor(s => s.controls.some(c => c.name === 'Result: ' + (passed ? 'PASS' : 'FAIL')));
+      assert.deepEqual(JSON.parse(readFileSync(receipt, 'utf8')), { scenario, selected, passed });
+      assert.equal((await lab.observe()).controls.filter(c => c.name.startsWith('Choose: ')).every(c => !c.enabled), true);
+    } finally { await lab.close(); }
+  }
+});
