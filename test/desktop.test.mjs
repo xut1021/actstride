@@ -110,3 +110,32 @@ test('accessible mismatched text cannot be overridden with a claimed visual pass
   assert.equal(s.verifyDraft({ revision: s.revision, visualEvidence: 'claimed match' }).ok, false);
   assert.equal(s.skillPhase, 'verify');
 });
+
+test('direct draft reuses its binding and performs one input per inspected call without fast requests', async () => {
+  let fastCalls = 0;
+  const { session: s, inputs } = fixture({ fastDecider: { decide: async () => { fastCalls++; throw Error('must not call fast'); } } });
+  await s.observe(); s.bindDraft('Direct draft');
+  await s.advanceDraft({ revision: s.revision, skillTarget: { kind: 'click', screenshotId: 's1', x: 10, y: 10 }, review: 'New tab button observed' });
+  assert.equal(inputs.length, 1);
+  await assert.rejects(s.advanceDraft({ revision: s.revision, skillTarget: { kind: 'click', screenshotId: 's2', x: 10, y: 10 }, review: 'checked' }), /empty tab evidence/);
+  await s.advanceDraft({ revision: s.revision, skillTarget: { kind: 'click', screenshotId: 's2', x: 10, y: 10 }, newTabEvidence: 'New empty tab observed', review: 'Editor observed' });
+  assert.equal(inputs.length, 2);
+  await assert.rejects(s.advanceDraft({ revision: s.revision, review: 'checked' }), /focus evidence/);
+  await s.advanceDraft({ revision: s.revision, focusEvidence: 'Caret in empty editor', review: 'Literal draft checked' });
+  assert.deepEqual(inputs.map(x => x[0]), ['click', 'click', 'type']);
+  assert.equal(inputs[2][1].text, 'Direct draft');
+  assert.equal(fastCalls, 0);
+  await assert.rejects(s.advanceDraft({ revision: s.revision, review: 'checked' }), /No draft step/);
+  assert.equal(s.verifyDraft({ revision: s.revision, visualEvidence: 'Direct draft visible' }).ok, true);
+});
+
+test('direct draft rejects stale targets and consumes failed actions without replay', async () => {
+  const { session: s, inputs } = fixture({ failRefresh: true });
+  await s.observe(); s.bindDraft('Direct draft');
+  await assert.rejects(s.advanceDraft({ revision: 0, skillTarget: { kind: 'click', screenshotId: 's1', x: 10, y: 10 }, review: 'checked' }), /Stale/);
+  await assert.rejects(s.advanceDraft({ revision: s.revision, skillTarget: { kind: 'click', screenshotId: 'old', x: 10, y: 10 }, review: 'checked' }), /current screenshot/);
+  await assert.rejects(s.advanceDraft({ revision: s.revision, skillTarget: { kind: 'click', screenshotId: 's1', x: 10, y: 10 }, review: 'checked' }), /outcome unknown/);
+  assert.equal(inputs.length, 1);
+  await assert.rejects(s.advanceDraft({ revision: s.revision, review: 'checked' }), /reobserve/);
+  assert.equal(inputs.length, 1);
+});

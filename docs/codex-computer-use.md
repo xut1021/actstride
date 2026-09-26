@@ -1,8 +1,27 @@
 # Codex 原生 Computer Use 接入
 
-ActStride 现在有实验性的原生桌面桥接。当前 Codex 会话担任 System 2，`desktopDecider` 复用已有快速模型接口，`DesktopSession` 通过注入的官方 `@oai/sky` 执行操作。它不是修改 Codex 内部模型路由，也不会自动接管所有 Computer Use 调用。
+ActStride 有实验性的原生桌面桥接。默认由当前 Codex 会话规划并直接推进已绑定的技能，不调用 Jev；`desktopDecider` 保留为显式选择的实验路径。`DesktopSession` 通过注入的官方 `@oai/sky` 执行操作。它不是修改 Codex 内部模型路由，也不会自动接管所有 Computer Use 调用。宿主是 Astra 时才称为 Astra 规划，此技能不能更换当前模型。
 
-官方接口要求观察、检查、操作、刷新分开进行。因此桌面技能每次只推进一步，不能沿用浏览器技能的自动多步循环。每步仍经过主模型检查，是否提速需要另做实际对照；也可能因额外快速模型调用增加耗时。
+官方接口要求观察、检查、操作、刷新分开进行。因此桌面技能每次只推进一步，不能沿用浏览器技能的自动多步循环。新版直接入口省去单独的提议调用并复用技能阶段，每步仍经过主模型检查；原生总耗时是否降低需另做实际对照。
+
+## 默认直接技能入口
+
+已安装的目录链接会读取本 checkout 的新实现。观察选定记事本窗口后，绑定一次草稿，然后每个独立调用推进一个步骤：
+
+```js
+desktop.bindDraft('ActStride direct skill verification');
+// 先检查上一调用的截图；newTabClick 必须来自该截图。
+observation = await desktop.advanceDraft({
+  revision: observation.revision,
+  skillTarget: newTabClick,
+  review: 'Observed new-tab button; separate synthetic draft authorized',
+});
+nodeRepl.write(JSON.stringify(observation));
+```
+
+停止并检查新截图。下一调用的 focus 阶段提供当前编辑区点击及 `newTabEvidence`；再检查新截图，type 阶段提供 `focusEvidence`。最后 `verifyDraft` 核验。不要把这些调用合并成自动循环。文字与阶段存在 session 中，无需每步重新构造计划。遇到意外界面先重新观察与判断，不继续使用旧坐标。
+
+这个入口只覆盖现有记事本新草稿工作流。其他应用沿用官方操作方式；合成测试中的表单 Skill 并未安装成通用原生技能。下文 `propose → execute` 路径仍用于显式快速模型比较和一般候选动作。
 
 ## 安装与使用
 
@@ -72,3 +91,11 @@ nodeRepl.write(JSON.stringify(observation));
 真实 `node_repl` 已通过桥接器完成记事本草稿技能：创建新标签页 → 点击空白编辑区 → 输入 `ActStride native Computer Use test - 2026-09-26` → 刷新截图并核对文字，共三次原生输入。第一次运行在新标签页创建后因其他应用遮挡而暂停；用户要求继续测试后重新选择和观察同一窗口，完成剩余步骤，没有重复创建草稿。测试草稿保留在记事本中，未保存为文件。
 
 当前环境返回 `accessibility:null`，因此结果标记为 `host_visual_review`，不是可访问性文本的自动精确验证。目标窗口标题不能替代截图检查；遇到遮挡、窗口切换或焦点不明时，宿主必须停止并重新确认目标。三次决策均为 `host-codex`，没有调用真实快速模型、没有新增 API 消费，也未保存或外发个人桌面截图。该结果证明原生技能执行链可用，不能证明双模型提速或一般任务成功率提高。
+
+### 2026-09-27 直接入口验证
+
+从已安装的技能链接导入运行时，真实 `@oai/sky` 完成新建标签页点击 → 编辑区点击 → 输入绑定文字，共 3 次输入、0 次外部快速模型调用、0 次单独提议调用。最终截图显示 `ActStride direct skill verification - 2026-09-27`，状态栏为 48 字符，`verifyDraft` 返回 `ok:true / host_visual_review`。草稿保留为未保存标签页。
+
+首次按系统 notepad.exe 启动时工具报告未找到对应目标窗口，随后 list_windows 找到实际 WindowsNotepad 应用窗口并继续，没有重复启动。点击编辑区后的截图未能清楚确认光标，额外观察一次后看到插入光标才输入。原有草稿未修改。
+
+相较旧版三步技能的 3 次 propose＋3 次 execute，新入口为 3 次 advanceDraft，省去 3 次独立提议往返，保留每步检查与最终验证。本次从第一次 advanceDraft 前到最后刷新为 43.980 秒，含宿主读图、额外焦点观察和工具间间隔；没有同期基线，不能据此声称端到端提速比例。原生技能测试 10/10 通过（模拟 sky，单列于真实运行）；实际桌面成功按截图视觉核验，非独立 UIA 回执。

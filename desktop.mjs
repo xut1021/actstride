@@ -42,6 +42,23 @@ export class DesktopSession {
     if (!/WindowsNotepad|notepad\.exe/i.test(this.window.app)) throw Error('Draft skill requires a returned Notepad window');
     this.#skill = { text, phase: 'new_tab' };
   }
+  async advanceDraft({ revision, skillTarget, newTabEvidence, focusEvidence, review }) {
+    // Host-only path: the host inspected the previous cell before calling this.
+    // One input and one refresh, never an unattended multi-input loop.
+    requiredText(review, 'Host inspection and permission review');
+    if (this.#busy || !this.#state || this.#pending || revision !== this.#revision) throw Error('Stale or busy observation; reobserve');
+    if (!this.#skill || this.skillPhase === 'verify') throw Error('No draft step to advance');
+    const phase = this.skillPhase;
+    if (phase === 'new_tab' || phase === 'focus') {
+      if (skillTarget?.kind !== 'click') throw Error('Ground the new-tab or editor click in the latest observation');
+      if (phase === 'focus') requiredText(newTabEvidence, 'Inspected new empty tab evidence');
+    }
+    const action = this.#validate(phase === 'type' ? { kind: 'type', text: this.#skill.text } : skillTarget, focusEvidence);
+    this.#pending = { revision, action, skillPhase: phase };
+    this.record({ event: 'desktop_direct_step', revision, skillPhase: phase, model: 'host-codex',
+      newTabEvidence: newTabEvidence ?? null, focusEvidence: focusEvidence ?? null });
+    return this.execute({ revision, review });
+  }
   #validate(action, focusEvidence) {
     const state = this.#state;
     if (!state) throw Error('Observe before preparing actions');
