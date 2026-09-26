@@ -11,18 +11,18 @@ export function systemOneEndpoint(value) {
 }
 
 export class FastDecider {
-  constructor({ provider = 'openrouter', endpoint, model, images = false, apiKey, budget, price, fetchImpl = fetch, signal, record = () => {} } = {}) {
+  constructor({ provider = 'openrouter', endpoint, model, images = false, apiKey, budget, price, fetchImpl = fetch, signal, record = () => {}, decisionInstructions = instructions } = {}) {
     if (!['openrouter', 'systemone'].includes(provider)) throw Error('Unknown fast provider');
     if (provider === 'openrouter' && endpoint !== undefined) throw Error('--fast-endpoint is only for SystemOne');
     if (images && provider !== 'systemone') throw Error('--fast-images requires a multimodal SystemOne endpoint');
-    Object.assign(this, { provider, model, images, apiKey, budget, price, fetch: fetchImpl, signal, record });
+    Object.assign(this, { provider, model, images, apiKey, budget, price, fetch: fetchImpl, signal, record, decisionInstructions });
     this.endpoint = provider === 'systemone' ? systemOneEndpoint(endpoint) : 'https://openrouter.ai/api/alpha/decisions';
   }
   async decide({ state, criteria, image }) {
     const paid = this.provider === 'openrouter';
     if (paid && !this.apiKey) throw Error('OPENROUTER_API_KEY is missing');
     const payload = { ...(this.model ? { model: this.model } : {}), state,
-      questions: { next: { type: 'choice', instructions, criteria } } };
+      questions: { next: { type: 'choice', instructions: this.decisionInstructions, criteria } } };
     if (Buffer.byteLength(JSON.stringify(payload)) > 24000) throw Error('Fast decision state exceeds input size limit');
     if (this.images) {
       if (typeof image !== 'string' || !/^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(image) || image.length > 8000000) throw Error('Invalid fast screenshot');
