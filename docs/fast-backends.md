@@ -49,7 +49,31 @@ SystemOne 使用 `billing:self-hosted`、`cost:null`，无论响应是否带有�
 
 ## 验证与后续比较
 
-2026-09-26，Windows / Edge：`npm test` **89/89 通过**，其中新后端测试 35 项；`npm run audit` **33/33 通过**，确认真实 OpenRouter 账本逐字节未变。本轮没有调用真实推理服务、下载模型权重或产生新的 API 消费。
+### 桌面判断测试的版本适配
+
+`windows/judgment-benchmark.mjs` 现在也复用同一快速决策接口。可选模型版本、后端、交接阈值与重复次数；默认仍为既有 Jev 版本，不自动追随最新版。只支持符合现有 Decisions/SystemOne 协议的服务，不能把任意聊天模型名称直接填入后当成已适配。
+
+```powershell
+# 将占位模型 ID 换成已确认支持 Decisions 的实际模型版本
+node windows/judgment-benchmark.mjs --fast 'vendor/model-version' --threshold 0.55 --repeats 2
+
+# 已自行启动的本地 SystemOne 服务；省略 --fast 时由服务选择模型
+node windows/judgment-benchmark.mjs --fast-provider systemone --fast-endpoint http://127.0.0.1:8000/v1/systemone --threshold 0.55 --repeats 2
+
+node windows/judgment-benchmark.mjs --help
+```
+
+上述两条测试命令会调用真实模型及订阅 Astra。OpenRouter 路线按所选模型查询价格上限并使用原有共享账本；本地路线使用独立的 `FAST_API_KEY`，不读取、清零或改写 OpenRouter 账本。此前网络失败留下的未结算预留仍阻止新增 OpenRouter 请求，必须先核实账单。
+
+每次运行的 manifest 记录请求模型、后端、端点、输入模态、阈值、重复次数及源码哈希；每次返回记录实际模型标识与分数类型。模型名由服务返回，不证明本地加载的权重身份。所有候选选择、执行前控件检查、独立答案验证和失败保留规则不变。新旧模型需要同一题集、同一输入模态和相同阈值作对照；调整阈值是单独的实验条件，不能直接拼接结果。阈值仍未经校准。
+
+这一桌面入口目前固定使用 **UIA 文本**，不接受 `--fast-images`。浏览器适配器的已有多模态通路不等于桌面多模态测试已经完成。当前准备的是版本替换和复测入口，没有预先声明新版本能力。
+
+2026-09-26，本轮适配验证：`node --test test/judgment-config.test.mjs test/fast-decider.test.mjs test/codex.test.mjs`，**42/42 通过**，覆盖版本参数、实际响应版本保留、价格上限随模型变化、密钥隔离、候选校验及未知费用处理。使用模拟响应/本机 HTTP，未启动新的真实模型测试，未产生新增 API 消费；原桌面实测报告保留为历史记录。
+
+### 先前浏览器协议适配验证
+
+2026-09-26，Windows / Edge：`npm test` **89/89 通过**，其中新后端测试 35 项；`npm run audit` **33/33 通过**，确认真实 OpenRouter 账本逐字节未变。该轮没有调用真实推理服务、下载模型权重或产生新的 API 消费。
 
 `test/fast-decider.test.mjs` 用实际 loopback HTTP 模拟三种响应，检查候选/概率校验、无 OpenRouter 密钥的技能交接、独立认证、重定向拒绝、文本与图片限长、最新截图传递，以及 OpenRouter 的正常结算和未知费用预留。模拟服务没有推理能力；通过这些测试不能推导模型操作成功率或提速倍数。
 
