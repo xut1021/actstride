@@ -8,6 +8,7 @@ node windows/judgment-benchmark.mjs [options]
   --fast-endpoint URL                    required for local SystemOne
   --threshold NUMBER                    0..1; default: 0.55, uncalibrated
   --repeats NUMBER                      1..3; default: 2
+  --compare judgments|planning          default: judgments; planning compares Jev alone with Astra-guided Jev
   --help
 OpenRouter uses OPENROUTER_API_KEY and the existing $20 ledger.
 SystemOne uses optional FAST_API_KEY; it does not read or modify that ledger.
@@ -18,17 +19,18 @@ export function judgmentConfig(args) {
   const { values } = parseArgs({ args, options: {
     'fast-provider': { type: 'string', default: 'openrouter' }, fast: { type: 'string' },
     'fast-endpoint': { type: 'string' }, threshold: { type: 'string', default: '0.55' },
-    repeats: { type: 'string', default: '2' }, help: { type: 'boolean' },
+    repeats: { type: 'string', default: '2' }, compare: { type: 'string', default: 'judgments' }, help: { type: 'boolean' },
   } });
   if (values.help) return { help: true };
   const provider = values['fast-provider'], threshold = Number(values.threshold), repeats = Number(values.repeats);
   if (!['openrouter', 'systemone'].includes(provider)) throw Error('Unknown fast provider');
+  if (!['judgments', 'planning'].includes(values.compare)) throw Error('Unknown comparison');
   if (!values.threshold.trim() || !Number.isFinite(threshold) || threshold < 0 || threshold > 1) throw Error('Threshold must be 0..1');
   if (!Number.isInteger(repeats) || repeats < 1 || repeats > 3) throw Error('Repeats must be 1..3');
   const model = values.fast ?? (provider === 'openrouter' ? 'typesafe/jev-1.13' : undefined);
   if (model !== undefined && (!model.trim() || /[\s?#]/.test(model))) throw Error('Invalid model ID');
   if (provider === 'openrouter' && (!/^[\w][\w.-]*\/[\w][\w.:-]*$/.test(model) || values['fast-endpoint'] !== undefined)) throw Error('OpenRouter needs an owner/model ID and no custom endpoint');
-  return { provider, model, endpoint: provider === 'systemone' ? systemOneEndpoint(values['fast-endpoint']) : undefined, threshold, repeats };
+  return { provider, model, endpoint: provider === 'systemone' ? systemOneEndpoint(values['fast-endpoint']) : undefined, threshold, repeats, compare: values.compare };
 }
 
 export async function judgmentPrice(model, fetchImpl = fetch) {

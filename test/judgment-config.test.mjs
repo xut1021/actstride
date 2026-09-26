@@ -4,9 +4,11 @@ import { judgmentConfig, judgmentPrice, fastCredentials } from '../windows/judgm
 import { FastDecider } from '../fast-decider.mjs';
 
 test('desktop defaults preserve the tested model and allow explicit version/threshold changes', () => {
-  assert.deepEqual(judgmentConfig([]), { provider: 'openrouter', model: 'typesafe/jev-1.13', endpoint: undefined, threshold: 0.55, repeats: 2 });
+  assert.deepEqual(judgmentConfig([]), { provider: 'openrouter', model: 'typesafe/jev-1.13', endpoint: undefined, threshold: 0.55, repeats: 2, compare: 'judgments' });
   const c = judgmentConfig(['--fast', 'vendor/test-version', '--threshold', '0.8', '--repeats', '1']);
   assert.equal(c.model, 'vendor/test-version'); assert.equal(c.threshold, 0.8); assert.equal(c.repeats, 1);
+  assert.equal(judgmentConfig(['--compare', 'planning']).compare, 'planning');
+  assert.throws(() => judgmentConfig(['--compare', 'invalid']));
   for (const args of [['--threshold', 'NaN'], ['--threshold', ''], ['--threshold', '1.1'], ['--repeats', '0'], ['--fast', '../escape'], ['--fast-provider', 'unknown'], ['--fast-images']]) {
     assert.throws(() => judgmentConfig(args));
   }
