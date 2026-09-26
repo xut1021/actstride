@@ -38,7 +38,7 @@ export async function observe(page) {
     };
     const controls = [...root.querySelectorAll('input:not([type=password]),button,select')].filter(el => {
       const r = el.getBoundingClientRect();
-      return !el.disabled && r.width > 0 && r.height > 0 && r.x >= 0 && r.y >= 0 && r.right < innerWidth && r.bottom < innerHeight;
+      return !el.disabled && el.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) && r.width > 0 && r.height > 0 && r.x >= 0 && r.y >= 0 && r.right < innerWidth && r.bottom < innerHeight;
     }).slice(0, 40).map(describe);
     const active = document.activeElement;
     return { controls, focused: root.contains(active) && ['INPUT', 'SELECT'].includes(active.tagName) ? describe(active, -1) : null,

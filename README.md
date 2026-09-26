@@ -1,8 +1,10 @@
 # fastercomputeruse
 
-**Jev chooses the next action. GPT-6 Luna plans and repairs. A browser executes.**
+**Jev chooses the next action. Astra or Luna plans and repairs. A browser executes.**
 
 An experimental two-model browser agent using OpenRouter. System 2 receives a screenshot plus visible control structure and supplies a plan and typing values. System 1 receives the control structure and selects one freshly generated action candidate. Low confidence or repeated lack of progress sends control back to System 2.
+
+Two planner routes are available: **GPT-6 Astra through a ChatGPT-authenticated Codex CLI**, or GPT-6 Luna through OpenRouter. The Astra route uses your Codex subscription allowance; Jev still uses paid OpenRouter credits. No subscription credentials are copied or converted into API keys.
 
 This release runs **one synthetic local webpage**, including search, stock filtering, a form and a confirmation dialog. Actions use Playwright mouse and keyboard events. This is browser computer use with DOM assistance, not a pure screenshot agent or a general Windows desktop agent. The name describes the experiment's goal; performance depends on the task and providers.
 
@@ -22,6 +24,23 @@ The demo is a **scripted replay**, not an AI evaluation. It tests the browser ex
 
 Set `OPENROUTER_API_KEY` in the process environment using your preferred secret manager. `.env` files are not automatically loaded. Do not paste keys into issues, command arguments, or source code.
 
+### Jev + Astra using your Codex plan
+
+Install the official Codex CLI if needed, run `codex login`, and verify that `codex login status` says **Logged in using ChatGPT**. This integration was tested with CLI 0.156.1. It requires that version's `--ignore-user-config`, image input and structured-output support. Older unsupported CLIs fail instead of silently changing the billing route.
+
+```sh
+npm start -- --planner-provider codex --mode dual --budget 5
+npm start -- --planner-provider codex --mode s2-only
+```
+
+The first command pays only for Jev on OpenRouter and uses `gpt-6-astra` with medium reasoning via Codex for planning. The second uses Astra for every step and needs no OpenRouter key. Add `--headless --channel msedge` for unattended Edge. The CLI creates one ephemeral, read-only Codex invocation for each planner decision and receives a screenshot plus structured state. Shell tools, apps, hooks and delegation are disabled for that invocation; an unexpected tool event rejects the result. Launch overhead is included in timings.
+
+API-key authentication is rejected. API-key environment variables are removed from the Codex child process, personal configuration is not loaded, and there is no fallback to a paid OpenAI/OpenRouter planner. If authentication, quota or the CLI fails, the run stops. Logs record Codex tokens separately: `cost_usd` covers **OpenRouter only**, not a dollar estimate of subscription usage. Account-wide weekly usage also includes your other Codex work.
+
+See the [Astra validation record](docs/astra-validation.md). The [official authentication documentation](https://learn.chatgpt.com/docs/auth) explains the ChatGPT/API billing distinction, and the [non-interactive guide](https://learn.chatgpt.com/docs/non-interactive-mode) documents structured outputs.
+
+### Jev + Luna using OpenRouter only
+
 ```sh
 npm start -- --mode dual --budget 5
 npm start -- --mode s2-only --budget 5
@@ -38,7 +57,7 @@ Missing billing, HTTP errors or interrupted requests retain the reservation and 
 ```mermaid
 flowchart LR
   Page[Local test page] --> Observe[Screenshot + visible controls]
-  Observe --> Luna[System 2: GPT-6 Luna]
+  Observe --> Luna[System 2: Astra or Luna]
   Luna --> Plan[Plan + typing values]
   Observe --> Candidates[Fresh control/action candidates]
   Plan --> Jev[System 1: Jev]
@@ -51,7 +70,7 @@ flowchart LR
 
 - `browser.mjs` gathers visible controls and screenshots; execution never evaluates model-generated JavaScript.
 - `candidates.mjs` builds actions from current controls and Luna's text values. It contains no task answers or selector-based solution.
-- `controller.mjs` routes requests and validates actions. A Jev confidence below 0.55 escalates; that threshold is an uncalibrated heuristic. Two no-progress observations also request replanning.
+- `controller.mjs` routes requests and validates actions. A Jev confidence below 0.55 escalates; that threshold is an uncalibrated heuristic. Two no-progress observations also request replanning. `codex-planner.mjs` implements the optional subscription planner route.
 - `budget.mjs` keeps the spending ledger across runs.
 - `index.html` owns the synthetic task and verifier. Only the independent verifier can mark a run successful; a model saying `done` is insufficient.
 - `replay.mjs` is the separate deterministic fixture. Only replay/tests use task-specific selectors to solve the form.
@@ -70,14 +89,17 @@ One fixed page cannot establish general computer-use ability, reliability across
 
 ```sh
 npm test
+npm run audit
 npm run demo -- --headless
 ```
 
-If testing against installed Edge, set `FCU_TEST_CHANNEL=msedge` in the environment first. Tests cover routing, low-confidence escalation, stale choices, input validation, budget persistence, unknown billing and a complete real-browser replay with a negative completion check. The CI template does not spend API credits. GitHub CI is not enabled in this release because the publishing token lacks workflow permission. The template is saved at `.github/ci-template.yml`; after authorizing workflow writes, move it to `.github/workflows/test.yml` to enable it. See [SECURITY.md](SECURITY.md) for the intended data boundary.
+If testing against installed Edge, set `FCU_TEST_CHANNEL=msedge` in the environment first. Tests cover routing, low-confidence escalation, stale choices, input validation, budget persistence, unknown billing, subscription billing isolation and real-browser completion invalidation. The additional audit exercises 33 deterministic fault/state checks and writes `runs/audit/report.json`. Its model transports are mocked and live fetch calls are prohibited; it is not a model benchmark. Run it separately from live inference so its ledger-unchanged check is meaningful. The CI template does not spend API credits. GitHub CI is not enabled in this release because the publishing token lacks workflow permission. The template is saved at `.github/ci-template.yml`; after authorizing workflow writes, move it to `.github/workflows/test.yml` to enable it. See [SECURITY.md](SECURITY.md) for the intended data boundary.
 
 ## 中文说明
 
-这是一个可以真实运行的 **Jev 快决策 + Luna 规划与纠错** 实验。Jev 从当前网页控件生成的候选动作中选择，Luna 看截图和控件结构，提供计划及需要输入的文字。执行层负责鼠标、键盘，独立验证器判定是否完成。
+这是一个可以真实运行的 **Jev 快决策 + Astra / Luna 规划与纠错** 实验。Jev 从当前网页控件生成的候选动作中选择，规划模型看截图和控件结构，提供计划及需要输入的文字。执行层负责鼠标、键盘，独立验证器判定是否完成。
+
+使用 `--planner-provider codex` 时，Astra 走已登录 ChatGPT 的官方 Codex CLI，使用订阅额度；Jev 仍通过 OpenRouter 付费。不会把周额度当成 OpenRouter 余额，也不会把订阅用量标成“模型免费”。失败时停止，不自动切回付费大模型。验证器现在会在表单、选项或确认状态变化后清除旧 PASS。
 
 当前只支持仓库自带的合成网页，并非通用桌面助手。允许读取控件结构，因此不是纯截图方案。`npm run demo` 是无费用脚本回放；`npm start` 才会真正调用模型。对照实验、成功次数、耗时与实际费用见[验证记录](docs/validation.md)。5 美元是多轮共享的上限，不会为了消耗额度而增加调用。
 

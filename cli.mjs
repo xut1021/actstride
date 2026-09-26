@@ -5,30 +5,34 @@ import { Controller, DEFAULT_MODELS } from './controller.mjs';
 import { Budget, modelPricing } from './budget.mjs';
 import { openLab, observe, execute, verify } from './browser.mjs';
 import { Replay } from './replay.mjs';
+import { CodexPlanner, CODEX_MODEL } from './codex-planner.mjs';
 
 const { values: args } = parseArgs({ options: {
   replay: { type: 'boolean', default: false }, headless: { type: 'boolean', default: false },
   mode: { type: 'string', default: 'dual' }, budget: { type: 'string', default: '5' },
   steps: { type: 'string', default: '40' }, channel: { type: 'string' },
-  fast: { type: 'string', default: DEFAULT_MODELS.s1 }, slow: { type: 'string', default: DEFAULT_MODELS.s2 },
+  fast: { type: 'string', default: DEFAULT_MODELS.s1 }, slow: { type: 'string' },
+  'planner-provider': { type: 'string', default: 'openrouter' },
   help: { type: 'boolean', default: false },
 } });
 if (args.help) {
-  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode s2-only --budget 5\nLive runs share runs/budget.json. Set OPENROUTER_API_KEY in the environment. Ctrl+C stops.');
+  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --planner-provider codex --mode dual --budget 5\n  npm start -- --planner-provider codex --mode s2-only\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
   process.exit(0);
 }
 const maxSteps = Number(args.steps), limit = Number(args.budget);
 if (!Number.isInteger(maxSteps) || maxSteps < 1 || maxSteps > 100) throw Error('steps must be 1..100');
 if (!['dual', 's2-only'].includes(args.mode)) throw Error('mode must be dual or s2-only');
+if (!['openrouter', 'codex'].includes(args['planner-provider'])) throw Error('planner-provider must be openrouter or codex');
 if (!Number.isFinite(limit) || limit <= 0) throw Error('budget must be positive');
 if (args.channel && !['msedge', 'chrome'].includes(args.channel)) throw Error('channel must be msedge or chrome');
-if (!args.replay && !process.env.OPENROUTER_API_KEY) throw Error('Set OPENROUTER_API_KEY before live execution; never put it in arguments');
+const needsOpenRouter = args.mode === 'dual' || args['planner-provider'] === 'openrouter';
+if (!args.replay && needsOpenRouter && !process.env.OPENROUTER_API_KEY) throw Error('Set OPENROUTER_API_KEY before live execution; never put it in arguments');
 
 mkdirSync('runs', { recursive: true });
 let lock;
 try { lock = openSync('runs/session.lock', 'wx'); }
 catch { throw Error('Another run or stale session.lock exists; inspect it before starting'); }
-const out = resolve('runs', `${new Date().toISOString().replaceAll(':', '-')}-${args.replay ? 'replay' : args.mode}`);
+const out = resolve('runs', `${new Date().toISOString().replaceAll(':', '-')}-${args.replay ? 'replay' : args['planner-provider'] === 'codex' ? 'codex-' + args.mode : args.mode}`);
 mkdirSync(out);
 const events = [];
 function record(event) {
@@ -42,12 +46,19 @@ process.once('SIGINT', stop);
 let lab, controller, budget, failure = null, result = { passed: false }, actions = 0;
 try {
   if (!args.replay) {
-    budget = new Budget('runs/budget.json', limit);
-    const response = await fetch('https://openrouter.ai/api/v1/models', { signal: AbortSignal.timeout(15000) });
-    if (!response.ok) throw Error('Could not load current model catalog');
-    const catalog = (await response.json()).data;
-    const models = { s1: args.fast, s2: args.slow };
-    const pricing = { s2: modelPricing(catalog.find(m => m.id === models.s2)) };
+    if (needsOpenRouter) budget = new Budget('runs/budget.json', limit);
+    const models = { s1: args.fast, s2: args.slow || (args['planner-provider'] === 'codex' ? CODEX_MODEL : DEFAULT_MODELS.s2) };
+    const pricing = {};
+    let planner;
+    if (args['planner-provider'] === 'codex') {
+      planner = new CodexPlanner({ directory: join(out, 'codex'), model: models.s2, signal: abort.signal });
+      await planner.checkAuth();
+    } else {
+      const response = await fetch('https://openrouter.ai/api/v1/models', { signal: AbortSignal.timeout(15000) });
+      if (!response.ok) throw Error('Could not load current model catalog');
+      const catalog = (await response.json()).data;
+      pricing.s2 = modelPricing(catalog.find(m => m.id === models.s2));
+    }
     if (args.mode === 'dual') {
       const endpointResponse = await fetch(`https://openrouter.ai/api/v1/models/${models.s1}/endpoints`, { signal: AbortSignal.timeout(15000) });
       if (!endpointResponse.ok) throw Error('Could not load Jev endpoint pricing');
@@ -57,8 +68,8 @@ try {
       if (bounds.some(b => !Number.isFinite(b) || b <= 0)) throw Error('Invalid Jev request cost bound');
       pricing.s1 = { bound: Math.max(...bounds) };
     }
-    record({ event: 'start', mode: args.mode, models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
-    controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, record, signal: abort.signal });
+    record({ event: 'start', mode: args.mode, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
+    controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, record, signal: abort.signal, planner });
   } else record({ event: 'start', mode: 'scripted-replay', note: 'No AI calls; fixture may use DOM to generate test coordinates' });
   lab = await openLab({ headless: args.headless, channel: args.channel });
   if (args.replay) controller = new Replay(lab.page);
@@ -91,10 +102,13 @@ finally {
   if (lab) await lab.browser.close();
   const usage = events.filter(e => e.event === 'usage');
   const report = {
-    mode: args.replay ? 'scripted-replay' : args.mode, passed: result.passed,
+    mode: args.replay ? 'scripted-replay' : args.mode, planner_provider: args.replay ? null : args['planner-provider'], passed: result.passed,
     ai_verified: !args.replay && result.passed, failure, actions,
-    duration_ms: Date.now() - started, api_duration_ms: usage.reduce((s, e) => s + e.elapsed_ms, 0),
-    api_calls: usage.length, cost_usd: usage.reduce((s, e) => s + e.cost, 0),
+    duration_ms: Date.now() - started, model_duration_ms: usage.reduce((s, e) => s + e.elapsed_ms, 0),
+    api_duration_ms: usage.filter(e => e.billing !== 'codex-subscription').reduce((s, e) => s + e.elapsed_ms, 0),
+    api_calls: usage.filter(e => e.billing !== 'codex-subscription').length,
+    codex_calls: usage.filter(e => e.billing === 'codex-subscription').length,
+    cost_usd: usage.reduce((s, e) => s + (e.cost ?? 0), 0), cost_scope: 'OpenRouter only; Codex subscription usage is not priced here',
     role_calls: Object.fromEntries(['s1', 's2'].map(role => [role, usage.filter(e => e.role === role).length])),
     escalations: events.filter(e => e.event === 'decision' && e.action.action === 'escalate').length,
     budget: budget?.state, verifier: result.result,

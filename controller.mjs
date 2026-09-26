@@ -25,9 +25,9 @@ const tool = { type: 'function', function: {
 } };
 
 export class Controller {
-  constructor({ apiKey, budget, pricing, models = DEFAULT_MODELS, mode = 'dual', record = () => {}, fetchImpl = fetch, signal } = {}) {
+  constructor({ apiKey, budget, pricing, models = DEFAULT_MODELS, mode = 'dual', record = () => {}, fetchImpl = fetch, signal, planner } = {}) {
     if (!['dual', 's2-only'].includes(mode)) throw Error('Invalid mode');
-    Object.assign(this, { apiKey, budget, pricing, models, mode, record, fetch: fetchImpl, signal });
+    Object.assign(this, { apiKey, budget, pricing, models, mode, record, fetch: fetchImpl, signal, planner });
     this.role = 's2'; this.plan = ''; this.textValues = []; this.history = []; this.failures = 0; this.calls = 0;
     this.halted = false; this.busy = false;
   }
@@ -38,10 +38,11 @@ export class Controller {
   }
   async decide({ image, width, height, task, ui }) {
     if (this.halted || this.busy) throw Error('Controller stopped or request already in flight');
-    if (!this.apiKey) throw Error('OPENROUTER_API_KEY is missing');
     if (!/^data:image\/png;base64,/.test(image) || image.length > 8000000) throw Error('Invalid screenshot');
     if (typeof task !== 'string' || task.length > 3000) throw Error('Invalid task');
     const role = this.mode === 's2-only' ? 's2' : this.role;
+    if (role === 's2' && this.planner) return this.decidePlanner({ image, width, height, task, ui });
+    if (!this.apiKey) throw Error('OPENROUTER_API_KEY is missing');
     if (role === 's1') return this.decideFast({ width, height, task, ui });
     const model = this.models[role], price = this.pricing[role];
     this.budget.reserve(price.bound);
@@ -85,6 +86,24 @@ export class Controller {
       this.halted = true;
       throw error;
     } finally { this.busy = false; }
+  }
+  async decidePlanner(observation) {
+    this.busy = true; this.calls++;
+    const started = Date.now(), model = this.models.s2;
+    try {
+      const result = await this.planner.decide({ ...observation, plan: this.plan, history: this.history.slice(-8) });
+      this.record({ event: 'usage', role: 's2', model, billing: 'codex-subscription', elapsed_ms: Date.now() - started, cost: null,
+        input_tokens: result.usage?.input_tokens, output_tokens: result.usage?.output_tokens, cached_input_tokens: result.usage?.cached_input_tokens });
+      const action = validateAction(result.action, observation.width, observation.height);
+      if (action.plan) this.plan = action.plan;
+      if (action.text_values) this.textValues = action.text_values;
+      this.history.push({ role: 's2', action });
+      this.record({ event: 'decision', role: 's2', model, action });
+      this.role = action.action === 'escalate' ? 's2' : 's1';
+      if (action.action === 'done') this.halted = true;
+      return { role: 's2', action };
+    } catch (error) { this.halted = true; throw error; }
+    finally { this.busy = false; }
   }
   async decideFast({ width, height, task, ui }) {
     const choices = candidatesFor(ui, this.textValues);
