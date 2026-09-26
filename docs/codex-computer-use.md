@@ -72,6 +72,15 @@ nodeRepl.write(JSON.stringify(observation));
 
 ## 接入快速模型
 
+Jev 功能没有移除，也不需要重新安装。按任务选择以下入口：
+
+| 路线 | 入口 | 适用状态 |
+|---|---|---|
+| 主模型直接推进技能（默认） | `bindDraft` → 分步 `advanceDraft` → `verifyDraft` | 已有确定流程，省去额外提议和快速模型请求 |
+| Jev／其他快速模型选择候选（可选） | 配置 `desktopDecider`，分步 `propose({useFast:true,...})` → 检查 → `execute` | 显式选择双模型操作或做对照实验 |
+
+直接入口即使会话配置了快速模型，也不会调用它；使用快速模型必须选择第二条路径。原有低置信度回退、候选约束和共享预算继续保留。未来模型更新可以复用现有对照测试，判断是否适合启用；当前不默认宣称双模型更快或更准确。
+
 创建会话时提供 `fastDecider: actstride.desktopDecider(options)`，再在 `propose` 中显式指定 `useFast:true`。支持现有 OpenRouter 与本机 SystemOne 配置。OpenRouter 必须继续使用已有预算账本、已核实价格与获准的密钥读取方式；本机模型可用独立凭据。不会自动读取密钥或创建新的预算账本。
 
 默认不附截图；`images:true` 仅适用于支持图像的本机 SystemOne 服务。文字状态也可能包含隐私，需确认发送范围。原先合成网页测试的授权不能自动扩展为上传整个个人桌面。模型只能返回候选 ID，不能提供可执行脚本、坐标或任意工具调用。

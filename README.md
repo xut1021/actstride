@@ -4,6 +4,8 @@ Computer use with reusable skills and deliberate planning.
 
 **用可复用技能与审慎规划完成电脑操作。**
 
+原生桌面技能默认采用 **主模型规划＋直接推进 Skill**，省去额外的快速模型确认。**Jev 接入完整保留，可按任务显式启用**；目前的实验尚未证明它在同一套 Skill 上的增量收益，不代表以后没有适用场景。浏览器实验的 `dual` 模式仍保留原有行为。
+
 [阶段总结（2026-09-27）](docs/project-summary.md)：已实现能力、真实提速证据、失败样本与后续模型适配方向。
 
 [其他快速模型实测](docs/fast-chat-validation.md)：同一组六道桌面判断题各重复两轮，Gemini 3.5 Flash-Lite 正确 9/12，GPT-4.1 Nano 正确 6/12；任务中位耗时约 1.3 秒，包含错误样本。尚未证明换模型能提高正确率。
@@ -18,7 +20,7 @@ Computer use with reusable skills and deliberate planning.
 
 Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不复刻它的记忆系统，也不把它的实验数字当作 computer use 的提速证据。
 
-目前支持仓库自带的十一种本地合成场景，覆盖物品搜索与填表、工单分派、会议室预约、通知设置，并包含布局变化、延迟加载和提交失败恢复。通过 Playwright 的鼠标、键盘和受控的语义填表/选择操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。另有实验性 [Codex 原生 Computer Use 接入](docs/codex-computer-use.md)：当前 Codex 负责规划与检查，快速模型选择候选，官方 sky 接口逐步执行桌面技能。首个技能是记事本新草稿；通用桌面覆盖和提速尚未验证。
+目前支持仓库自带的十一种本地合成场景，覆盖物品搜索与填表、工单分派、会议室预约、通知设置，并包含布局变化、延迟加载和提交失败恢复。通过 Playwright 的鼠标、键盘和受控的语义填表/选择操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。另有实验性 [Codex 原生 Computer Use 接入](docs/codex-computer-use.md)：当前 Codex 负责规划与检查，默认直接推进技能，也可启用 Jev 选择候选，官方 sky 接口逐步执行。记事本新草稿的直接入口已真实跑通，并省去三次单独提议调用；仍保留每步观察，尚未证明原生端到端提速比例或通用桌面覆盖。
 
 ## 快速开始
 
