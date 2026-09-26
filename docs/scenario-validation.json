@@ -1,0 +1,2730 @@
+{
+  "date": "2026-09-26",
+  "description": "Five synthetic scenario runs, one attempt per scenario; includes failures. No matched single-planner comparison in this batch.",
+  "sources": {
+    "browser.mjs": "b4803df24db942bba765164ad6e3ca2a24d9dab4035eec61b312ca392ff6244f",
+    "controller.mjs": "29d38bf191257cc08565c2378f5e8348fb2d6e4e79acb8a4cd5d81cec0e97dda",
+    "candidates.mjs": "38f16572a4d2313a15a88cce13001b3cf606242d24e3e57cf164b05e7f767748",
+    "progress.mjs": "a2d5b95c0a3d2150c1336f38e8a84e8194479d03624b8ae82c510370fd50e8d7",
+    "scenarios.mjs": "c984a10ba647f41c63d0d76e9f28bff71972b9ad55a3fc075c73146ecb3629a1",
+    "codex-planner.mjs": "d7ceafcf08511a4fd7c92c81968dac460829b44aa6d31ed9694c26eeb2c0454e",
+    "index.html": "c424e3ad2bf3488da203d441e2d203b6969de4a534b19ff3f16e51b32f8f8728"
+  },
+  "openrouter_cost_usd": 0.005601834,
+  "budget_after": {
+    "limit": 5,
+    "charged": 0.03238607299999998,
+    "pending": 0.001344
+  },
+  "runs": [
+    {
+      "run": "2026-09-26T02-30-39.032Z-codex-dual",
+      "report": {
+        "scenario": "baseline",
+        "timings": {
+          "setup_ms": 1165,
+          "browser_ms": 309,
+          "observation_ms": 764,
+          "execution_ms": 1736
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 13,
+        "duration_ms": 31546,
+        "model_duration_ms": 27306,
+        "api_duration_ms": 9664,
+        "api_calls": 12,
+        "codex_calls": 1,
+        "cost_usd": 0.001085574,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 12,
+          "s2": 1
+        },
+        "escalations": 0,
+        "budget": {
+          "limit": 5,
+          "charged": 0.02786981299999999,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "selected": "S-102",
+          "name": "测试员",
+          "quantity": "2",
+          "filtered": true
+        }
+      },
+      "events": [
+        {
+          "event": "start",
+          "scenario": "baseline",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:30:40.200Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 17642,
+          "cost": null,
+          "input_tokens": 18768,
+          "output_tokens": 97,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 351,
+            "turn.started": 365,
+            "item.completed": 11890,
+            "turn.completed": 11935,
+            "process_closed": 17632
+          },
+          "payload_bytes": 2353,
+          "image_bytes": 64073,
+          "timestamp": "2026-09-26T02:30:58.254Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "reason": "先聚焦关键词输入框。",
+            "plan": "搜索传感器并筛选有库存，选择 S-102（79 元）；填写姓名和数量，核对弹窗后提交，等待 PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-26T02:30:58.255Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:30:58.433Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1908,
+          "cost": 0.000090804,
+          "input_tokens": 2162,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:31:00.344Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.95,
+          "timestamp": "2026-09-26T02:31:00.345Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:00.525Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 691,
+          "cost": 0.000092778,
+          "input_tokens": 2209,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:31:01.219Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.95,
+          "timestamp": "2026-09-26T02:31:01.220Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:01.406Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 647,
+          "cost": 0.000104286,
+          "input_tokens": 2483,
+          "output_tokens": 152,
+          "timestamp": "2026-09-26T02:31:02.055Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.55,
+          "timestamp": "2026-09-26T02:31:02.055Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:02.250Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 702,
+          "cost": 0.000107394,
+          "input_tokens": 2557,
+          "output_tokens": 150,
+          "timestamp": "2026-09-26T02:31:02.955Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.61,
+          "timestamp": "2026-09-26T02:31:02.956Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:03.154Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 728,
+          "cost": 0.000103572,
+          "input_tokens": 2466,
+          "output_tokens": 149,
+          "timestamp": "2026-09-26T02:31:03.885Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.84,
+          "timestamp": "2026-09-26T02:31:03.885Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:04.073Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 647,
+          "cost": 0.000086016,
+          "input_tokens": 2048,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:31:04.722Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_4",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:31:04.722Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:04.909Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 675,
+          "cost": 0.000086352,
+          "input_tokens": 2056,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:31:05.587Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 1,
+          "timestamp": "2026-09-26T02:31:05.588Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:05.765Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 654,
+          "cost": 0.000092904,
+          "input_tokens": 2212,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:31:06.422Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "测试员",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_2",
+          "confidence": 1,
+          "timestamp": "2026-09-26T02:31:06.422Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:06.617Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 728,
+          "cost": 0.000091896,
+          "input_tokens": 2188,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:31:07.347Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:31:07.348Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:07.527Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 661,
+          "cost": 0.000092736,
+          "input_tokens": 2208,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:31:08.190Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "2",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_3",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:31:08.191Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:08.377Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 984,
+          "cost": 0.000091182,
+          "input_tokens": 2171,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:31:09.363Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_7",
+          "confidence": 0.73,
+          "timestamp": "2026-09-26T02:31:09.363Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:09.545Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 639,
+          "cost": 0.000045654,
+          "input_tokens": 1087,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T02:31:10.186Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.97,
+          "timestamp": "2026-09-26T02:31:10.187Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:10.374Z"
+        }
+      ],
+      "source_events_sha256": "d9363c19a325e527d26ae18bfb9f684baad34d81ba59c5dfabd9cda92c155ff3"
+    },
+    {
+      "run": "2026-09-26T02-31-10.815Z-codex-dual",
+      "report": {
+        "scenario": "alternate",
+        "timings": {
+          "setup_ms": 1287,
+          "browser_ms": 310,
+          "observation_ms": 765,
+          "execution_ms": 1745
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 13,
+        "duration_ms": 37993,
+        "model_duration_ms": 33623,
+        "api_duration_ms": 11262,
+        "api_calls": 12,
+        "codex_calls": 1,
+        "cost_usd": 0.0010335359999999998,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 12,
+          "s2": 1
+        },
+        "escalations": 0,
+        "budget": {
+          "limit": 5,
+          "charged": 0.028903348999999988,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "selected": "M-201",
+          "name": "林禾",
+          "quantity": "3",
+          "filtered": true
+        }
+      },
+      "events": [
+        {
+          "event": "start",
+          "scenario": "alternate",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:31:12.102Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 22361,
+          "cost": null,
+          "input_tokens": 18766,
+          "output_tokens": 96,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 327,
+            "turn.started": 340,
+            "item.completed": 16261,
+            "turn.completed": 16262,
+            "process_closed": 22349
+          },
+          "payload_bytes": 2341,
+          "image_bytes": 63643,
+          "timestamp": "2026-09-26T02:31:34.879Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "reason": "先聚焦关键词输入框。",
+            "plan": "搜索电机并筛选有库存，选择不超过100元的型号；填写林禾和3，核对弹窗并提交，等待PASS。",
+            "text_values": [
+              "电机",
+              "有库存",
+              "林禾",
+              "3"
+            ]
+          },
+          "timestamp": "2026-09-26T02:31:34.880Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:35.061Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1502,
+          "cost": 0.000090216,
+          "input_tokens": 2148,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:31:36.566Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "电机",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.96,
+          "timestamp": "2026-09-26T02:31:36.567Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:36.751Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 663,
+          "cost": 0.000092064,
+          "input_tokens": 2192,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:31:37.416Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.87,
+          "timestamp": "2026-09-26T02:31:37.417Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:37.629Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1974,
+          "cost": 0.000103656,
+          "input_tokens": 2468,
+          "output_tokens": 152,
+          "timestamp": "2026-09-26T02:31:39.606Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.69,
+          "timestamp": "2026-09-26T02:31:39.606Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:39.794Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 685,
+          "cost": 0.000106764,
+          "input_tokens": 2542,
+          "output_tokens": 150,
+          "timestamp": "2026-09-26T02:31:40.481Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.62,
+          "timestamp": "2026-09-26T02:31:40.482Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:40.666Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 669,
+          "cost": 0.000103152,
+          "input_tokens": 2456,
+          "output_tokens": 149,
+          "timestamp": "2026-09-26T02:31:41.337Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.68,
+          "timestamp": "2026-09-26T02:31:41.338Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:41.523Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 729,
+          "cost": 0.000078078,
+          "input_tokens": 1859,
+          "output_tokens": 106,
+          "timestamp": "2026-09-26T02:31:42.254Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 898,
+            "y": 622,
+            "reason": "Click 选择 M-201"
+          },
+          "choice": "click_3",
+          "confidence": 0.95,
+          "timestamp": "2026-09-26T02:31:42.255Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:42.434Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 911,
+          "cost": 0.00007833,
+          "input_tokens": 1865,
+          "output_tokens": 106,
+          "timestamp": "2026-09-26T02:31:43.348Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 857,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_4",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:31:43.348Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:43.519Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 721,
+          "cost": 0.000084798,
+          "input_tokens": 2019,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:31:44.242Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "林禾",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_2",
+          "confidence": 1,
+          "timestamp": "2026-09-26T02:31:44.242Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:44.429Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 696,
+          "cost": 0.000083664,
+          "input_tokens": 1992,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:31:45.129Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 857,
+            "reason": "Click 数量"
+          },
+          "choice": "click_5",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:31:45.129Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:45.299Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1413,
+          "cost": 0.000084504,
+          "input_tokens": 2012,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:31:46.714Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "3",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_3",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:31:46.714Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:46.910Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 645,
+          "cost": 0.00008295,
+          "input_tokens": 1975,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:31:47.558Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 855,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_6",
+          "confidence": 0.74,
+          "timestamp": "2026-09-26T02:31:47.559Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:47.757Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 654,
+          "cost": 0.00004536,
+          "input_tokens": 1080,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T02:31:48.413Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.94,
+          "timestamp": "2026-09-26T02:31:48.413Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:31:48.599Z"
+        }
+      ],
+      "source_events_sha256": "a8165c57ee534fe0d2764348e33bf04bba09f1ee37fff2ee198a46a0e673c8b4"
+    },
+    {
+      "run": "2026-09-26T02-31-49.044Z-codex-dual",
+      "report": {
+        "scenario": "shifted",
+        "timings": {
+          "setup_ms": 1158,
+          "browser_ms": 328,
+          "observation_ms": 889,
+          "execution_ms": 2117
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 16,
+        "duration_ms": 84472,
+        "model_duration_ms": 79713,
+        "api_duration_ms": 12506,
+        "api_calls": 13,
+        "codex_calls": 3,
+        "cost_usd": 0.0011705819999999999,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 13,
+          "s2": 3
+        },
+        "escalations": 2,
+        "budget": {
+          "limit": 5,
+          "charged": 0.030073930999999984,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "selected": "S-102",
+          "name": "周宁",
+          "quantity": "4",
+          "filtered": true
+        }
+      },
+      "events": [
+        {
+          "event": "start",
+          "scenario": "shifted",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:31:50.202Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 21048,
+          "cost": null,
+          "input_tokens": 18768,
+          "output_tokens": 99,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 333,
+            "turn.started": 348,
+            "item.completed": 14295,
+            "turn.completed": 15000,
+            "process_closed": 21039
+          },
+          "payload_bytes": 2347,
+          "image_bytes": 63230,
+          "timestamp": "2026-09-26T02:32:11.671Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 377,
+            "y": 586,
+            "reason": "先聚焦关键词输入框。",
+            "plan": "搜索传感器并筛选有库存，选择 S-102（79 元）；填写周宁、数量4，核对弹窗并提交，等待 PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "周宁",
+              "4"
+            ]
+          },
+          "timestamp": "2026-09-26T02:32:11.672Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:32:11.856Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1274,
+          "cost": 0.00009072,
+          "input_tokens": 2160,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:32:13.134Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.96,
+          "timestamp": "2026-09-26T02:32:13.135Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:32:13.307Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 699,
+          "cost": 0.000092694,
+          "input_tokens": 2207,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:32:14.009Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 588,
+            "y": 587,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.93,
+          "timestamp": "2026-09-26T02:32:14.009Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:32:14.200Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1909,
+          "cost": 0.000104244,
+          "input_tokens": 2482,
+          "output_tokens": 152,
+          "timestamp": "2026-09-26T02:32:16.111Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.54,
+          "timestamp": "2026-09-26T02:32:16.112Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:32:16.291Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 26972,
+          "cost": null,
+          "input_tokens": 19062,
+          "output_tokens": 112,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 334,
+            "turn.started": 349,
+            "item.completed": 22804,
+            "turn.completed": 22880,
+            "process_closed": 26955
+          },
+          "payload_bytes": 3398,
+          "image_bytes": 63910,
+          "timestamp": "2026-09-26T02:32:43.264Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "库存下拉菜单已打开，向下选择“有库存”，随后按 Enter 确认。",
+            "plan": "筛选有库存并搜索，选择 S-102（79 元）；填写周宁、数量4，核对弹窗后提交，确认 PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "周宁",
+              "4"
+            ]
+          },
+          "timestamp": "2026-09-26T02:32:43.264Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:32:43.453Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1227,
+          "cost": 0.0001071,
+          "input_tokens": 2550,
+          "output_tokens": 150,
+          "timestamp": "2026-09-26T02:32:44.682Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.43,
+          "timestamp": "2026-09-26T02:32:44.683Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:32:44.867Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 19187,
+          "cost": null,
+          "input_tokens": 19069,
+          "output_tokens": 107,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 311,
+            "turn.started": 325,
+            "item.completed": 14041,
+            "turn.completed": 14827,
+            "process_closed": 19172
+          },
+          "payload_bytes": 3431,
+          "image_bytes": 63991,
+          "timestamp": "2026-09-26T02:33:04.055Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "下拉菜单已高亮“有库存”，按 Enter 确认选择。",
+            "plan": "确认库存筛选后搜索，选择 S-102（79 元）；填写周宁、数量4，核对弹窗并提交，等待 PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "周宁",
+              "4"
+            ]
+          },
+          "timestamp": "2026-09-26T02:33:04.056Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:04.241Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1339,
+          "cost": 0.00011025,
+          "input_tokens": 2625,
+          "output_tokens": 149,
+          "timestamp": "2026-09-26T02:33:05.583Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 705,
+            "y": 584,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.84,
+          "timestamp": "2026-09-26T02:33:05.584Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:05.758Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 664,
+          "cost": 0.00008274,
+          "input_tokens": 1970,
+          "output_tokens": 88,
+          "timestamp": "2026-09-26T02:33:06.424Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 897,
+            "y": 712,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_3",
+          "confidence": 0.96,
+          "timestamp": "2026-09-26T02:33:06.425Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:06.603Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1177,
+          "cost": 0.000079254,
+          "input_tokens": 1887,
+          "output_tokens": 87,
+          "timestamp": "2026-09-26T02:33:07.782Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "scroll",
+            "x": 1200,
+            "y": 800,
+            "dy": 480,
+            "reason": "Scroll down"
+          },
+          "choice": "scroll_down",
+          "confidence": 0.83,
+          "timestamp": "2026-09-26T02:33:07.783Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:07.963Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 818,
+          "cost": 0.000090048,
+          "input_tokens": 2144,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:33:08.783Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 363,
+            "y": 806,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 0.96,
+          "timestamp": "2026-09-26T02:33:08.783Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:08.978Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 658,
+          "cost": 0.000092988,
+          "input_tokens": 2214,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:33:09.639Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "周宁",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_2",
+          "confidence": 1,
+          "timestamp": "2026-09-26T02:33:09.639Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:09.828Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 697,
+          "cost": 0.000091644,
+          "input_tokens": 2182,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:33:10.528Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 649,
+            "y": 806,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.98,
+          "timestamp": "2026-09-26T02:33:10.528Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:10.704Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 683,
+          "cost": 0.000092526,
+          "input_tokens": 2203,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:33:11.389Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "4",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_3",
+          "confidence": 0.98,
+          "timestamp": "2026-09-26T02:33:11.389Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:11.576Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 681,
+          "cost": 0.000090888,
+          "input_tokens": 2164,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:33:12.259Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 841,
+            "y": 804,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_7",
+          "confidence": 0.77,
+          "timestamp": "2026-09-26T02:33:12.260Z"
+        },
+        {
+          "event": "action_result",
+          "step": 15,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:12.447Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 680,
+          "cost": 0.000045486,
+          "input_tokens": 1083,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T02:33:13.130Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.97,
+          "timestamp": "2026-09-26T02:33:13.131Z"
+        },
+        {
+          "event": "action_result",
+          "step": 16,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:13.318Z"
+        }
+      ],
+      "source_events_sha256": "f0d035dca51a9105e18dc4c3a44df47fdbe267d2a666b674dd0ed9d227ee6196"
+    },
+    {
+      "run": "2026-09-26T02-33-13.767Z-codex-dual",
+      "report": {
+        "scenario": "delayed",
+        "timings": {
+          "setup_ms": 1156,
+          "browser_ms": 315,
+          "observation_ms": 852,
+          "execution_ms": 3099
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 16,
+        "duration_ms": 52643,
+        "model_duration_ms": 46942,
+        "api_duration_ms": 11429,
+        "api_calls": 14,
+        "codex_calls": 2,
+        "cost_usd": 0.0012279119999999998,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 14,
+          "s2": 2
+        },
+        "escalations": 1,
+        "budget": {
+          "limit": 5,
+          "charged": 0.03130184299999999,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "selected": "S-102",
+          "name": "测试员",
+          "quantity": "2",
+          "filtered": true
+        }
+      },
+      "events": [
+        {
+          "event": "start",
+          "scenario": "delayed",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:33:14.923Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 15906,
+          "cost": null,
+          "input_tokens": 18768,
+          "output_tokens": 98,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 325,
+            "turn.started": 342,
+            "item.completed": 12548,
+            "turn.completed": 12555,
+            "process_closed": 15897
+          },
+          "payload_bytes": 2353,
+          "image_bytes": 64073,
+          "timestamp": "2026-09-26T02:33:31.250Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "reason": "先聚焦关键词输入框。",
+            "plan": "搜索传感器并筛选有库存，选择79元的S-102；填写姓名和数量，核对弹窗后提交，直到显示PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-26T02:33:31.251Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:31.422Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1446,
+          "cost": 0.000090804,
+          "input_tokens": 2162,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:33:32.871Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.95,
+          "timestamp": "2026-09-26T02:33:32.872Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:33.056Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 759,
+          "cost": 0.000092778,
+          "input_tokens": 2209,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:33:33.818Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.94,
+          "timestamp": "2026-09-26T02:33:33.819Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:34.003Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 638,
+          "cost": 0.000104286,
+          "input_tokens": 2483,
+          "output_tokens": 152,
+          "timestamp": "2026-09-26T02:33:34.643Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.65,
+          "timestamp": "2026-09-26T02:33:34.644Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:34.822Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 642,
+          "cost": 0.000107394,
+          "input_tokens": 2557,
+          "output_tokens": 150,
+          "timestamp": "2026-09-26T02:33:35.466Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.5,
+          "timestamp": "2026-09-26T02:33:35.466Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:35.641Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 19607,
+          "cost": null,
+          "input_tokens": 19006,
+          "output_tokens": 103,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 315,
+            "turn.started": 328,
+            "item.completed": 14530,
+            "turn.completed": 14905,
+            "process_closed": 19594
+          },
+          "payload_bytes": 3217,
+          "image_bytes": 64889,
+          "timestamp": "2026-09-26T02:33:55.249Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "确认原生下拉菜单中已高亮的“有库存”。",
+            "plan": "确认有库存并搜索，选择79元的S-102；填写测试员、数量2，核对弹窗并提交，等待PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-26T02:33:55.250Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:55.436Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1386,
+          "cost": 0.000106806,
+          "input_tokens": 2543,
+          "output_tokens": 149,
+          "timestamp": "2026-09-26T02:33:56.824Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.84,
+          "timestamp": "2026-09-26T02:33:56.824Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:57.002Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 732,
+          "cost": 0.000071778,
+          "input_tokens": 1709,
+          "output_tokens": 93,
+          "timestamp": "2026-09-26T02:33:57.736Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "wait",
+            "reason": "Wait for loading"
+          },
+          "choice": "wait",
+          "confidence": 0.89,
+          "timestamp": "2026-09-26T02:33:57.737Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:58.411Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 720,
+          "cost": 0.000070896,
+          "input_tokens": 1688,
+          "output_tokens": 93,
+          "timestamp": "2026-09-26T02:33:59.134Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "wait",
+            "reason": "Wait for loading"
+          },
+          "choice": "wait",
+          "confidence": 0.69,
+          "timestamp": "2026-09-26T02:33:59.135Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:33:59.808Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 732,
+          "cost": 0.000087528,
+          "input_tokens": 2084,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:34:00.543Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_4",
+          "confidence": 0.97,
+          "timestamp": "2026-09-26T02:34:00.544Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:00.728Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 693,
+          "cost": 0.000084588,
+          "input_tokens": 2014,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:34:01.424Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:34:01.425Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:01.599Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 685,
+          "cost": 0.000091056,
+          "input_tokens": 2168,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:34:02.286Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "测试员",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_2",
+          "confidence": 0.98,
+          "timestamp": "2026-09-26T02:34:02.286Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:02.467Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 741,
+          "cost": 0.000090804,
+          "input_tokens": 2162,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:34:03.211Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.97,
+          "timestamp": "2026-09-26T02:34:03.212Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:03.391Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 735,
+          "cost": 0.00009261,
+          "input_tokens": 2205,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:34:04.128Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "2",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_3",
+          "confidence": 0.98,
+          "timestamp": "2026-09-26T02:34:04.129Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:04.304Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 739,
+          "cost": 0.000091056,
+          "input_tokens": 2168,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:34:05.046Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_7",
+          "confidence": 0.77,
+          "timestamp": "2026-09-26T02:34:05.047Z"
+        },
+        {
+          "event": "action_result",
+          "step": 15,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:05.235Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 781,
+          "cost": 0.000045528,
+          "input_tokens": 1084,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T02:34:06.018Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.96,
+          "timestamp": "2026-09-26T02:34:06.018Z"
+        },
+        {
+          "event": "action_result",
+          "step": 16,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:06.204Z"
+        }
+      ],
+      "source_events_sha256": "ab29b624d92b91cfb0c317dfe461d60c867ac4b073b12deeb192172083822d04"
+    },
+    {
+      "run": "2026-09-26T02-34-06.642Z-codex-dual",
+      "report": {
+        "scenario": "recovery",
+        "timings": {
+          "setup_ms": 1280,
+          "browser_ms": 308,
+          "observation_ms": 769,
+          "execution_ms": 1901
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": false,
+        "ai_verified": false,
+        "failure": "fetch failed",
+        "actions": 14,
+        "duration_ms": 97842,
+        "model_duration_ms": 88305,
+        "api_duration_ms": 16022,
+        "api_calls": 12,
+        "codex_calls": 2,
+        "cost_usd": 0.00108423,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 12,
+          "s2": 2
+        },
+        "escalations": 0,
+        "budget": {
+          "limit": 5,
+          "charged": 0.03238607299999998,
+          "pending": 0.001344
+        },
+        "verifier": null
+      },
+      "events": [
+        {
+          "event": "start",
+          "scenario": "recovery",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:34:07.922Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 42913,
+          "cost": null,
+          "input_tokens": 18768,
+          "output_tokens": 97,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 342,
+            "turn.started": 362,
+            "item.completed": 24708,
+            "turn.completed": 25042,
+            "process_closed": 42902
+          },
+          "payload_bytes": 2353,
+          "image_bytes": 64073,
+          "timestamp": "2026-09-26T02:34:51.235Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 302,
+            "y": 495,
+            "reason": "先聚焦关键词输入框。",
+            "plan": "搜索传感器并筛选有库存，选择79元的S-102；填写姓名和数量，核对弹窗后提交，等待PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-26T02:34:51.236Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:51.414Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1180,
+          "cost": 0.000090636,
+          "input_tokens": 2158,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:34:52.598Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "传感器",
+            "reason": "Fill 关键词"
+          },
+          "choice": "type_0",
+          "confidence": 0.94,
+          "timestamp": "2026-09-26T02:34:52.598Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:52.785Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1365,
+          "cost": 0.00009261,
+          "input_tokens": 2205,
+          "output_tokens": 133,
+          "timestamp": "2026-09-26T02:34:54.153Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 513,
+            "y": 496,
+            "reason": "Click 库存\n全部\n有库存"
+          },
+          "choice": "click_1",
+          "confidence": 0.94,
+          "timestamp": "2026-09-26T02:34:54.153Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:54.358Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1376,
+          "cost": 0.000104118,
+          "input_tokens": 2479,
+          "output_tokens": 152,
+          "timestamp": "2026-09-26T02:34:55.736Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.58,
+          "timestamp": "2026-09-26T02:34:55.737Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:55.917Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 660,
+          "cost": 0.000107226,
+          "input_tokens": 2553,
+          "output_tokens": 150,
+          "timestamp": "2026-09-26T02:34:56.580Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "Operate 库存\n全部\n有库存"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.59,
+          "timestamp": "2026-09-26T02:34:56.580Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:56.766Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 708,
+          "cost": 0.000103488,
+          "input_tokens": 2464,
+          "output_tokens": 149,
+          "timestamp": "2026-09-26T02:34:57.476Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 630,
+            "y": 493,
+            "reason": "Click 搜索 / 筛选"
+          },
+          "choice": "click_2",
+          "confidence": 0.81,
+          "timestamp": "2026-09-26T02:34:57.476Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:57.665Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 661,
+          "cost": 0.000085932,
+          "input_tokens": 2046,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:34:58.328Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 931,
+            "y": 692,
+            "reason": "Click 选择 S-102"
+          },
+          "choice": "click_4",
+          "confidence": 0.98,
+          "timestamp": "2026-09-26T02:34:58.328Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:34:58.516Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 2189,
+          "cost": 0.000086268,
+          "input_tokens": 2054,
+          "output_tokens": 115,
+          "timestamp": "2026-09-26T02:35:00.708Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 288,
+            "y": 927,
+            "reason": "Click 姓名"
+          },
+          "choice": "click_5",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:35:00.709Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:35:00.892Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 815,
+          "cost": 0.00009282,
+          "input_tokens": 2210,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:35:01.709Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "测试员",
+            "reason": "Fill 姓名"
+          },
+          "choice": "type_2",
+          "confidence": 1,
+          "timestamp": "2026-09-26T02:35:01.709Z"
+        },
+        {
+          "event": "action_result",
+          "step": 9,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:35:01.891Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1015,
+          "cost": 0.000091812,
+          "input_tokens": 2186,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:35:02.909Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 574,
+            "y": 927,
+            "reason": "Click 数量"
+          },
+          "choice": "click_6",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:35:02.910Z"
+        },
+        {
+          "event": "action_result",
+          "step": 10,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:35:03.094Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 2243,
+          "cost": 0.000092652,
+          "input_tokens": 2206,
+          "output_tokens": 151,
+          "timestamp": "2026-09-26T02:35:05.340Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "2",
+            "reason": "Fill 数量"
+          },
+          "choice": "type_3",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T02:35:05.341Z"
+        },
+        {
+          "event": "action_result",
+          "step": 11,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:35:05.521Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1987,
+          "cost": 0.000091098,
+          "input_tokens": 2169,
+          "output_tokens": 142,
+          "timestamp": "2026-09-26T02:35:07.511Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "reason": "Click 检查并提交"
+          },
+          "choice": "click_7",
+          "confidence": 0.79,
+          "timestamp": "2026-09-26T02:35:07.511Z"
+        },
+        {
+          "event": "action_result",
+          "step": 12,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:35:07.702Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1823,
+          "cost": 0.00004557,
+          "input_tokens": 1085,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T02:35:09.527Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 652,
+            "y": 554,
+            "reason": "Click 确认测试提交"
+          },
+          "choice": "click_1",
+          "confidence": 0.97,
+          "timestamp": "2026-09-26T02:35:09.528Z"
+        },
+        {
+          "event": "action_result",
+          "step": 13,
+          "ok": false,
+          "changed": true,
+          "replan": true,
+          "detail": "本地模拟暂时繁忙，未提交成功。请重新检查并提交一次。",
+          "timestamp": "2026-09-26T02:35:09.716Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 29370,
+          "cost": null,
+          "input_tokens": 18950,
+          "output_tokens": 108,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 323,
+            "turn.started": 352,
+            "item.completed": 18826,
+            "turn.completed": 19334,
+            "process_closed": 29357
+          },
+          "payload_bytes": 3110,
+          "image_bytes": 68101,
+          "timestamp": "2026-09-26T02:35:39.088Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 766,
+            "y": 926,
+            "reason": "上次提交暂时失败；当前型号、姓名和数量正确，重新打开确认弹窗。",
+            "plan": "重试检查并提交，核对弹窗中的S-102、79元、测试员和数量2后确认，直到显示PASS。",
+            "text_values": [
+              "传感器",
+              "有库存",
+              "测试员",
+              "2"
+            ]
+          },
+          "timestamp": "2026-09-26T02:35:39.089Z"
+        },
+        {
+          "event": "action_result",
+          "step": 14,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:35:39.266Z"
+        }
+      ],
+      "source_events_sha256": "de5964a6e31d0ccd6c9edf483c47a5138235e4abd5a5a8ccb09e8bfbd7c051e9"
+    }
+  ]
+}

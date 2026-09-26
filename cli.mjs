@@ -4,6 +4,8 @@ import { resolve, join } from 'node:path';
 import { Controller, DEFAULT_MODELS } from './controller.mjs';
 import { Budget, modelPricing } from './budget.mjs';
 import { openLab, observe, execute, verify } from './browser.mjs';
+import { assessProgress } from './progress.mjs';
+import { scenarios } from './scenarios.mjs';
 import { Replay } from './replay.mjs';
 import { CodexPlanner, CODEX_MODEL } from './codex-planner.mjs';
 
@@ -12,13 +14,16 @@ const { values: args } = parseArgs({ options: {
   mode: { type: 'string', default: 'dual' }, budget: { type: 'string', default: '5' },
   steps: { type: 'string', default: '40' }, channel: { type: 'string' },
   fast: { type: 'string', default: DEFAULT_MODELS.s1 }, slow: { type: 'string' },
-  'planner-provider': { type: 'string', default: 'openrouter' },
+  'planner-provider': { type: 'string', default: 'codex' },
+  scenario: { type: 'string', default: 'baseline' },
   help: { type: 'boolean', default: false },
 } });
 if (args.help) {
-  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --planner-provider codex --mode dual --budget 5\n  npm start -- --planner-provider codex --mode s2-only\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
+  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode dual --scenario recovery\n  npm start -- --mode s2-only\nScenarios: baseline, alternate, shifted, delayed, recovery. Default planner: codex.\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
   process.exit(0);
 }
+if (!Object.hasOwn(scenarios, args.scenario)) throw Error('Unknown scenario: ' + args.scenario);
+if (args.replay && args.scenario !== 'baseline') throw Error('Scripted replay supports baseline only');
 const maxSteps = Number(args.steps), limit = Number(args.budget);
 if (!Number.isInteger(maxSteps) || maxSteps < 1 || maxSteps > 100) throw Error('steps must be 1..100');
 if (!['dual', 's2-only'].includes(args.mode)) throw Error('mode must be dual or s2-only');
@@ -40,6 +45,8 @@ function record(event) {
   events.push(row); appendFileSync(join(out, 'events.jsonl'), JSON.stringify(row) + '\n');
 }
 const started = Date.now();
+const timings = { setup_ms: 0, browser_ms: 0, observation_ms: 0, execution_ms: 0 };
+async function timed(name, action) { const begin = Date.now(); try { return await action(); } finally { timings[name] += Date.now() - begin; } }
 const abort = new AbortController();
 const stop = () => abort.abort();
 process.once('SIGINT', stop);
@@ -68,12 +75,14 @@ try {
       if (bounds.some(b => !Number.isFinite(b) || b <= 0)) throw Error('Invalid Jev request cost bound');
       pricing.s1 = { bound: Math.max(...bounds) };
     }
-    record({ event: 'start', mode: args.mode, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
+    console.log(`System 1: ${args.mode === 'dual' ? models.s1 + ' (OpenRouter paid)' : 'disabled'}; System 2: ${models.s2} (${args['planner-provider'] === 'codex' ? 'Codex subscription' : 'OpenRouter paid'})`);
+    record({ event: 'start', scenario: args.scenario, mode: args.mode, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
     controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, record, signal: abort.signal, planner });
   } else record({ event: 'start', mode: 'scripted-replay', note: 'No AI calls; fixture may use DOM to generate test coordinates' });
-  lab = await openLab({ headless: args.headless, channel: args.channel });
+  timings.setup_ms = Date.now() - started;
+  lab = await timed('browser_ms', () => openLab({ headless: args.headless, channel: args.channel, scenario: args.scenario }));
   if (args.replay) controller = new Replay(lab.page);
-  let before = await observe(lab.page);
+  let before = await timed('observation_ms', () => observe(lab.page));
   writeFileSync(join(out, '000-before.png'), before.png);
   for (let step = 1; step <= maxSteps; step++) {
     if (abort.signal.aborted) throw Error('Stopped by user');
@@ -82,15 +91,13 @@ try {
     if (args.replay) record({ event: 'decision', ...decision });
     console.log(`${step}/${maxSteps} ${decision.role} ${decision.action.action}: ${decision.action.reason}`);
     let ok = true, detail = '';
-    try { await execute(lab.page, decision.action); actions++; }
+    try { await timed('execution_ms', () => execute(lab.page, decision.action)); actions++; }
     catch (error) { ok = false; detail = error.message; }
-    const after = await observe(lab.page);
+    const after = await timed('observation_ms', () => observe(lab.page));
     writeFileSync(join(out, `${String(step).padStart(3, '0')}-after.png`), after.png);
-    // Identical pixels twice are a heuristic to trigger replanning, not a success check.
-    const changed = !before.png.equals(after.png);
-    const expectedNoChange = ['key', 'escalate', 'done'].includes(decision.action.action);
-    controller.feedback({ ok: ok && (changed || expectedNoChange), detail: detail || (!changed && !expectedNoChange ? 'No visible change after action' : '') });
-    record({ event: 'action_result', step, ok, changed, detail });
+    const feedback = assessProgress(before, after, decision.action, { ok, detail });
+    controller.feedback(feedback);
+    record({ event: 'action_result', step, ...feedback });
     result = await verify(lab.page);
     if (result.passed) break;
     if (decision.action.action === 'done') throw Error('Model said done but independent verifier did not pass');
@@ -102,7 +109,7 @@ finally {
   if (lab) await lab.browser.close();
   const usage = events.filter(e => e.event === 'usage');
   const report = {
-    mode: args.replay ? 'scripted-replay' : args.mode, planner_provider: args.replay ? null : args['planner-provider'], passed: result.passed,
+    scenario: args.scenario, timings, mode: args.replay ? 'scripted-replay' : args.mode, planner_provider: args.replay ? null : args['planner-provider'], passed: result.passed,
     ai_verified: !args.replay && result.passed, failure, actions,
     duration_ms: Date.now() - started, model_duration_ms: usage.reduce((s, e) => s + e.elapsed_ms, 0),
     api_duration_ms: usage.filter(e => e.billing !== 'codex-subscription').reduce((s, e) => s + e.elapsed_ms, 0),

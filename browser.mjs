@@ -2,15 +2,20 @@ import { chromium } from 'playwright';
 import { readFile } from 'node:fs/promises';
 import { validateAction } from './controller.mjs';
 
+import { scenarios, taskFor } from './scenarios.mjs';
+const tasks = new WeakMap();
+
 export const LAB_URL = 'http://fastercomputeruse.test/';
 export const VIEWPORT = { width: 1280, height: 960 };
 export const TASK = '搜索“传感器”，筛选“有库存”，选择价格不超过 100 元的型号；填写姓名“测试员”、数量“2”，核对确认弹窗并提交。以页面显示 PASS 为完成。';
 
-export async function openLab({ headless = false, channel } = {}) {
+export async function openLab({ headless = false, channel, scenario = 'baseline' } = {}) {
+  const config = scenarios[scenario];
+  if (!config) throw Error('Unknown scenario');
   const browser = await chromium.launch({ headless, ...(channel ? { channel } : {}) });
   try {
     const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 1, serviceWorkers: 'block', acceptDownloads: false });
-    const html = await readFile(new URL('./index.html', import.meta.url), 'utf8');
+    const html = (await readFile(new URL('./index.html', import.meta.url), 'utf8')).replace(/(<script type="application\/json" id="scenario">)[\s\S]*?(<\/script>)/, (_, start, end) => start + JSON.stringify(config) + end);
     // The test domain is fulfilled from this file; every other request is blocked.
     await context.route('**/*', route => route.request().url() === LAB_URL && route.request().method() === 'GET'
       ? route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: html }) : route.abort());
@@ -19,6 +24,7 @@ export async function openLab({ headless = false, channel } = {}) {
     page.setDefaultTimeout(3000);
     context.on('page', popup => { if (popup !== page) void popup.close(); });
     page.on('dialog', dialog => void dialog.dismiss());
+    tasks.set(page, taskFor(config));
     await page.goto(LAB_URL);
     return { browser, page, context };
   } catch (error) { await browser.close(); throw error; }
@@ -41,10 +47,10 @@ export async function observe(page) {
       return !el.disabled && el.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) && r.width > 0 && r.height > 0 && r.x >= 0 && r.y >= 0 && r.right < innerWidth && r.bottom < innerHeight;
     }).slice(0, 40).map(describe);
     const active = document.activeElement;
-    return { controls, focused: root.contains(active) && ['INPUT', 'SELECT'].includes(active.tagName) ? describe(active, -1) : null,
+    return { busy: !!document.querySelector('[aria-busy="true"]'), error: root.querySelector('[data-error="true"]')?.innerText || '', controls, focused: root.contains(active) && ['INPUT', 'SELECT'].includes(active.tagName) ? describe(active, -1) : null,
       text: root.innerText.slice(0, 4000), canScrollUp: scrollY > 0, canScrollDown: scrollY + innerHeight < document.documentElement.scrollHeight };
   });
-  return { image: `data:image/png;base64,${png.toString('base64')}`, ...VIEWPORT, task: TASK, png, ui };
+  return { image: `data:image/png;base64,${png.toString('base64')}`, ...VIEWPORT, task: tasks.get(page) || TASK, png, ui };
 }
 
 export async function execute(page, action) {
@@ -64,6 +70,7 @@ export async function execute(page, action) {
     }
     case 'key': await page.keyboard.press(action.key); break;
     case 'scroll': await page.mouse.move(action.x, action.y); await page.mouse.wheel(0, action.dy); break;
+    case 'wait': await page.waitForTimeout(500); break;
     case 'escalate': case 'done': break;
   }
   // Let rendering and scroll settle before the next fresh screenshot.

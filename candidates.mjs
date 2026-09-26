@@ -25,7 +25,8 @@ export function candidatesFor(ui, textValues = []) {
   for (const [name, available, dy] of [['up', ui.canScrollUp, -480], ['down', ui.canScrollDown, 480]]) {
     if (available) choices[`scroll_${name}`] = { description: `Scroll ${name} to see more controls`, action: { action: 'scroll', x: 1200, y: 800, dy, reason: `Scroll ${name}` } };
   }
-  choices.escalate = { description: 'Ask Luna to replan: ambiguous next action, missing required text, or repeated failure', action: { action: 'escalate', reason: 'Jev requests replanning' } };
+  if (ui.busy) choices.wait = { description: 'Wait 500 milliseconds for the visible loading state to finish', action: { action: 'wait', reason: 'Wait for loading' } };
+  choices.escalate = { description: 'Ask System 2 to replan: ambiguous next action, missing required text, or repeated failure', action: { action: 'escalate', reason: 'Jev requests replanning' } };
   choices.done = { description: 'Finish ONLY if the visible page explicitly reports PASS', action: { action: 'done', reason: 'Visible task completed' } };
   return choices;
 }

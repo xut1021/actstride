@@ -1,7 +1,7 @@
 {
   "name": "fastercomputeruse",
   "version": "0.1.0",
-  "description": "Experimental browser control with Jev decisions and GPT-6 Astra or Luna planning.",
+  "description": "Experimental computer use with fast decisions and deliberate planning, inspired by Jev-Mem.",
   "private": true,
   "type": "module",
   "license": "MIT",

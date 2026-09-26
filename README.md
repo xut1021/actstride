@@ -1,16 +1,16 @@
 # fastercomputeruse
 
-**Jev chooses the next action. Astra or Luna plans and repairs. A browser executes.**
+**让轻量模型处理高频操作，让推理模型负责规划与纠错。**
 
-An experimental two-model browser agent using OpenRouter. System 2 receives a screenshot plus visible control structure and supplies a plan and typing values. System 1 receives the control structure and selects one freshly generated action candidate. Low confidence or repeated lack of progress sends control back to System 2.
+参考 [Jev-Mem](https://github.com/libingzheren/Jev-Mem)（System-One-Controlled Agentic Memory）将高频决策与深度推理解耦的思路，本项目把这种分工用于 **computer use 提速实验**：System 2 看截图和可见控件，给出计划；System 1 从当前页面生成的候选动作中选择下一步。遇到错误、低置信度或连续无进展，再交回 System 2。
 
-Two planner routes are available: **GPT-6 Astra through a ChatGPT-authenticated Codex CLI**, or GPT-6 Luna through OpenRouter. The Astra route uses your Codex subscription allowance; Jev still uses paid OpenRouter credits. No subscription credentials are copied or converted into API keys.
+Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不复刻它的记忆系统，也不把它的实验数字当作 computer use 的提速证据。
 
-This release runs **one synthetic local webpage**, including search, stock filtering, a form and a confirmation dialog. Actions use Playwright mouse and keyboard events. This is browser computer use with DOM assistance, not a pure screenshot agent or a general Windows desktop agent. The name describes the experiment's goal; performance depends on the task and providers.
+目前支持仓库自带的五种本地合成场景：基础流程、替换任务、调整布局、延迟加载、提交失败后的恢复。通过 Playwright 的鼠标和键盘操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。通用桌面和任意网站尚未支持。
 
-## Run without an API key
+## 快速开始
 
-Requires Node.js 22+.
+需要 Node.js 22+。
 
 ```sh
 npm ci
@@ -18,74 +18,55 @@ npx playwright install chromium
 npm run demo
 ```
 
-The demo is a **scripted replay**, not an AI evaluation. It tests the browser executor and independent completion check. Add `-- --headless` for an unattended run. On a machine with Microsoft Edge installed, skip the Chromium download and use `npm run demo -- --channel msedge`.
+这是不调用模型的脚本回放，用来检查执行器与独立验证器。已安装 Edge 时可以跳过浏览器下载，运行 `npm run demo -- --channel msedge`。后台运行加 `--headless`。
 
-## Run the real models
+## 真实模型运行
 
-Set `OPENROUTER_API_KEY` in the process environment using your preferred secret manager. `.env` files are not automatically loaded. Do not paste keys into issues, command arguments, or source code.
-
-### Jev + Astra using your Codex plan
-
-Install the official Codex CLI if needed, run `codex login`, and verify that `codex login status` says **Logged in using ChatGPT**. This integration was tested with CLI 0.156.1. It requires that version's `--ignore-user-config`, image input and structured-output support. Older unsupported CLIs fail instead of silently changing the billing route.
-
-```sh
-npm start -- --planner-provider codex --mode dual --budget 5
-npm start -- --planner-provider codex --mode s2-only
-```
-
-The first command pays only for Jev on OpenRouter and uses `gpt-6-astra` with medium reasoning via Codex for planning. The second uses Astra for every step and needs no OpenRouter key. Add `--headless --channel msedge` for unattended Edge. The CLI creates one ephemeral, read-only Codex invocation for each planner decision and receives a screenshot plus structured state. Shell tools, apps, hooks and delegation are disabled for that invocation; an unexpected tool event rejects the result. Launch overhead is included in timings.
-
-API-key authentication is rejected. API-key environment variables are removed from the Codex child process, personal configuration is not loaded, and there is no fallback to a paid OpenAI/OpenRouter planner. If authentication, quota or the CLI fails, the run stops. Logs record Codex tokens separately: `cost_usd` covers **OpenRouter only**, not a dollar estimate of subscription usage. Account-wide weekly usage also includes your other Codex work.
-
-See the [Astra validation record](docs/astra-validation.md). The [official authentication documentation](https://learn.chatgpt.com/docs/auth) explains the ChatGPT/API billing distinction, and the [non-interactive guide](https://learn.chatgpt.com/docs/non-interactive-mode) documents structured outputs.
-
-### Jev + Luna using OpenRouter only
+默认使用 OpenRouter 上的付费快速决策模型，以及通过官方 Codex CLI 登录的订阅规划模型。先设置进程环境变量 `OPENROUTER_API_KEY`，运行 `codex login`，确认登录方式为 ChatGPT。程序不会自动加载 .env 文件。
 
 ```sh
 npm start -- --mode dual --budget 5
-npm start -- --mode s2-only --budget 5
+npm start -- --mode dual --scenario recovery --budget 5
+npm start -- --mode s2-only --scenario baseline
 ```
 
-For headless Edge: append `--headless --channel msedge`. Both modes use a fresh isolated browser, the same task, action executor, observation data and verifier. `dual` uses `typesafe/jev-1.13` through OpenRouter's **Decisions API**, plus `openai/gpt-6-luna` through Chat Completions. `s2-only` calls Luna for every step. There is no third model. Model IDs must be available to your OpenRouter account; the program fails if current metadata cannot be verified.
+双模型模式中，快速决策消耗 OpenRouter 余额，规划消耗 Codex 订阅额度；仅规划模型的对照模式无需 OpenRouter 密钥。启动时显示实际模型和计费路线。订阅认证或额度出错时直接停止，不自动切换到付费 API。具体型号、CLI 版本要求和其他配置见[配置说明](docs/configuration.md)。
 
-Live runs share a persistent `runs/budget.json` spending limit. **Five dollars is a ceiling, not a target.** The controller reserves a conservative whole-context cost before each request, accounts for reported `usage.cost`, runs one request at a time and performs no automatic retries. Chat requests also set provider price ceilings. The Decisions endpoint uses current endpoint metadata for its reservation; it has no verified per-request price ceiling here. This is client-side accounting dependent on provider metadata and billing, not a provider-enforced dollar cap. Use a separately limited OpenRouter key if you need an account-side limit.
+可选场景：`baseline`、`alternate`、`shifted`、`delayed`、`recovery`。脚本回放只支持 baseline。每次运行使用独立浏览器，不读取个人浏览器资料，页面不向外部提交信息。
 
-Missing billing, HTTP errors or interrupted requests retain the reservation and block subsequent spending. Reconcile the charge in OpenRouter before adjusting an unsettled ledger. Do not delete the ledger to bypass its limit. Do not run separate copies against a shared spending allowance: the lock and ledger apply to this checkout only.
+所有真实运行共享 `runs/budget.json`。5 美元是累计上限，不是消费目标。请求前预留费用，按提供方返回的费用结算；未知费用或中断保留预留并阻止后续消费，不自动重试。此限制依赖提供方价格和用量信息，是客户端记账，不是服务端硬限额。不要删除账本绕过限制。
 
-## How it works
+## 工作流程
 
 ```mermaid
 flowchart LR
-  Page[Local test page] --> Observe[Screenshot + visible controls]
-  Observe --> Luna[System 2: Astra or Luna]
-  Luna --> Plan[Plan + typing values]
-  Observe --> Candidates[Fresh control/action candidates]
-  Plan --> Jev[System 1: Jev]
-  Candidates --> Jev
-  Jev --> Act[Mouse + keyboard]
-  Jev -->|uncertain| Luna
-  Act --> Page
-  Page --> Verify[Independent verifier]
+  Page[本地页面] --> Observe[截图与可见控件]
+  Observe --> Planner[System 2 规划与纠错]
+  Planner --> Plan[计划与输入文字]
+  Observe --> Choices[当前动作候选]
+  Plan --> Fast[System 1 快速决策]
+  Choices --> Fast
+  Fast --> Execute[鼠标与键盘]
+  Execute --> Page
+  Fast -->|不确定或失败| Planner
+  Page --> Verify[独立完成验证]
 ```
 
-- `browser.mjs` gathers visible controls and screenshots; execution never evaluates model-generated JavaScript.
-- `candidates.mjs` builds actions from current controls and Luna's text values. It contains no task answers or selector-based solution.
-- `controller.mjs` routes requests and validates actions. A Jev confidence below 0.55 escalates; that threshold is an uncalibrated heuristic. Two no-progress observations also request replanning. `codex-planner.mjs` implements the optional subscription planner route.
-- `budget.mjs` keeps the spending ledger across runs.
-- `index.html` owns the synthetic task and verifier. Only the independent verifier can mark a run successful; a model saying `done` is insufficient.
-- `replay.mjs` is the separate deterministic fixture. Only replay/tests use task-specific selectors to solve the form.
+- 候选动作来自当前可见控件，不使用测试答案或预写的解题选择器。
+- 进度判断检查控件、焦点、输入值和可见错误，避免把装饰性的像素变化算作成功。加载状态提供短暂等待动作。
+- 出现新的页面错误立即请求重新规划；连续两次无进展也会交回规划模型。低置信度阈值 0.55 尚未经过校准。
+- 完成只能由独立验证器确认，模型说“完成”不算成功；后续修改表单会清除旧 PASS。
+- 隐藏答案和验证状态不进入模型输入。页面展示任务要求，属于透明的集成实验，而非盲测。
 
-For Jev, inputs include task, plan, recent actions, visible page text, controls and their values. Luna additionally receives the viewport screenshot. The hidden `window.labResult` verifier state is never included in model input. The page intentionally displays its task and completion criteria, so this is a transparent integration exercise, not a blind reasoning benchmark.
+## 验证与边界
 
-## Evidence and limits
+真实运行记录见[场景验证](docs/scenario-validation.md)。早期单页面实验见[原始记录](docs/validation.md)和[订阅规划记录](docs/astra-validation.md)；历史记录保留当时使用的配置与所有尝试。
 
-In the initial three runs per mode, both completed 3/3 tasks. Jev + Luna averaged **20.3 seconds and $0.00158** per run; Luna alone averaged **68.7 seconds and $0.00626**. These are exploratory measurements on the single bundled page, with uncontrolled machine load and an unoptimized baseline. They do not establish general speed or reliability.
+单次和少量重复不能证明普遍提速或通用可靠性。两种模式必须在相同场景下比较，且订阅规划调用的启动开销计入耗时。新增日志分别记录初始化、浏览器、观察、执行和模型调用耗时；CLI 事件时间包含通信与推理，不能当作纯推理耗时。
 
-See [validation results](docs/validation.md) for real paid runs, costs and comparison with Luna alone. All attempts in that evaluation are retained, including failures. Local `runs/` contains screenshots, decisions, billed usage and a report for each run, and is excluded from Git.
+本地 `runs/` 保存截图、动作、费用和报告，不纳入 Git。报告的 `cost_usd` 仅统计 OpenRouter 费用，不把订阅用量标为免费。当前场景限制外部浏览器请求和 WebSocket，但并非操作系统安全沙箱；模型请求仍会发往对应服务。
 
-One fixed page cannot establish general computer-use ability, reliability across websites, or a general speed advantage. The browser only serves the bundled page and blocks other network requests and WebSockets. It uses no personal browser profile. There is no arbitrary-site flag, shell tool, file upload or external purchase workflow. Browser request blocking is a test restriction, not an operating-system security sandbox. The Node process still contacts OpenRouter for metadata and inference.
-
-## Tests
+## 本地检查
 
 ```sh
 npm test
@@ -93,20 +74,12 @@ npm run audit
 npm run demo -- --headless
 ```
 
-If testing against installed Edge, set `FCU_TEST_CHANNEL=msedge` in the environment first. Tests cover routing, low-confidence escalation, stale choices, input validation, budget persistence, unknown billing, subscription billing isolation and real-browser completion invalidation. The additional audit exercises 33 deterministic fault/state checks and writes `runs/audit/report.json`. Its model transports are mocked and live fetch calls are prohibited; it is not a model benchmark. Run it separately from live inference so its ledger-unchanged check is meaningful. The CI template does not spend API credits. GitHub CI is not enabled in this release because the publishing token lacks workflow permission. The template is saved at `.github/ci-template.yml`; after authorizing workflow writes, move it to `.github/workflows/test.yml` to enable it. See [SECURITY.md](SECURITY.md) for the intended data boundary.
+使用 Edge 测试前设置 `FCU_TEST_CHANNEL=msedge`。测试覆盖动作路由、预算、认证隔离、完成状态失效和各场景验证器。审计使用模拟模型响应，不能代替真实模型测试。GitHub CI 尚未启用：发布凭据缺少 workflow 权限，模板保留在 `.github/ci-template.yml`。数据边界见 [SECURITY.md](SECURITY.md)。
 
-## 中文说明
+## 参考与许可
 
-这是一个可以真实运行的 **Jev 快决策 + Astra / Luna 规划与纠错** 实验。Jev 从当前网页控件生成的候选动作中选择，规划模型看截图和控件结构，提供计划及需要输入的文字。执行层负责鼠标、键盘，独立验证器判定是否完成。
-
-使用 `--planner-provider codex` 时，Astra 走已登录 ChatGPT 的官方 Codex CLI，使用订阅额度；Jev 仍通过 OpenRouter 付费。不会把周额度当成 OpenRouter 余额，也不会把订阅用量标成“模型免费”。失败时停止，不自动切回付费大模型。验证器现在会在表单、选项或确认状态变化后清除旧 PASS。
-
-当前只支持仓库自带的合成网页，并非通用桌面助手。允许读取控件结构，因此不是纯截图方案。`npm run demo` 是无费用脚本回放；`npm start` 才会真正调用模型。对照实验、成功次数、耗时与实际费用见[验证记录](docs/validation.md)。5 美元是多轮共享的上限，不会为了消耗额度而增加调用。
-
-## References and license
-
-- [OpenRouter: using Jev](https://openrouter.ai/blog/tutorials/how-to-use-jev/)
+- [Jev-Mem](https://github.com/libingzheren/Jev-Mem)：System 1 / System 2 分工的参考来源。
+- [OpenRouter Jev 使用说明](https://openrouter.ai/blog/tutorials/how-to-use-jev/)
 - [OpenRouter Decisions API](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request)
-- [JevPilot Reflex](https://github.com/manhua-man/jev-pilot-reflex), a driving simulation discussed during this project's exploration; this browser implementation is independent and does not claim affiliation.
 
-MIT; see [LICENSE](LICENSE). Experimental research prototype.
+MIT，见 [LICENSE](LICENSE)。研究原型。
