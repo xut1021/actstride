@@ -1,7 +1,7 @@
 {
-  "name": "fastercomputeruse",
+  "name": "actstride",
   "version": "0.1.0",
-  "description": "Experimental computer use with fast decisions and deliberate planning, inspired by Jev-Mem.",
+  "description": "Computer use with reusable skills and deliberate planning, inspired by Jev-Mem.",
   "private": true,
   "type": "module",
   "license": "MIT",

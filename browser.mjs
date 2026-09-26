@@ -6,7 +6,7 @@ import { scenarios, taskFor } from './scenarios.mjs';
 const tasks = new WeakMap();
 let observationId = 0;
 
-export const LAB_URL = 'http://fastercomputeruse.test/';
+export const LAB_URL = 'http://actstride.test/';
 export const VIEWPORT = { width: 1280, height: 960 };
 export const TASK = '搜索“传感器”，筛选“有库存”，选择价格不超过 100 元的型号；填写姓名“测试员”、数量“2”，核对确认弹窗并提交。以页面显示 PASS 为完成。';
 

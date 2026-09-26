@@ -21,7 +21,7 @@ const { values: args } = parseArgs({ options: {
   help: { type: 'boolean', default: false },
 } });
 if (args.help) {
-  console.log('fastercomputeruse\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode dual --scenario tickets_b --skills\n  npm start -- --mode s2-only\nScenarios: ' + Object.keys(scenarios).join(', ') + '. Default planner: codex.\n--skills enables three hand-authored workflows (dual + codex only).\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
+  console.log('ActStride\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode dual --scenario tickets_b --skills\n  npm start -- --mode s2-only\nScenarios: ' + Object.keys(scenarios).join(', ') + '. Default planner: codex.\n--skills enables three hand-authored workflows (dual + codex only).\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
   process.exit(0);
 }
 if (!Object.hasOwn(scenarios, args.scenario)) throw Error('Unknown scenario: ' + args.scenario);

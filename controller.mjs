@@ -62,7 +62,7 @@ export class Controller {
         ? 'You are System 2, the planner. Give a concise plan, text_values containing ALL exact strings that must be typed (including search terms and numeric fields), and ONE next UI action. On later handoffs, repair the plan using the current screenshot and UI structure.'
         : 'You are System 1, the fast operator. Follow the plan, inspect the screenshot and propose ONE next UI action. Escalate if unsure, blocked, or the plan needs changing.';
       const response = await this.fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST', headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json', 'X-OpenRouter-Title': 'fastercomputeruse' },
+        method: 'POST', headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json', 'X-OpenRouter-Title': 'ActStride' },
         signal: this.signal ? AbortSignal.any([this.signal, AbortSignal.timeout(45000)]) : AbortSignal.timeout(45000),
         body: JSON.stringify({
           model, max_tokens: 2048, stream: false,
@@ -130,7 +130,7 @@ export class Controller {
     const started = Date.now();
     try {
       const response = await this.fetch('https://openrouter.ai/api/alpha/decisions', {
-        method: 'POST', headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json', 'X-OpenRouter-Title': 'fastercomputeruse' }, body,
+        method: 'POST', headers: { Authorization: `Bearer ${this.apiKey}`, 'Content-Type': 'application/json', 'X-OpenRouter-Title': 'ActStride' }, body,
         signal: this.signal ? AbortSignal.any([this.signal, AbortSignal.timeout(45000)]) : AbortSignal.timeout(45000),
       });
       if (!response.ok) throw Error(`OpenRouter HTTP ${response.status}; no retry, reservation retained`);

@@ -1,6 +1,8 @@
-# fastercomputeruse
+# ActStride
 
-**让轻量模型处理高频操作，让推理模型负责规划与纠错。**
+Computer use with reusable skills and deliberate planning.
+
+**用可复用技能与审慎规划完成电脑操作。**
 
 参考 [Jev-Mem](https://github.com/libingzheren/Jev-Mem)（System-One-Controlled Agentic Memory）将高频决策与深度推理解耦的思路，本项目把这种分工用于 **computer use 提速实验**：System 2 看截图和可见控件，给出计划；System 1 从当前页面生成的候选动作中选择下一步。遇到错误、低置信度或连续无进展，再交回 System 2。
 
@@ -78,6 +80,8 @@ flowchart LR
 
 新的多任务配对结果见[扩大测试](docs/expanded-validation.md)。原有页面结果见[场景验证](docs/scenario-validation.md)和[第二轮复测](docs/scenario-retest.md)。早期单页面实验见[原始记录](docs/validation.md)和[订阅规划记录](docs/astra-validation.md)；历史记录保留当时使用的配置与所有尝试。
 
+项目原名 `fastercomputeruse`。历史实验记录与源码哈希保留原样，对应各次实验的版本。
+
 单次和少量重复不能证明普遍提速或通用可靠性。两种模式必须在相同场景下比较，且订阅规划调用的启动开销计入耗时。新增日志分别记录初始化、浏览器、观察、执行和模型调用耗时；CLI 事件时间包含通信与推理，不能当作纯推理耗时。
 
 本地 `runs/` 保存截图、动作、费用和报告，不纳入 Git。报告的 `cost_usd` 仅统计 OpenRouter 费用，不把订阅用量标为免费。当前场景限制外部浏览器请求和 WebSocket，但并非操作系统安全沙箱；模型请求仍会发往对应服务。
@@ -95,7 +99,7 @@ npm start -- --mode dual --scenario recovery --headless --budget 5
 
 使用已安装的 Edge 时追加 `--channel msedge`。真实运行会消耗你自己的 API 余额和订阅额度，请按自己的预算执行；不要为追求通过而反复重试未结算的请求。
 
-欢迎通过 [Issue](https://github.com/xut1021/fastercomputeruse/issues) 或 PR 分享结果：注明提交版本、运行命令、系统与 Node 版本、模型配置、是否使用代理，以及成功次数/总尝试次数、耗时和费用。请同时保留失败结果，附上脱敏的 `report.json` 和相关错误信息；不要上传密钥、完整原始日志或私人代理地址。如果条件允许，也欢迎在同一场景下比较 `dual` 与 `s2-only`，帮助检验速度收益是否稳定。
+欢迎通过 [Issue](https://github.com/xut1021/actstride/issues) 或 PR 分享结果：注明提交版本、运行命令、系统与 Node 版本、模型配置、是否使用代理，以及成功次数/总尝试次数、耗时和费用。请同时保留失败结果，附上脱敏的 `report.json` 和相关错误信息；不要上传密钥、完整原始日志或私人代理地址。如果条件允许，也欢迎在同一场景下比较 `dual` 与 `s2-only`，帮助检验速度收益是否稳定。
 
 ## 本地检查
 
