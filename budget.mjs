@@ -1,5 +1,14 @@
 import { existsSync, readFileSync, writeFileSync, renameSync } from 'node:fs';
 
+// Aggregate reconciliation is conservative attribution, not a per-request invoice.
+export function reconciliationCost(state, baseline, currentUsage) {
+  if (![state.charged, state.pending, baseline.charged, baseline.provider_usage, currentUsage].every(n => Number.isFinite(n) && n >= 0)
+      || state.pending <= 0 || state.charged < baseline.charged || currentUsage < baseline.provider_usage) throw Error('Invalid aggregate reconciliation state');
+  const unmatched = currentUsage - baseline.provider_usage - (state.charged - baseline.charged);
+  if (unmatched < -1e-10 || unmatched > state.pending + 1e-10) throw Error('Aggregate usage does not reconcile within the reserved bound');
+  return Math.min(state.pending, Math.max(0, unmatched));
+}
+
 // A shared ledger survives separate runs. Unknown request charges stay reserved.
 export class Budget {
   constructor(path, limit) {

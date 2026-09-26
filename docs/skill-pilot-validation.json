@@ -1,0 +1,1008 @@
+{
+  "date": "2026-09-26T06:49:46.433Z",
+  "status": "partial; paid tests paused at user request while network is repaired",
+  "initial_probe": {
+    "run": "2026-09-26T06-24-31.547Z-codex-dual",
+    "runtime_commit": "7064e559c33aa654db170a3bc26aac20f15f0252",
+    "report": {
+      "scenario": "tickets_b",
+      "skills": true,
+      "skill_attempts": 0,
+      "skill_failures": 0,
+      "timings": {
+        "setup_ms": 2195,
+        "browser_ms": 306,
+        "observation_ms": 225,
+        "execution_ms": 1260
+      },
+      "mode": "dual",
+      "planner_provider": "codex",
+      "passed": true,
+      "ai_verified": true,
+      "failure": null,
+      "actions": 5,
+      "duration_ms": 34584,
+      "model_duration_ms": 30376,
+      "fast_provider": "openrouter",
+      "fast_images": false,
+      "api_duration_ms": 4297,
+      "api_calls": 4,
+      "self_hosted_calls": 0,
+      "self_hosted_duration_ms": 0,
+      "codex_calls": 1,
+      "cost_usd": 0.00029202599999999997,
+      "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+      "role_calls": {
+        "s1": 4,
+        "s2": 1
+      },
+      "escalations": 0,
+      "budget": {
+        "limit": 20,
+        "charged": 0.03842794099999997,
+        "pending": 0
+      },
+      "verifier": {
+        "passed": true,
+        "kind": "tickets"
+      }
+    },
+    "finding": "Planner bound a skill, but Jev used primitives; zero skill attempts."
+  },
+  "paired_pilot": {
+    "date": "2026-09-26T06:49:46.386Z",
+    "kind": "real-paid-jev-subscription-planner-skills-paired",
+    "scheduled_complete": true,
+    "executed_complete": false,
+    "design": {
+      "started": "2026-09-26T06:26:34.077Z",
+      "design": "Matched cases with rotating group order, one attempt per repetition/group/case, 24 outer decisions maximum. Same executor and fresh-session planner for all groups; skill inner actions are counted separately. No automatic inference retries.",
+      "compare": "skills",
+      "repeats": 1,
+      "cases": [
+        "tickets_b",
+        "booking_b",
+        "settings_b"
+      ],
+      "planned_runs": 6,
+      "budget_limit": 20,
+      "primary_metrics": [
+        "success per started run, including transport failures",
+        "median paired end-to-end baseline/skills ratio, both-success pairs only"
+      ],
+      "groups": [
+        {
+          "mode": "dual",
+          "skills": false
+        },
+        {
+          "mode": "dual",
+          "skills": true
+        }
+      ],
+      "sources": {
+        "browser.mjs": "f01f630b89e003f06a8831509a60bddff66026f8d2294f21f4d3bab869d4437b",
+        "controller.mjs": "0852d19912791ac1c459e27976b0d1ea31168317fb3ecbff6503db88da74cb90",
+        "fast-decider.mjs": "b2f4a25d586a6c7b036585e95f33da7ef78c3f8a950d6a99991c250d6aa2ee4d",
+        "candidates.mjs": "246f7032b8350736a3180f939c9e50f23bb9845b9e16407eb2479dc4906a0a39",
+        "codex-planner.mjs": "ceb166471c11cb97a5a15cdecad946cc04bcb071e16b0c8fd50ddb5eb751ffec",
+        "extended.html": "e7592179a3a213619a6d458c6b50668a680fdc70fbdd9445a2801cc8b9d346af",
+        "scenarios.mjs": "229b8116a4277518417fe33b96727774ff82faffd7431af2905878d07be4c2c7",
+        "progress.mjs": "04aa31a9d0c8b27dee1f3fd3c76164f6ea705f6c5777a82fff6d1caa267a93a0",
+        "cli.mjs": "5e4568f1cb0f34f3e1d50f38351b43ba42029dc794e6b35a84bf84c15f56e538",
+        "skills.mjs": "8c1a88e91164e6aee585115b80bc8e50084bf9f441ea12f4a47e7fc463893a1e",
+        "skill-runner.mjs": "ad8ad249234d98b79a3eb67348d3a9dfac1849057711c23278fdf5f1c54261be",
+        "budget.mjs": "09ee9c1342524e1f2d21d442d3abe5b511977f9c281b66f5b8cbc90d6fdd40e8",
+        "scripts/benchmark.mjs": "6b7a41972f187ce33e2b663641699490e7722cd8942509a0849b02c87281810a"
+      },
+      "fast_backend": {
+        "provider": "openrouter",
+        "endpoint": null,
+        "requested_model": null,
+        "images": false
+      },
+      "finished": "2026-09-26T06:31:16.018Z"
+    },
+    "groups": [
+      {
+        "skills": false,
+        "started": 3,
+        "passed": 2,
+        "failed": 1,
+        "unfinished": 0,
+        "missing_report_count": 0,
+        "skipped": 0,
+        "success_rate": 0.6666666666666666,
+        "successful_duration_median_ms": 45003.5,
+        "known_duration_ms": 228410,
+        "known_cost_usd": 0.00057204,
+        "runs_with_unsettled_cost_at_finish": 1,
+        "reconciled_cost_usd": 0,
+        "totals": {
+          "s1_usage_calls": 8,
+          "s2_usage_calls": 3,
+          "s1_ms": 45610,
+          "s2_ms": 128175,
+          "primitive_browser_actions_attempted": 11,
+          "completed_skill_browser_actions": 0,
+          "waits": 0,
+          "escalations": 0,
+          "selected_skills": 0,
+          "negative_progress_feedback": 0
+        }
+      },
+      {
+        "skills": true,
+        "started": 2,
+        "passed": 2,
+        "failed": 0,
+        "unfinished": 0,
+        "missing_report_count": 0,
+        "skipped": 1,
+        "success_rate": 1,
+        "successful_duration_median_ms": 26048,
+        "known_duration_ms": 52096,
+        "known_cost_usd": 0.00015057,
+        "runs_with_unsettled_cost_at_finish": 0,
+        "reconciled_cost_usd": 0,
+        "totals": {
+          "s1_usage_calls": 2,
+          "s2_usage_calls": 2,
+          "s1_ms": 4189,
+          "s2_ms": 40835,
+          "primitive_browser_actions_attempted": 0,
+          "completed_skill_browser_actions": 8,
+          "waits": 2,
+          "escalations": 0,
+          "selected_skills": 2,
+          "negative_progress_feedback": 2
+        }
+      }
+    ],
+    "paired": {
+      "both_successful": 2,
+      "median_speed_ratio": 1.723597130442574,
+      "skills_faster_pairs": 2,
+      "baseline_total_ms": 90007,
+      "skills_total_ms": 52096,
+      "families": {
+        "tickets": {
+          "pairs": 1,
+          "median_speed_ratio": 1.8417050007419498
+        },
+        "booking": {
+          "pairs": 1,
+          "median_speed_ratio": 1.605489260143198
+        },
+        "settings": {
+          "pairs": 0,
+          "median_speed_ratio": null
+        }
+      }
+    },
+    "pairs": [
+      {
+        "repeat": 1,
+        "scenario": "tickets_b",
+        "baseline_status": "passed",
+        "skills_status": "passed",
+        "baseline_ms": 49645,
+        "skills_ms": 26956,
+        "both_passed": true,
+        "speed_ratio": 1.8417050007419498,
+        "saved_ms": 22689
+      },
+      {
+        "repeat": 1,
+        "scenario": "booking_b",
+        "baseline_status": "passed",
+        "skills_status": "passed",
+        "baseline_ms": 40362,
+        "skills_ms": 25140,
+        "both_passed": true,
+        "speed_ratio": 1.605489260143198,
+        "saved_ms": 15222
+      },
+      {
+        "repeat": 1,
+        "scenario": "settings_b",
+        "baseline_status": "failed",
+        "skills_status": "skipped",
+        "baseline_ms": 138403,
+        "skills_ms": null,
+        "both_passed": false,
+        "speed_ratio": null,
+        "saved_ms": null
+      }
+    ],
+    "cells": [
+      {
+        "repeat": 1,
+        "scenario": "tickets_b",
+        "mode": "dual",
+        "skills": false,
+        "run": "2026-09-26T06-26-34.295Z-codex-dual",
+        "report": {
+          "scenario": "tickets_b",
+          "skills": false,
+          "skill_attempts": 0,
+          "skill_failures": 0,
+          "timings": {
+            "setup_ms": 1881,
+            "browser_ms": 309,
+            "observation_ms": 194,
+            "execution_ms": 610
+          },
+          "mode": "dual",
+          "planner_provider": "codex",
+          "passed": true,
+          "ai_verified": true,
+          "failure": null,
+          "actions": 4,
+          "duration_ms": 49645,
+          "model_duration_ms": 46455,
+          "fast_provider": "openrouter",
+          "fast_images": false,
+          "api_duration_ms": 3405,
+          "api_calls": 3,
+          "self_hosted_calls": 0,
+          "self_hosted_duration_ms": 0,
+          "codex_calls": 1,
+          "cost_usd": 0.00021394800000000002,
+          "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+          "role_calls": {
+            "s1": 3,
+            "s2": 1
+          },
+          "escalations": 0,
+          "budget": {
+            "limit": 20,
+            "charged": 0.03864188899999997,
+            "pending": 0
+          },
+          "verifier": {
+            "passed": true,
+            "kind": "tickets"
+          }
+        },
+        "status": "passed",
+        "exit_code": 0,
+        "failure_category": null,
+        "measurements": {
+          "s1_usage_calls": 3,
+          "s2_usage_calls": 1,
+          "s1_ms": 3405,
+          "s2_ms": 43050,
+          "planner_tokens": {
+            "input": 18786,
+            "output": 110
+          },
+          "primitive_browser_actions_attempted": 4,
+          "completed_skill_browser_actions": 0,
+          "waits": 0,
+          "escalations": 0,
+          "selected_skills": 0,
+          "negative_progress_feedback": 0
+        },
+        "decisions": [
+          {
+            "role": "s2",
+            "model": "gpt-6-astra",
+            "action": {
+              "action": "click",
+              "ref": "r1_2",
+              "revision": 1,
+              "reason": "T-28 是财务部门的普通工单。",
+              "plan": "打开 T-28，将负责人设为林禾并确认分派，检查 PASS。",
+              "text_values": [
+                "林禾"
+              ]
+            },
+            "timestamp": "2026-09-26T06:27:19.612Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "select",
+              "ref": "r1_5",
+              "revision": 1,
+              "value": "林禾",
+              "reason": "Set 负责人=林禾"
+            },
+            "choice": "select_4_1",
+            "confidence": 0.9,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:27:21.351Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "click",
+              "ref": "r1_6",
+              "revision": 1,
+              "reason": "Click 分派工单"
+            },
+            "choice": "click_5",
+            "confidence": 1,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:27:22.398Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "click",
+              "ref": "r1_8",
+              "revision": 1,
+              "reason": "Click 确认保存"
+            },
+            "choice": "click_1",
+            "confidence": 0.97,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:27:23.575Z"
+          }
+        ],
+        "skill_results": []
+      },
+      {
+        "repeat": 1,
+        "scenario": "tickets_b",
+        "mode": "dual",
+        "skills": true,
+        "run": "2026-09-26T06-27-24.165Z-codex-dual",
+        "report": {
+          "scenario": "tickets_b",
+          "skills": true,
+          "skill_attempts": 1,
+          "skill_failures": 0,
+          "timings": {
+            "setup_ms": 1253,
+            "browser_ms": 353,
+            "observation_ms": 135,
+            "execution_ms": 1561
+          },
+          "mode": "dual",
+          "planner_provider": "codex",
+          "passed": true,
+          "ai_verified": true,
+          "failure": null,
+          "actions": 5,
+          "duration_ms": 26956,
+          "model_duration_ms": 23450,
+          "fast_provider": "openrouter",
+          "fast_images": false,
+          "api_duration_ms": 1985,
+          "api_calls": 1,
+          "self_hosted_calls": 0,
+          "self_hosted_duration_ms": 0,
+          "codex_calls": 1,
+          "cost_usd": 0.000067074,
+          "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+          "role_calls": {
+            "s1": 1,
+            "s2": 1
+          },
+          "escalations": 0,
+          "budget": {
+            "limit": 20,
+            "charged": 0.03870896299999997,
+            "pending": 0
+          },
+          "verifier": {
+            "passed": true,
+            "kind": "tickets"
+          }
+        },
+        "status": "passed",
+        "exit_code": 0,
+        "failure_category": null,
+        "measurements": {
+          "s1_usage_calls": 1,
+          "s2_usage_calls": 1,
+          "s1_ms": 1985,
+          "s2_ms": 21465,
+          "planner_tokens": {
+            "input": 18829,
+            "output": 125
+          },
+          "primitive_browser_actions_attempted": 0,
+          "completed_skill_browser_actions": 4,
+          "waits": 1,
+          "escalations": 0,
+          "selected_skills": 1,
+          "negative_progress_feedback": 1
+        },
+        "decisions": [
+          {
+            "role": "s2",
+            "model": "gpt-6-astra",
+            "action": {
+              "action": "wait",
+              "skill": {
+                "id": "assign_ticket",
+                "params": {
+                  "department": "财务",
+                  "priority": "普通",
+                  "owner": "林禾"
+                }
+              },
+              "reason": "可用技能完整覆盖任务，参数均已明确。",
+              "plan": "找到财务部门普通工单 T-28，负责人设为林禾，确认分派并检查 PASS。",
+              "text_values": [
+                "财务",
+                "普通",
+                "林禾"
+              ]
+            },
+            "timestamp": "2026-09-26T06:27:47.313Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "skill",
+              "skill": {
+                "id": "assign_ticket",
+                "params": {
+                  "department": "财务",
+                  "priority": "普通",
+                  "owner": "林禾"
+                }
+              },
+              "reason": "Use assign_ticket"
+            },
+            "choice": "use_skill",
+            "confidence": 0.6,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:27:49.969Z"
+          }
+        ],
+        "skill_results": [
+          {
+            "event": "skill_result",
+            "binding": {
+              "id": "assign_ticket",
+              "params": {
+                "department": "财务",
+                "priority": "普通",
+                "owner": "林禾"
+              }
+            },
+            "version": 1,
+            "ok": true,
+            "replan": false,
+            "detail": "Skill completed and independently verified",
+            "steps": 4,
+            "elapsed_ms": 927,
+            "timestamp": "2026-09-26T06:27:50.897Z"
+          }
+        ]
+      },
+      {
+        "repeat": 1,
+        "scenario": "booking_b",
+        "mode": "dual",
+        "skills": true,
+        "run": "2026-09-26T06-27-51.348Z-codex-dual",
+        "report": {
+          "scenario": "booking_b",
+          "skills": true,
+          "skill_attempts": 1,
+          "skill_failures": 0,
+          "timings": {
+            "setup_ms": 1407,
+            "browser_ms": 337,
+            "observation_ms": 118,
+            "execution_ms": 1512
+          },
+          "mode": "dual",
+          "planner_provider": "codex",
+          "passed": true,
+          "ai_verified": true,
+          "failure": null,
+          "actions": 5,
+          "duration_ms": 25140,
+          "model_duration_ms": 21574,
+          "fast_provider": "openrouter",
+          "fast_images": false,
+          "api_duration_ms": 2204,
+          "api_calls": 1,
+          "self_hosted_calls": 0,
+          "self_hosted_duration_ms": 0,
+          "codex_calls": 1,
+          "cost_usd": 0.000083496,
+          "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+          "role_calls": {
+            "s1": 1,
+            "s2": 1
+          },
+          "escalations": 0,
+          "budget": {
+            "limit": 20,
+            "charged": 0.038792458999999974,
+            "pending": 0
+          },
+          "verifier": {
+            "passed": true,
+            "kind": "booking"
+          }
+        },
+        "status": "passed",
+        "exit_code": 0,
+        "failure_category": null,
+        "measurements": {
+          "s1_usage_calls": 1,
+          "s2_usage_calls": 1,
+          "s1_ms": 2204,
+          "s2_ms": 19370,
+          "planner_tokens": {
+            "input": 18992,
+            "output": 124
+          },
+          "primitive_browser_actions_attempted": 0,
+          "completed_skill_browser_actions": 4,
+          "waits": 1,
+          "escalations": 0,
+          "selected_skills": 1,
+          "negative_progress_feedback": 1
+        },
+        "decisions": [
+          {
+            "role": "s2",
+            "model": "gpt-6-astra",
+            "action": {
+              "action": "wait",
+              "skill": {
+                "id": "book_room",
+                "params": {
+                  "day": "周三",
+                  "period": "下午",
+                  "capacity": 10,
+                  "name": "许川"
+                }
+              },
+              "reason": "可用技能完整覆盖预约及弹窗核对任务。",
+              "plan": "选择符合条件的南楼 310，填写许川，核对弹窗后确认，检查 PASS。",
+              "text_values": [
+                "许川"
+              ]
+            },
+            "timestamp": "2026-09-26T06:28:12.532Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "skill",
+              "skill": {
+                "id": "book_room",
+                "params": {
+                  "day": "周三",
+                  "period": "下午",
+                  "capacity": 10,
+                  "name": "许川"
+                }
+              },
+              "reason": "Use book_room"
+            },
+            "choice": "use_skill",
+            "confidence": 0.89,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:28:15.402Z"
+          }
+        ],
+        "skill_results": [
+          {
+            "event": "skill_result",
+            "binding": {
+              "id": "book_room",
+              "params": {
+                "day": "周三",
+                "period": "下午",
+                "capacity": 10,
+                "name": "许川"
+              }
+            },
+            "version": 1,
+            "ok": true,
+            "replan": false,
+            "detail": "Skill completed and independently verified",
+            "steps": 4,
+            "elapsed_ms": 876,
+            "timestamp": "2026-09-26T06:28:16.279Z"
+          }
+        ]
+      },
+      {
+        "repeat": 1,
+        "scenario": "booking_b",
+        "mode": "dual",
+        "skills": false,
+        "run": "2026-09-26T06-28-16.715Z-codex-dual",
+        "report": {
+          "scenario": "booking_b",
+          "skills": false,
+          "skill_attempts": 0,
+          "skill_failures": 0,
+          "timings": {
+            "setup_ms": 1027,
+            "browser_ms": 311,
+            "observation_ms": 195,
+            "execution_ms": 600
+          },
+          "mode": "dual",
+          "planner_provider": "codex",
+          "passed": true,
+          "ai_verified": true,
+          "failure": null,
+          "actions": 4,
+          "duration_ms": 40362,
+          "model_duration_ms": 38015,
+          "fast_provider": "openrouter",
+          "fast_images": false,
+          "api_duration_ms": 12500,
+          "api_calls": 3,
+          "self_hosted_calls": 0,
+          "self_hosted_duration_ms": 0,
+          "codex_calls": 1,
+          "cost_usd": 0.000215292,
+          "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+          "role_calls": {
+            "s1": 3,
+            "s2": 1
+          },
+          "escalations": 0,
+          "budget": {
+            "limit": 20,
+            "charged": 0.03900775099999997,
+            "pending": 0
+          },
+          "verifier": {
+            "passed": true,
+            "kind": "booking"
+          }
+        },
+        "status": "passed",
+        "exit_code": 0,
+        "failure_category": null,
+        "measurements": {
+          "s1_usage_calls": 3,
+          "s2_usage_calls": 1,
+          "s1_ms": 12500,
+          "s2_ms": 25515,
+          "planner_tokens": {
+            "input": 18942,
+            "output": 106
+          },
+          "primitive_browser_actions_attempted": 4,
+          "completed_skill_browser_actions": 0,
+          "waits": 0,
+          "escalations": 0,
+          "selected_skills": 0,
+          "negative_progress_feedback": 0
+        },
+        "decisions": [
+          {
+            "role": "s2",
+            "model": "gpt-6-astra",
+            "action": {
+              "action": "click",
+              "ref": "r1_2",
+              "revision": 1,
+              "reason": "南楼 310 周三下午可用，容量 12 人，符合要求。",
+              "plan": "选择南楼 310，填写许川，核对确认弹窗后预约，验证 PASS。",
+              "text_values": [
+                "许川"
+              ]
+            },
+            "timestamp": "2026-09-26T06:28:43.639Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "fill",
+              "ref": "r1_4",
+              "revision": 1,
+              "text": "许川",
+              "reason": "Fill 申请人"
+            },
+            "choice": "fill_3_0",
+            "confidence": 0.9,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:28:50.851Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "click",
+              "ref": "r1_5",
+              "revision": 1,
+              "reason": "Click 预约并核对"
+            },
+            "choice": "click_4",
+            "confidence": 0.9,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:28:55.798Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "click",
+              "ref": "r1_7",
+              "revision": 1,
+              "reason": "Click 确认保存"
+            },
+            "choice": "click_1",
+            "confidence": 0.99,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:28:56.704Z"
+          }
+        ],
+        "skill_results": []
+      },
+      {
+        "repeat": 1,
+        "scenario": "settings_b",
+        "mode": "dual",
+        "skills": false,
+        "run": "2026-09-26T06-28-57.308Z-codex-dual",
+        "report": {
+          "scenario": "settings_b",
+          "skills": false,
+          "skill_attempts": 0,
+          "skill_failures": 0,
+          "timings": {
+            "setup_ms": 2945,
+            "browser_ms": 313,
+            "observation_ms": 165,
+            "execution_ms": 456
+          },
+          "mode": "dual",
+          "planner_provider": "codex",
+          "passed": false,
+          "ai_verified": false,
+          "failure": "The operation was aborted due to timeout",
+          "actions": 3,
+          "duration_ms": 138403,
+          "model_duration_ms": 89315,
+          "fast_provider": "openrouter",
+          "fast_images": false,
+          "api_duration_ms": 29705,
+          "api_calls": 2,
+          "self_hosted_calls": 0,
+          "self_hosted_duration_ms": 0,
+          "codex_calls": 1,
+          "cost_usd": 0.0001428,
+          "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+          "role_calls": {
+            "s1": 2,
+            "s2": 1
+          },
+          "escalations": 0,
+          "budget": {
+            "limit": 20,
+            "charged": 0.03915055099999997,
+            "pending": 0.001344
+          },
+          "verifier": null
+        },
+        "status": "failed",
+        "exit_code": 1,
+        "failure_category": "task_or_runtime",
+        "measurements": {
+          "s1_usage_calls": 2,
+          "s2_usage_calls": 1,
+          "s1_ms": 29705,
+          "s2_ms": 59610,
+          "planner_tokens": {
+            "input": 18575,
+            "output": 88
+          },
+          "primitive_browser_actions_attempted": 3,
+          "completed_skill_browser_actions": 0,
+          "waits": 0,
+          "escalations": 0,
+          "selected_skills": 0,
+          "negative_progress_feedback": 0
+        },
+        "decisions": [
+          {
+            "role": "s2",
+            "model": "gpt-6-astra",
+            "action": {
+              "action": "click",
+              "ref": "r1_2",
+              "revision": 1,
+              "reason": "打开通知设置。",
+              "plan": "关闭邮件通知、开启短信通知，选择伦敦时区，保存并确认至 PASS。",
+              "text_values": []
+            },
+            "timestamp": "2026-09-26T06:30:00.247Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "select",
+              "ref": "r1_5",
+              "revision": 1,
+              "value": "伦敦",
+              "reason": "Set 时区=伦敦"
+            },
+            "choice": "select_4_2",
+            "confidence": 0.5700000000000001,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:30:02.413Z"
+          },
+          {
+            "role": "s1",
+            "model": "typesafe/jev-1.13-20260917",
+            "action": {
+              "action": "click",
+              "ref": "r1_3",
+              "revision": 1,
+              "reason": "Click 邮件通知"
+            },
+            "choice": "click_2",
+            "confidence": 0.57,
+            "confidence_metric": "selected-probability",
+            "timestamp": "2026-09-26T06:30:30.340Z"
+          }
+        ],
+        "skill_results": []
+      },
+      {
+        "repeat": 1,
+        "scenario": "settings_b",
+        "mode": "dual",
+        "skills": true,
+        "status": "skipped",
+        "reason": "Unsettled API request; no additional paid calls"
+      }
+    ],
+    "limits": [
+      "Bundled synthetic pages, DOM-assisted; not general desktop or unseen websites.",
+      "Every attempted failure stays in the success denominator; skipped and unrun are separate.",
+      "Speed ratio uses both-success pairs; success rates must be read alongside it.",
+      "S1/S2 counts are responses with usage records; unknown-cost failures may have no usage event.",
+      "Planner invocation includes fresh Codex process and transport overhead; not pure model inference time.",
+      "24 outer decisions per run; skill internal actions are counted separately.",
+      "Skill-internal observations are part of execution_ms, so observation_ms is not directly comparable across groups."
+    ]
+  },
+  "later_attempts": [
+    {
+      "run": "2026-09-26T06-36-26.653Z-codex-dual",
+      "report": {
+        "scenario": "settings_b",
+        "skills": true,
+        "skill_attempts": 0,
+        "skill_failures": 0,
+        "timings": {
+          "setup_ms": 1673,
+          "browser_ms": 317,
+          "observation_ms": 105,
+          "execution_ms": 627
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": false,
+        "ai_verified": false,
+        "failure": "OpenRouter HTTP 403; no retry, reservation retained",
+        "actions": 1,
+        "duration_ms": 36722,
+        "model_duration_ms": 32338,
+        "fast_provider": "openrouter",
+        "fast_images": false,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "self_hosted_calls": 0,
+        "self_hosted_duration_ms": 0,
+        "codex_calls": 1,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription and self-hosted usage are not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 1
+        },
+        "escalations": 0,
+        "budget": {
+          "limit": 20,
+          "charged": 0.03927571099999998,
+          "pending": 0.001344
+        },
+        "verifier": null
+      },
+      "scope": "Separate process-proxy diagnostic run; not pooled with the earlier matched pairs."
+    }
+  ],
+  "request_only_diagnostics": [
+    {
+      "status": 400,
+      "result": "A diagnostic request omitted required instructions; corrected in a subsequent diagnostic. No browser success is claimed."
+    },
+    {
+      "status": 200,
+      "result": "Same-route request with the prior settings task and binding; no skill execution.",
+      "answers": {
+        "next": {
+          "type": "choice",
+          "choice": "use_skill",
+          "probabilities": {
+            "escalate": 0.07,
+            "click_0": 0,
+            "done": 0,
+            "use_skill": 0.45999999999999996,
+            "click_1": 0.47
+          },
+          "confidence": 0.33
+        }
+      },
+      "usage": {
+        "input_tokens": 1150,
+        "output_tokens": 60,
+        "cost": 0.0000483
+      },
+      "controller_implication": "Selected use_skill probability 0.46 is below unchanged 0.55 threshold, so the controller would escalate. This is not a completed task."
+    }
+  ],
+  "accounting": {
+    "authorized_ceiling_usd": 20,
+    "charged_before_new_runs": 0.03813591499999997,
+    "charged_after": 0.03932401099999998,
+    "new_recorded_usd": 0.0011880960000000065,
+    "historical_reconciliation_usd": 0.00011256000000001154,
+    "pilot_aggregate_reconciliation_usd": 0.0001251600000000061,
+    "pending_usd": 0,
+    "scope": "OpenRouter only; includes conservative attribution of unmatched aggregate provider usage. Subscription planner use is separate. No key or account identifiers published."
+  },
+  "current_local_changes": {
+    "source_sha256": {
+      "fast-decider.mjs": "e42ad37bf6daefac5fe3c803a2a88a5b3638efe3c539851b19434a477b3b67e6",
+      "skills.mjs": "8c1a88e91164e6aee585115b80bc8e50084bf9f441ea12f4a47e7fc463893a1e",
+      "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736",
+      "scripts/benchmark.mjs": "1076ba5170830a159f96ff7938a668684f5b5f20c84903cce893c68c9e84a57f",
+      "test/benchmark.test.mjs": "aa06b0a6e11bd4362db3db70287af97f348505316a12eb1a66e8f10393073356",
+      "test/reconciliation.test.mjs": "beb0e51c7289068b60098f5f5b295dc871401fb3ea660d52544310c765456341"
+    },
+    "live_validation": "Latest workflow-start wording and optional batch reconciliation have only local validation; they were added after the paired pilot."
+  },
+  "local_validation": {
+    "interface_and_accounting_tests": {
+      "passed": 55,
+      "failed": 0
+    },
+    "targeted_browser_tests": {
+      "passed": 2,
+      "failed": 0
+    },
+    "audit": {
+      "passed": 33,
+      "failed": 0
+    },
+    "paid_calls_in_tests": 0
+  },
+  "remaining_plan": {
+    "status": "unrun; wait for user network-restored notification",
+    "cases": [
+      "tickets_a",
+      "tickets_b",
+      "booking_a",
+      "booking_b",
+      "settings_a",
+      "settings_b"
+    ],
+    "repeats": 3,
+    "groups": [
+      "dual without skills",
+      "dual with skills"
+    ],
+    "planned_runs": 36,
+    "primary_comparison": "Same frozen code, models, endpoint path and browser; AB/BA order; every started failure retained."
+  }
+}

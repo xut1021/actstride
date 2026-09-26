@@ -33,6 +33,7 @@ export function skillCatalog(ui) {
 export function skillCandidate(ui, binding) {
   if (!binding || !skillCatalog(ui).some(d => d.id === binding.id)) return null;
   validateBinding(binding);
-  return { description: `Execute verified local workflow ${binding.id} with ${JSON.stringify(binding.params)}. Checks each step and returns to planner on mismatch.`,
+  const definition = definitions.find(d => d.id === binding.id);
+  return { description: `Complete the task using workflow ${binding.id}: ${definition.description} Bound task parameters: ${JSON.stringify(binding.params)}. Checks each step and returns to planner on mismatch.`,
     action: { action: 'skill', skill: structuredClone(binding), reason: `Use ${binding.id}` } };
 }
