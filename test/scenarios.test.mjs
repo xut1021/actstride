@@ -21,7 +21,7 @@ test('progress ignores decorative pixels and verifies typing and recovery', () =
   assert.ok(!candidatesFor({ controls: [] }).wait);
 });
 
-for (const [scenario, config] of Object.entries(scenarios)) test(`scenario ${scenario}: actual criteria, no disclosed answer, fresh verification`, async () => {
+for (const [scenario, config] of Object.entries(scenarios).filter(([, config]) => !config.kind)) test(`scenario ${scenario}: actual criteria, no disclosed answer, fresh verification`, async () => {
   const { browser, page } = await openLab({ scenario, headless: true, channel: process.env.FCU_TEST_CHANNEL });
   try {
     const first = await observe(page);

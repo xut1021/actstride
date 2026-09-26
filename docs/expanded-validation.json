@@ -1,0 +1,3020 @@
+{
+  "started": "2026-09-26T02:55:13.393Z",
+  "design": "Six cases, two modes, alternating mode order, one attempt per cell, 24 steps maximum. Same fresh-session planner in both modes.",
+  "sources": {
+    "browser.mjs": "df2a766aeb71165c5a643d506568a42d7c5447c15eb640285bd8b74fb378cd79",
+    "controller.mjs": "29d38bf191257cc08565c2378f5e8348fb2d6e4e79acb8a4cd5d81cec0e97dda",
+    "candidates.mjs": "38f16572a4d2313a15a88cce13001b3cf606242d24e3e57cf164b05e7f767748",
+    "codex-planner.mjs": "d7ceafcf08511a4fd7c92c81968dac460829b44aa6d31ed9694c26eeb2c0454e",
+    "extended.html": "9a411a8aad8cae6d3bc44a761fdae41590aa324f684467a1bb50dc4f59dc2612",
+    "scenarios.mjs": "229b8116a4277518417fe33b96727774ff82faffd7431af2905878d07be4c2c7",
+    "progress.mjs": "a2d5b95c0a3d2150c1336f38e8a84e8194479d03624b8ae82c510370fd50e8d7",
+    "cli.mjs": "229cfbfd5bff0937ebbb34f67045441e3a1d6e8d6c4ea0cda2dd2f51afcbb63e"
+  },
+  "cells": [
+    {
+      "scenario": "tickets_a",
+      "mode": "dual",
+      "run": "2026-09-26T02-55-13.633Z-codex-dual",
+      "report": {
+        "scenario": "tickets_a",
+        "timings": {
+          "setup_ms": 1279,
+          "browser_ms": 337,
+          "observation_ms": 357,
+          "execution_ms": 1072
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 8,
+        "duration_ms": 83003,
+        "model_duration_ms": 79741,
+        "api_duration_ms": 8752,
+        "api_calls": 6,
+        "codex_calls": 2,
+        "cost_usd": 0.0004861499999999999,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 6,
+          "s2": 2
+        },
+        "escalations": 1,
+        "budget": {
+          "limit": 5,
+          "charged": 0.03734068699999996,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "kind": "tickets"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "tickets_a",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:55:14.911Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 25981,
+          "cost": null,
+          "input_tokens": 18439,
+          "output_tokens": 78,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 361,
+            "turn.started": 378,
+            "item.completed": 22046,
+            "turn.completed": 22084,
+            "process_closed": 25970
+          },
+          "payload_bytes": 1154,
+          "image_bytes": 34318,
+          "timestamp": "2026-09-26T02:55:41.313Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 786,
+            "y": 693,
+            "reason": "T-19 是研发部门的紧急工单。",
+            "plan": "打开 T-19，将负责人设为周宁，确认分派并检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:55:41.314Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:55:41.482Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 2641,
+          "cost": 0.000066612,
+          "input_tokens": 1586,
+          "output_tokens": 97,
+          "timestamp": "2026-09-26T02:55:44.126Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 249,
+            "y": 847,
+            "reason": "Click 负责人\n请选择\n林禾\n周宁\n陈青"
+          },
+          "choice": "click_4",
+          "confidence": 0.88,
+          "timestamp": "2026-09-26T02:55:44.126Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:55:44.323Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1019,
+          "cost": 0.000089838,
+          "input_tokens": 2139,
+          "output_tokens": 143,
+          "timestamp": "2026-09-26T02:55:45.344Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 负责人\n请选择\n林禾\n周宁\n陈青"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.69,
+          "timestamp": "2026-09-26T02:55:45.344Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:55:45.529Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 2068,
+          "cost": 0.000093156,
+          "input_tokens": 2218,
+          "output_tokens": 143,
+          "timestamp": "2026-09-26T02:55:47.599Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 负责人\n请选择\n林禾\n周宁\n陈青"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.65,
+          "timestamp": "2026-09-26T02:55:47.600Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:55:47.764Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 997,
+          "cost": 0.000096474,
+          "input_tokens": 2297,
+          "output_tokens": 141,
+          "timestamp": "2026-09-26T02:55:48.763Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.42,
+          "timestamp": "2026-09-26T02:55:48.763Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:55:48.936Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 45008,
+          "cost": null,
+          "input_tokens": 18838,
+          "output_tokens": 80,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 369,
+            "turn.started": 387,
+            "item.completed": 24607,
+            "turn.completed": 24962,
+            "process_closed": 44999
+          },
+          "payload_bytes": 2573,
+          "image_bytes": 43495,
+          "timestamp": "2026-09-26T02:56:33.945Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "下拉菜单已高亮周宁，按 Enter 确认选择。",
+            "plan": "确认负责人为周宁，点击分派工单，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:56:33.945Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:56:34.095Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1433,
+          "cost": 0.000095592,
+          "input_tokens": 2276,
+          "output_tokens": 140,
+          "timestamp": "2026-09-26T02:56:35.530Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 196,
+            "y": 918,
+            "reason": "Click 分派工单"
+          },
+          "choice": "click_5",
+          "confidence": 0.97,
+          "timestamp": "2026-09-26T02:56:35.530Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:56:35.690Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 594,
+          "cost": 0.000044478,
+          "input_tokens": 1059,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T02:56:36.286Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "Click 确认保存"
+          },
+          "choice": "click_1",
+          "confidence": 0.59,
+          "timestamp": "2026-09-26T02:56:36.286Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:56:36.444Z"
+        }
+      ],
+      "events_sha256": "6b0bf71362c6c524c6565d7c37e4c4f3a8daa0ae9a81f6769e73df90a73a3419",
+      "planner_input_tokens": 37277,
+      "planner_event_window_ms": 46281,
+      "planner_outside_event_window_ms": 24708
+    },
+    {
+      "scenario": "tickets_a",
+      "mode": "s2-only",
+      "run": "2026-09-26T02-56-36.885Z-codex-s2-only",
+      "report": {
+        "scenario": "tickets_a",
+        "timings": {
+          "setup_ms": 130,
+          "browser_ms": 308,
+          "observation_ms": 305,
+          "execution_ms": 940
+        },
+        "mode": "s2-only",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 7,
+        "duration_ms": 164596,
+        "model_duration_ms": 162711,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 7,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 7
+        },
+        "escalations": 0,
+        "verifier": {
+          "passed": true,
+          "kind": "tickets"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "tickets_a",
+          "mode": "s2-only",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {},
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:56:37.014Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 33647,
+          "cost": null,
+          "input_tokens": 18442,
+          "output_tokens": 78,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 341,
+            "turn.started": 358,
+            "item.completed": 22396,
+            "turn.completed": 22669,
+            "process_closed": 33637
+          },
+          "payload_bytes": 1154,
+          "image_bytes": 34318,
+          "timestamp": "2026-09-26T02:57:11.050Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 786,
+            "y": 693,
+            "reason": "T-19 是研发部门的紧急工单。",
+            "plan": "打开 T-19，将负责人设为周宁并确认分派，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:57:11.051Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:57:11.208Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16996,
+          "cost": null,
+          "input_tokens": 18670,
+          "output_tokens": 79,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 341,
+            "turn.started": 355,
+            "item.completed": 13510,
+            "turn.completed": 13926,
+            "process_closed": 16988
+          },
+          "payload_bytes": 1937,
+          "image_bytes": 42841,
+          "timestamp": "2026-09-26T02:57:28.205Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 249,
+            "y": 847,
+            "reason": "T-19 已打开，点击负责人下拉框。",
+            "plan": "用方向键选择周宁并按 Enter，点击分派工单，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:57:28.206Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:57:28.395Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 22581,
+          "cost": null,
+          "input_tokens": 18821,
+          "output_tokens": 81,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 321,
+            "turn.started": 338,
+            "item.completed": 17107,
+            "turn.completed": 17325,
+            "process_closed": 22572
+          },
+          "payload_bytes": 2479,
+          "image_bytes": 43990,
+          "timestamp": "2026-09-26T02:57:50.977Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "负责人菜单已展开，先向下移至林禾。",
+            "plan": "再向下选择周宁并按 Enter，点击分派工单，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:57:50.977Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:57:51.157Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 19614,
+          "cost": null,
+          "input_tokens": 18892,
+          "output_tokens": 79,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 315,
+            "turn.started": 331,
+            "item.completed": 12759,
+            "turn.completed": 12916,
+            "process_closed": 19605
+          },
+          "payload_bytes": 2747,
+          "image_bytes": 43858,
+          "timestamp": "2026-09-26T02:58:10.772Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "菜单当前选中林禾，向下移至周宁。",
+            "plan": "选择周宁后按 Enter，点击分派工单，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:58:10.772Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T02:58:10.932Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 19988,
+          "cost": null,
+          "input_tokens": 18958,
+          "output_tokens": 78,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 314,
+            "turn.started": 331,
+            "item.completed": 14845,
+            "turn.completed": 14939,
+            "process_closed": 19979
+          },
+          "payload_bytes": 2997,
+          "image_bytes": 43495,
+          "timestamp": "2026-09-26T02:58:30.921Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "下拉菜单已高亮周宁，按 Enter 确认选择。",
+            "plan": "确认周宁，点击分派工单，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:58:30.922Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:58:31.085Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 35798,
+          "cost": null,
+          "input_tokens": 18957,
+          "output_tokens": 79,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 316,
+            "turn.started": 330,
+            "item.completed": 24989,
+            "turn.completed": 25130,
+            "process_closed": 35791
+          },
+          "payload_bytes": 2990,
+          "image_bytes": 42426,
+          "timestamp": "2026-09-26T02:59:06.884Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 196,
+            "y": 918,
+            "reason": "研发紧急工单 T-19 已打开，负责人已选为周宁，确认分派。",
+            "plan": "点击分派工单，检查 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:59:06.885Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:59:07.049Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 14087,
+          "cost": null,
+          "input_tokens": 18520,
+          "output_tokens": 73,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 347,
+            "turn.started": 359,
+            "item.completed": 10824,
+            "turn.completed": 10892,
+            "process_closed": 14079
+          },
+          "payload_bytes": 1619,
+          "image_bytes": 46379,
+          "timestamp": "2026-09-26T02:59:21.137Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "确认弹窗显示 T-19 分派给周宁，与任务一致。",
+            "plan": "点击确认保存，检查是否出现 PASS。",
+            "text_values": [
+              "周宁"
+            ]
+          },
+          "timestamp": "2026-09-26T02:59:21.137Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:59:21.295Z"
+        }
+      ],
+      "events_sha256": "2de58ab0d32c6199a8dd21ad5c5671e2e986908b6a366d86dd2752de20d0bdc9",
+      "planner_input_tokens": 131260,
+      "planner_event_window_ms": 115395,
+      "planner_outside_event_window_ms": 47316
+    },
+    {
+      "scenario": "tickets_b",
+      "mode": "s2-only",
+      "run": "2026-09-26T02-59-21.716Z-codex-s2-only",
+      "report": {
+        "scenario": "tickets_b",
+        "timings": {
+          "setup_ms": 132,
+          "browser_ms": 319,
+          "observation_ms": 267,
+          "execution_ms": 807
+        },
+        "mode": "s2-only",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 6,
+        "duration_ms": 141720,
+        "model_duration_ms": 139982,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 6,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 6
+        },
+        "escalations": 0,
+        "verifier": {
+          "passed": true,
+          "kind": "tickets"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "tickets_b",
+          "mode": "s2-only",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {},
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T02:59:21.847Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 23126,
+          "cost": null,
+          "input_tokens": 18442,
+          "output_tokens": 78,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 372,
+            "turn.started": 391,
+            "item.completed": 18682,
+            "turn.completed": 18682,
+            "process_closed": 23115
+          },
+          "payload_bytes": 1154,
+          "image_bytes": 34385,
+          "timestamp": "2026-09-26T02:59:45.359Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 786,
+            "y": 525,
+            "reason": "T-28 是财务部门的普通工单。",
+            "plan": "打开 T-28，将负责人设为林禾，确认分派并检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T02:59:45.359Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T02:59:45.519Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 26444,
+          "cost": null,
+          "input_tokens": 18669,
+          "output_tokens": 79,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 322,
+            "turn.started": 338,
+            "item.completed": 19285,
+            "turn.completed": 19285,
+            "process_closed": 26435
+          },
+          "payload_bytes": 1937,
+          "image_bytes": 42690,
+          "timestamp": "2026-09-26T03:00:11.964Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 249,
+            "y": 847,
+            "reason": "T-28 已打开，点击负责人下拉框。",
+            "plan": "用方向键选择林禾并回车，点击分派工单，检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:00:11.964Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:00:12.158Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 15419,
+          "cost": null,
+          "input_tokens": 18820,
+          "output_tokens": 76,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 356,
+            "turn.started": 373,
+            "item.completed": 10628,
+            "turn.completed": 10929,
+            "process_closed": 15410
+          },
+          "payload_bytes": 2473,
+          "image_bytes": 43523,
+          "timestamp": "2026-09-26T03:00:27.578Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "负责人菜单已展开，向下选择林禾。",
+            "plan": "选择林禾后按 Enter，点击分派工单并检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:00:27.578Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T03:00:27.743Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 24771,
+          "cost": null,
+          "input_tokens": 18883,
+          "output_tokens": 77,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 329,
+            "turn.started": 344,
+            "item.completed": 21045,
+            "turn.completed": 21115,
+            "process_closed": 24762
+          },
+          "payload_bytes": 2723,
+          "image_bytes": 43388,
+          "timestamp": "2026-09-26T03:00:52.515Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "林禾已高亮，按 Enter 确认选择。",
+            "plan": "确认负责人为林禾，点击分派工单并检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:00:52.515Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:00:52.675Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 26168,
+          "cost": null,
+          "input_tokens": 18955,
+          "output_tokens": 81,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 361,
+            "turn.started": 380,
+            "item.completed": 20645,
+            "turn.completed": 21005,
+            "process_closed": 26159
+          },
+          "payload_bytes": 2985,
+          "image_bytes": 42593,
+          "timestamp": "2026-09-26T03:01:18.844Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 196,
+            "y": 918,
+            "reason": "财务普通工单 T-28 已打开，负责人已为林禾，点击确认分派。",
+            "plan": "点击分派工单，检查是否显示 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:01:18.844Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:01:19.014Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 24054,
+          "cost": null,
+          "input_tokens": 18522,
+          "output_tokens": 72,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 372,
+            "turn.started": 391,
+            "item.completed": 18676,
+            "turn.completed": 18738,
+            "process_closed": 24045
+          },
+          "payload_bytes": 1639,
+          "image_bytes": 46938,
+          "timestamp": "2026-09-26T03:01:43.068Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "确认框显示 T-28 分派给林禾，与任务一致。",
+            "plan": "点击确认保存，等待并检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:01:43.068Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:01:43.232Z"
+        }
+      ],
+      "events_sha256": "01a2e3fbb3731c23339b9fff5343e946690ec8e017baae9bc04f8c96040ee296",
+      "planner_input_tokens": 112291,
+      "planner_event_window_ms": 107537,
+      "planner_outside_event_window_ms": 32445
+    },
+    {
+      "scenario": "tickets_b",
+      "mode": "dual",
+      "run": "2026-09-26T03-01-43.666Z-codex-dual",
+      "report": {
+        "scenario": "tickets_b",
+        "timings": {
+          "setup_ms": 1040,
+          "browser_ms": 331,
+          "observation_ms": 306,
+          "execution_ms": 926
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 7,
+        "duration_ms": 63569,
+        "model_duration_ms": 60740,
+        "api_duration_ms": 7047,
+        "api_calls": 5,
+        "codex_calls": 2,
+        "cost_usd": 0.00038980199999999997,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 5,
+          "s2": 2
+        },
+        "escalations": 1,
+        "budget": {
+          "limit": 5,
+          "charged": 0.037730488999999964,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "kind": "tickets"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "tickets_b",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:01:44.707Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 24542,
+          "cost": null,
+          "input_tokens": 18439,
+          "output_tokens": 78,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 360,
+            "turn.started": 377,
+            "item.completed": 12189,
+            "turn.completed": 12291,
+            "process_closed": 24532
+          },
+          "payload_bytes": 1154,
+          "image_bytes": 34385,
+          "timestamp": "2026-09-26T03:02:09.643Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 786,
+            "y": 525,
+            "reason": "T-28 是财务部门的普通工单。",
+            "plan": "打开 T-28，将负责人设为林禾，确认分派并检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:02:09.644Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:09.814Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 3385,
+          "cost": 0.000066612,
+          "input_tokens": 1586,
+          "output_tokens": 97,
+          "timestamp": "2026-09-26T03:02:13.202Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 249,
+            "y": 847,
+            "reason": "Click 负责人\n请选择\n林禾\n周宁\n陈青"
+          },
+          "choice": "click_4",
+          "confidence": 0.92,
+          "timestamp": "2026-09-26T03:02:13.202Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:13.380Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 612,
+          "cost": 0.000089838,
+          "input_tokens": 2139,
+          "output_tokens": 143,
+          "timestamp": "2026-09-26T03:02:13.993Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "Operate 负责人\n请选择\n林禾\n周宁\n陈青"
+          },
+          "choice": "key_ArrowDown",
+          "confidence": 0.57,
+          "timestamp": "2026-09-26T03:02:13.993Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:14.170Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 610,
+          "cost": 0.000093156,
+          "input_tokens": 2218,
+          "output_tokens": 141,
+          "timestamp": "2026-09-26T03:02:14.781Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "escalate",
+            "reason": "Jev confidence below 0.55"
+          },
+          "choice": "key_Enter",
+          "confidence": 0.45,
+          "timestamp": "2026-09-26T03:02:14.781Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:14.947Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 29151,
+          "cost": null,
+          "input_tokens": 18866,
+          "output_tokens": 80,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 340,
+            "turn.started": 358,
+            "item.completed": 25749,
+            "turn.completed": 25915,
+            "process_closed": 29142
+          },
+          "payload_bytes": 2664,
+          "image_bytes": 43388,
+          "timestamp": "2026-09-26T03:02:44.099Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "下拉菜单已高亮林禾，按 Enter 确认选择。",
+            "plan": "确认负责人为林禾，点击分派工单并检查 PASS。",
+            "text_values": [
+              "林禾"
+            ]
+          },
+          "timestamp": "2026-09-26T03:02:44.099Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:44.257Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1183,
+          "cost": 0.000095718,
+          "input_tokens": 2279,
+          "output_tokens": 140,
+          "timestamp": "2026-09-26T03:02:45.442Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 196,
+            "y": 918,
+            "reason": "Click 分派工单"
+          },
+          "choice": "click_5",
+          "confidence": 0.92,
+          "timestamp": "2026-09-26T03:02:45.442Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:45.612Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1257,
+          "cost": 0.000044478,
+          "input_tokens": 1059,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T03:02:46.871Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "Click 确认保存"
+          },
+          "choice": "click_1",
+          "confidence": 0.58,
+          "timestamp": "2026-09-26T03:02:46.872Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:02:47.029Z"
+        }
+      ],
+      "events_sha256": "e6e8f76234e6f71d94d8c15905923df121a6e647dd6b3feb188b23f62b89736e",
+      "planner_input_tokens": 37305,
+      "planner_event_window_ms": 37471,
+      "planner_outside_event_window_ms": 16222
+    },
+    {
+      "scenario": "booking_a",
+      "mode": "dual",
+      "run": "2026-09-26T03-02-47.502Z-codex-dual",
+      "report": {
+        "scenario": "booking_a",
+        "timings": {
+          "setup_ms": 1057,
+          "browser_ms": 371,
+          "observation_ms": 291,
+          "execution_ms": 791
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 6,
+        "duration_ms": 25007,
+        "model_duration_ms": 22271,
+        "api_duration_ms": 3798,
+        "api_calls": 5,
+        "codex_calls": 1,
+        "cost_usd": 0.00029286599999999997,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 5,
+          "s2": 1
+        },
+        "escalations": 0,
+        "budget": {
+          "limit": 5,
+          "charged": 0.03802335499999996,
+          "pending": 0
+        },
+        "verifier": {
+          "passed": true,
+          "kind": "booking"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "booking_a",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:02:48.560Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 18473,
+          "cost": null,
+          "input_tokens": 18454,
+          "output_tokens": 89,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 426,
+            "turn.started": 446,
+            "item.completed": 14990,
+            "turn.completed": 15035,
+            "process_closed": 18457
+          },
+          "payload_bytes": 1258,
+          "image_bytes": 44267,
+          "timestamp": "2026-09-26T03:03:07.501Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 241,
+            "y": 781,
+            "reason": "北楼 202 周二上午可用，容量 8 人，符合要求。",
+            "plan": "选择北楼 202，填写申请人陈青，核对确认弹窗后预约，检查 PASS。",
+            "text_values": [
+              "陈青"
+            ]
+          },
+          "timestamp": "2026-09-26T03:03:07.502Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:07.664Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 1328,
+          "cost": 0.00005481,
+          "input_tokens": 1305,
+          "output_tokens": 79,
+          "timestamp": "2026-09-26T03:03:08.995Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 311,
+            "y": 927,
+            "reason": "Click 申请人"
+          },
+          "choice": "click_3",
+          "confidence": 0.93,
+          "timestamp": "2026-09-26T03:03:08.995Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:09.162Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 613,
+          "cost": 0.000061278,
+          "input_tokens": 1459,
+          "output_tokens": 88,
+          "timestamp": "2026-09-26T03:03:09.777Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "type",
+            "text": "陈青",
+            "reason": "Fill 申请人"
+          },
+          "choice": "type_0",
+          "confidence": 0.98,
+          "timestamp": "2026-09-26T03:03:09.777Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:09.939Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 633,
+          "cost": 0.000063042,
+          "input_tokens": 1501,
+          "output_tokens": 78,
+          "timestamp": "2026-09-26T03:03:10.574Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "scroll",
+            "x": 1200,
+            "y": 800,
+            "dy": 480,
+            "reason": "Scroll down"
+          },
+          "choice": "scroll_down",
+          "confidence": 0.74,
+          "timestamp": "2026-09-26T03:03:10.574Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:10.743Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 616,
+          "cost": 0.000069846,
+          "input_tokens": 1663,
+          "output_tokens": 88,
+          "timestamp": "2026-09-26T03:03:11.362Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 205,
+            "y": 820,
+            "reason": "Click 预约并核对"
+          },
+          "choice": "click_4",
+          "confidence": 0.99,
+          "timestamp": "2026-09-26T03:03:11.362Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:11.532Z"
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "elapsed_ms": 608,
+          "cost": 0.00004389,
+          "input_tokens": 1045,
+          "output_tokens": 61,
+          "timestamp": "2026-09-26T03:03:12.142Z"
+        },
+        {
+          "event": "decision",
+          "role": "s1",
+          "model": "typesafe/jev-1.13",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "Click 确认保存"
+          },
+          "choice": "click_1",
+          "confidence": 0.91,
+          "timestamp": "2026-09-26T03:03:12.142Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:12.305Z"
+        }
+      ],
+      "events_sha256": "e4d502490d5846bdf6707994a28df87bd36ba15f517705e096ce6bdbe88ddb41",
+      "planner_input_tokens": 18454,
+      "planner_event_window_ms": 14589,
+      "planner_outside_event_window_ms": 3884
+    },
+    {
+      "scenario": "booking_a",
+      "mode": "s2-only",
+      "run": "2026-09-26T03-03-12.772Z-codex-s2-only",
+      "report": {
+        "scenario": "booking_a",
+        "timings": {
+          "setup_ms": 146,
+          "browser_ms": 358,
+          "observation_ms": 175,
+          "execution_ms": 388
+        },
+        "mode": "s2-only",
+        "planner_provider": "codex",
+        "passed": false,
+        "ai_verified": false,
+        "failure": "Coordinates outside current screenshot",
+        "actions": 3,
+        "duration_ms": 105953,
+        "model_duration_ms": 104644,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 4,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 4
+        },
+        "escalations": 0,
+        "verifier": null
+      },
+      "status": "failed",
+      "exit_code": 1,
+      "failure_category": "task_or_runtime",
+      "events": [
+        {
+          "event": "start",
+          "scenario": "booking_a",
+          "mode": "s2-only",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {},
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:03:12.918Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 31516,
+          "cost": null,
+          "input_tokens": 18457,
+          "output_tokens": 95,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 379,
+            "turn.started": 396,
+            "item.completed": 21476,
+            "turn.completed": 21476,
+            "process_closed": 31505
+          },
+          "payload_bytes": 1258,
+          "image_bytes": 44267,
+          "timestamp": "2026-09-26T03:03:44.872Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 241,
+            "y": 781,
+            "reason": "北楼 202 周二上午可用，容量 8 人，满足至少 6 人要求。",
+            "plan": "选择北楼 202，填写申请人陈青，提交并核对确认弹窗后预约，检查 PASS。",
+            "text_values": [
+              "陈青"
+            ]
+          },
+          "timestamp": "2026-09-26T03:03:44.873Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:03:45.040Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 27093,
+          "cost": null,
+          "input_tokens": 18580,
+          "output_tokens": 79,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 371,
+            "turn.started": 390,
+            "item.completed": 23636,
+            "turn.completed": 23855,
+            "process_closed": 27082
+          },
+          "payload_bytes": 1690,
+          "image_bytes": 44176,
+          "timestamp": "2026-09-26T03:04:12.135Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 311,
+            "y": 927,
+            "reason": "已选北楼 202，点击申请人输入框。",
+            "plan": "填写陈青，提交并核对确认弹窗，确认预约后检查 PASS。",
+            "text_values": [
+              "陈青"
+            ]
+          },
+          "timestamp": "2026-09-26T03:04:12.135Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:04:12.288Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 23490,
+          "cost": null,
+          "input_tokens": 18670,
+          "output_tokens": 79,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 359,
+            "turn.started": 377,
+            "item.completed": 20414,
+            "turn.completed": 20415,
+            "process_closed": 23481
+          },
+          "payload_bytes": 2019,
+          "image_bytes": 44275,
+          "timestamp": "2026-09-26T03:04:35.780Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "type",
+            "text": "陈青",
+            "reason": "申请人输入框已聚焦，填写指定姓名。",
+            "plan": "填写陈青，提交并核对确认弹窗，确认预约后检查 PASS。",
+            "text_values": [
+              "陈青"
+            ]
+          },
+          "timestamp": "2026-09-26T03:04:35.780Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:04:35.946Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 22545,
+          "cost": null,
+          "input_tokens": 18745,
+          "output_tokens": 93,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 484,
+            "turn.started": 504,
+            "item.completed": 17802,
+            "turn.completed": 17803,
+            "process_closed": 22534
+          },
+          "payload_bytes": 2304,
+          "image_bytes": 44861,
+          "timestamp": "2026-09-26T03:04:58.493Z"
+        }
+      ],
+      "rejected_planner_output": {
+        "action": "scroll",
+        "x": null,
+        "y": null,
+        "dy": 450,
+        "key": null,
+        "text": null,
+        "reason": "已选正确会议室并填写陈青，向下滚动显示预约按钮。",
+        "plan": "点击预约并核对，在弹窗核实北楼 202、周二上午及陈青后确认，检查 PASS。",
+        "text_values": [
+          "陈青"
+        ]
+      },
+      "events_sha256": "6b4ec5d3e14ba57f5fe1bd4fb02518b53784a92a94656a7fc26946670b476438",
+      "planner_input_tokens": 74452,
+      "planner_event_window_ms": 81882,
+      "planner_outside_event_window_ms": 22762
+    },
+    {
+      "scenario": "booking_b",
+      "mode": "s2-only",
+      "run": "2026-09-26T03-04-59.002Z-codex-s2-only",
+      "report": {
+        "scenario": "booking_b",
+        "timings": {
+          "setup_ms": 147,
+          "browser_ms": 447,
+          "observation_ms": 208,
+          "execution_ms": 392
+        },
+        "mode": "s2-only",
+        "planner_provider": "codex",
+        "passed": false,
+        "ai_verified": false,
+        "failure": "Coordinates outside current screenshot",
+        "actions": 3,
+        "duration_ms": 72469,
+        "model_duration_ms": 71069,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 4,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 4
+        },
+        "escalations": 0,
+        "verifier": null
+      },
+      "status": "failed",
+      "exit_code": 1,
+      "failure_category": "task_or_runtime",
+      "events": [
+        {
+          "event": "start",
+          "scenario": "booking_b",
+          "mode": "s2-only",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {},
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:04:59.148Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 20924,
+          "cost": null,
+          "input_tokens": 18457,
+          "output_tokens": 91,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 493,
+            "turn.started": 512,
+            "item.completed": 15410,
+            "turn.completed": 15488,
+            "process_closed": 20911
+          },
+          "payload_bytes": 1260,
+          "image_bytes": 44268,
+          "timestamp": "2026-09-26T03:05:20.615Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 749,
+            "y": 529,
+            "reason": "南楼 310 周三下午可用，容量 12 人，符合要求。",
+            "plan": "选择南楼 310，填写申请人许川，提交并核对确认弹窗后预约，检查 PASS。",
+            "text_values": [
+              "许川"
+            ]
+          },
+          "timestamp": "2026-09-26T03:05:20.616Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:05:20.780Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 17136,
+          "cost": null,
+          "input_tokens": 18576,
+          "output_tokens": 88,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 429,
+            "turn.started": 449,
+            "item.completed": 13327,
+            "turn.completed": 13392,
+            "process_closed": 17125
+          },
+          "payload_bytes": 1681,
+          "image_bytes": 44363,
+          "timestamp": "2026-09-26T03:05:37.917Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 311,
+            "y": 927,
+            "reason": "南楼 310 已选中，点击申请人输入框。",
+            "plan": "填写许川，提交后核对弹窗中的会议室、时段及申请人，确认预约并检查 PASS。",
+            "text_values": [
+              "许川"
+            ]
+          },
+          "timestamp": "2026-09-26T03:05:37.918Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:05:38.088Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16497,
+          "cost": null,
+          "input_tokens": 18683,
+          "output_tokens": 87,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 366,
+            "turn.started": 384,
+            "item.completed": 12114,
+            "turn.completed": 12446,
+            "process_closed": 16486
+          },
+          "payload_bytes": 2074,
+          "image_bytes": 44466,
+          "timestamp": "2026-09-26T03:05:54.586Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "type",
+            "text": "许川",
+            "reason": "申请人输入框已聚焦，填写指定姓名。",
+            "plan": "填写许川，提交并核对弹窗中的会议室、时段和申请人，确认预约后检查 PASS。",
+            "text_values": [
+              "许川"
+            ]
+          },
+          "timestamp": "2026-09-26T03:05:54.587Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:05:54.761Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16512,
+          "cost": null,
+          "input_tokens": 18766,
+          "output_tokens": 90,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 397,
+            "turn.started": 414,
+            "item.completed": 12389,
+            "turn.completed": 12718,
+            "process_closed": 16502
+          },
+          "payload_bytes": 2389,
+          "image_bytes": 44875,
+          "timestamp": "2026-09-26T03:06:11.276Z"
+        }
+      ],
+      "rejected_planner_output": {
+        "action": "scroll",
+        "x": null,
+        "y": null,
+        "dy": 446,
+        "key": null,
+        "text": null,
+        "reason": "申请人已填写，向下滚动以显示预约按钮。",
+        "plan": "点击预约并核对，核实弹窗中的南楼 310、周三下午及许川，确认后检查 PASS。",
+        "text_values": [
+          "许川"
+        ]
+      },
+      "events_sha256": "78404c7a1d3da2584596dd398f575c54d967383d0773d04e620dd982f936dcf5",
+      "planner_input_tokens": 74482,
+      "planner_event_window_ms": 52285,
+      "planner_outside_event_window_ms": 18784
+    },
+    {
+      "scenario": "booking_b",
+      "mode": "dual",
+      "run": "2026-09-26T03-06-11.742Z-codex-dual",
+      "report": {
+        "scenario": "booking_b",
+        "timings": {
+          "setup_ms": 1287,
+          "browser_ms": 416,
+          "observation_ms": 118,
+          "execution_ms": 127
+        },
+        "mode": "dual",
+        "planner_provider": "codex",
+        "passed": false,
+        "ai_verified": false,
+        "failure": "fetch failed",
+        "actions": 1,
+        "duration_ms": 30375,
+        "model_duration_ms": 23181,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 1,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 1
+        },
+        "escalations": 0,
+        "budget": {
+          "limit": 5,
+          "charged": 0.03802335499999996,
+          "pending": 0.001344
+        },
+        "verifier": null
+      },
+      "status": "failed",
+      "exit_code": 1,
+      "failure_category": "transport_or_timeout",
+      "events": [
+        {
+          "event": "start",
+          "scenario": "booking_b",
+          "mode": "dual",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {
+            "s1": 0.001344
+          },
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:06:13.029Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 23181,
+          "cost": null,
+          "input_tokens": 18454,
+          "output_tokens": 91,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 405,
+            "turn.started": 422,
+            "item.completed": 13123,
+            "turn.completed": 13149,
+            "process_closed": 23170
+          },
+          "payload_bytes": 1260,
+          "image_bytes": 44268,
+          "timestamp": "2026-09-26T03:06:36.710Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 749,
+            "y": 529,
+            "reason": "南楼 310 周三下午可用，容量 12 人，符合要求。",
+            "plan": "选择南楼 310，填写申请人许川，提交并核对确认弹窗后预约，检查 PASS。",
+            "text_values": [
+              "许川"
+            ]
+          },
+          "timestamp": "2026-09-26T03:06:36.711Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:06:36.874Z"
+        }
+      ],
+      "rejected_planner_output": {
+        "action": "click",
+        "x": 749,
+        "y": 529,
+        "dy": null,
+        "key": null,
+        "text": null,
+        "reason": "南楼 310 周三下午可用，容量 12 人，符合要求。",
+        "plan": "选择南楼 310，填写申请人许川，提交并核对确认弹窗后预约，检查 PASS。",
+        "text_values": [
+          "许川"
+        ]
+      },
+      "events_sha256": "b69380457b43f5340e93726f524b078275336a48fbfe36ad391e3f785c788839",
+      "planner_input_tokens": 18454,
+      "planner_event_window_ms": 12727,
+      "planner_outside_event_window_ms": 10454
+    },
+    {
+      "scenario": "settings_a",
+      "mode": "dual",
+      "status": "skipped",
+      "reason": "Unsettled API request; no additional paid calls"
+    },
+    {
+      "scenario": "settings_a",
+      "mode": "s2-only",
+      "run": "2026-09-26T03-06-42.475Z-codex-s2-only",
+      "report": {
+        "scenario": "settings_a",
+        "timings": {
+          "setup_ms": 183,
+          "browser_ms": 435,
+          "observation_ms": 345,
+          "execution_ms": 1076
+        },
+        "mode": "s2-only",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 8,
+        "duration_ms": 145177,
+        "model_duration_ms": 142921,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 8,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 8
+        },
+        "escalations": 0,
+        "verifier": {
+          "passed": true,
+          "kind": "settings"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "settings_a",
+          "mode": "s2-only",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {},
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:06:42.657Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 21009,
+          "cost": null,
+          "input_tokens": 18270,
+          "output_tokens": 71,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 408,
+            "turn.started": 425,
+            "item.completed": 16484,
+            "turn.completed": 16773,
+            "process_closed": 20997
+          },
+          "payload_bytes": 755,
+          "image_bytes": 24509,
+          "timestamp": "2026-09-26T03:07:04.184Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 320,
+            "y": 377,
+            "reason": "打开通知设置。",
+            "plan": "开启邮件通知、关闭短信通知，选择上海时区，保存并确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:07:04.184Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:07:04.359Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 15032,
+          "cost": null,
+          "input_tokens": 18517,
+          "output_tokens": 75,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 381,
+            "turn.started": 399,
+            "item.completed": 11134,
+            "turn.completed": 11598,
+            "process_closed": 15021
+          },
+          "payload_bytes": 1702,
+          "image_bytes": 29759,
+          "timestamp": "2026-09-26T03:07:19.392Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 247,
+            "y": 450,
+            "reason": "邮件通知当前关闭，点击开启。",
+            "plan": "开启邮件通知、关闭短信通知，选择上海时区，保存并确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:07:19.393Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:07:19.547Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 20949,
+          "cost": null,
+          "input_tokens": 18586,
+          "output_tokens": 73,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 376,
+            "turn.started": 392,
+            "item.completed": 16965,
+            "turn.completed": 17207,
+            "process_closed": 20938
+          },
+          "payload_bytes": 1988,
+          "image_bytes": 29571,
+          "timestamp": "2026-09-26T03:07:40.497Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 247,
+            "y": 523,
+            "reason": "邮件通知已开启，点击关闭短信通知。",
+            "plan": "关闭短信通知，选择上海时区，保存并确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:07:40.497Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:07:40.655Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16197,
+          "cost": null,
+          "input_tokens": 18649,
+          "output_tokens": 77,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 359,
+            "turn.started": 381,
+            "item.completed": 11802,
+            "turn.completed": 11802,
+            "process_closed": 16187
+          },
+          "payload_bytes": 2241,
+          "image_bytes": 29754,
+          "timestamp": "2026-09-26T03:07:56.853Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 223,
+            "y": 594,
+            "reason": "邮件已开启、短信已关闭，打开时区选项。",
+            "plan": "用方向键选择上海并回车，保存并确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:07:56.854Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:07:57.038Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 15802,
+          "cost": null,
+          "input_tokens": 18784,
+          "output_tokens": 72,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 357,
+            "turn.started": 375,
+            "item.completed": 10779,
+            "turn.completed": 10924,
+            "process_closed": 15793
+          },
+          "payload_bytes": 2739,
+          "image_bytes": 30918,
+          "timestamp": "2026-09-26T03:08:12.841Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "时区菜单已打开，向下选择上海。",
+            "plan": "选择上海并回车，保存并确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:08:12.841Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T03:08:13.004Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16232,
+          "cost": null,
+          "input_tokens": 18778,
+          "output_tokens": 72,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 368,
+            "turn.started": 383,
+            "item.completed": 12789,
+            "turn.completed": 12789,
+            "process_closed": 16221
+          },
+          "payload_bytes": 2712,
+          "image_bytes": 30658,
+          "timestamp": "2026-09-26T03:08:29.237Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "上海已高亮，按回车确认时区选择。",
+            "plan": "确认上海时区，保存并确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:08:29.237Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:08:29.410Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 15169,
+          "cost": null,
+          "input_tokens": 18770,
+          "output_tokens": 70,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 374,
+            "turn.started": 390,
+            "item.completed": 10569,
+            "turn.completed": 10572,
+            "process_closed": 15159
+          },
+          "payload_bytes": 2669,
+          "image_bytes": 29653,
+          "timestamp": "2026-09-26T03:08:44.580Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 213,
+            "y": 665,
+            "reason": "邮件开启、短信关闭、时区上海均已正确，保存设置。",
+            "plan": "保存后确认，检查 PASS。",
+            "text_values": [
+              "上海"
+            ]
+          },
+          "timestamp": "2026-09-26T03:08:44.580Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:08:44.751Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 22531,
+          "cost": null,
+          "input_tokens": 18496,
+          "output_tokens": 66,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 358,
+            "turn.started": 379,
+            "item.completed": 15053,
+            "turn.completed": 15095,
+            "process_closed": 22521
+          },
+          "payload_bytes": 1634,
+          "image_bytes": 38804,
+          "timestamp": "2026-09-26T03:09:07.283Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "确认内容正确：邮件开启、短信关闭、时区上海。",
+            "plan": "点击确认保存，然后检查 PASS。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-26T03:09:07.283Z"
+        },
+        {
+          "event": "action_result",
+          "step": 8,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:09:07.456Z"
+        }
+      ],
+      "events_sha256": "e7c5b13d2b76577410519568e216f62f65249d40a7e1b5a7683a84721668d7f1",
+      "planner_input_tokens": 148850,
+      "planner_event_window_ms": 103636,
+      "planner_outside_event_window_ms": 39285
+    },
+    {
+      "scenario": "settings_b",
+      "mode": "s2-only",
+      "run": "2026-09-26T03-09-07.927Z-codex-s2-only",
+      "report": {
+        "scenario": "settings_b",
+        "timings": {
+          "setup_ms": 154,
+          "browser_ms": 379,
+          "observation_ms": 351,
+          "execution_ms": 938
+        },
+        "mode": "s2-only",
+        "planner_provider": "codex",
+        "passed": true,
+        "ai_verified": true,
+        "failure": null,
+        "actions": 7,
+        "duration_ms": 171044,
+        "model_duration_ms": 169002,
+        "api_duration_ms": 0,
+        "api_calls": 0,
+        "codex_calls": 7,
+        "cost_usd": 0,
+        "cost_scope": "OpenRouter only; Codex subscription usage is not priced here",
+        "role_calls": {
+          "s1": 0,
+          "s2": 7
+        },
+        "escalations": 0,
+        "verifier": {
+          "passed": true,
+          "kind": "settings"
+        }
+      },
+      "status": "passed",
+      "exit_code": 0,
+      "failure_category": null,
+      "events": [
+        {
+          "event": "start",
+          "scenario": "settings_b",
+          "mode": "s2-only",
+          "planner_provider": "codex",
+          "models": {
+            "s1": "typesafe/jev-1.13",
+            "s2": "gpt-6-astra"
+          },
+          "request_bounds_usd": {},
+          "budget_limit": 5,
+          "timestamp": "2026-09-26T03:09:08.082Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 42993,
+          "cost": null,
+          "input_tokens": 18272,
+          "output_tokens": 70,
+          "cached_input_tokens": 0,
+          "timings": {
+            "thread.started": 382,
+            "turn.started": 400,
+            "item.completed": 25699,
+            "turn.completed": 25800,
+            "process_closed": 42982
+          },
+          "payload_bytes": 755,
+          "image_bytes": 24702,
+          "timestamp": "2026-09-26T03:09:51.541Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 320,
+            "y": 377,
+            "reason": "打开通知设置。",
+            "plan": "关闭邮件通知，开启短信通知，选择伦敦时区，保存并确认，检查 PASS。",
+            "text_values": []
+          },
+          "timestamp": "2026-09-26T03:09:51.541Z"
+        },
+        {
+          "event": "action_result",
+          "step": 1,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:09:51.714Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16400,
+          "cost": null,
+          "input_tokens": 18519,
+          "output_tokens": 77,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 382,
+            "turn.started": 401,
+            "item.completed": 12607,
+            "turn.completed": 12607,
+            "process_closed": 16390
+          },
+          "payload_bytes": 1694,
+          "image_bytes": 29951,
+          "timestamp": "2026-09-26T03:10:08.116Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 223,
+            "y": 594,
+            "reason": "邮件已关闭、短信已开启；打开时区菜单选择伦敦。",
+            "plan": "选择伦敦时区，保存并确认，检查 PASS。",
+            "text_values": [
+              "伦敦"
+            ]
+          },
+          "timestamp": "2026-09-26T03:10:08.116Z"
+        },
+        {
+          "event": "action_result",
+          "step": 2,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:10:08.308Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 16860,
+          "cost": null,
+          "input_tokens": 18646,
+          "output_tokens": 77,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 358,
+            "turn.started": 379,
+            "item.completed": 12946,
+            "turn.completed": 13355,
+            "process_closed": 16850
+          },
+          "payload_bytes": 2153,
+          "image_bytes": 31299,
+          "timestamp": "2026-09-26T03:10:25.169Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "时区菜单已展开，先从纽约移至上海。",
+            "plan": "继续选择伦敦并按 Enter，保存并确认，检查 PASS。",
+            "text_values": [
+              "伦敦"
+            ]
+          },
+          "timestamp": "2026-09-26T03:10:25.170Z"
+        },
+        {
+          "event": "action_result",
+          "step": 3,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T03:10:25.340Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 24669,
+          "cost": null,
+          "input_tokens": 18715,
+          "output_tokens": 75,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 349,
+            "turn.started": 367,
+            "item.completed": 14996,
+            "turn.completed": 15074,
+            "process_closed": 24659
+          },
+          "payload_bytes": 2430,
+          "image_bytes": 31038,
+          "timestamp": "2026-09-26T03:10:50.010Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "ArrowDown",
+            "reason": "菜单当前高亮上海，向下选择伦敦。",
+            "plan": "选择伦敦后按 Enter，保存并确认，检查 PASS。",
+            "text_values": [
+              "伦敦"
+            ]
+          },
+          "timestamp": "2026-09-26T03:10:50.010Z"
+        },
+        {
+          "event": "action_result",
+          "step": 4,
+          "ok": true,
+          "changed": false,
+          "detail": "",
+          "timestamp": "2026-09-26T03:10:50.181Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 26345,
+          "cost": null,
+          "input_tokens": 18779,
+          "output_tokens": 77,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 328,
+            "turn.started": 347,
+            "item.completed": 13865,
+            "turn.completed": 14072,
+            "process_closed": 26338
+          },
+          "payload_bytes": 2680,
+          "image_bytes": 31333,
+          "timestamp": "2026-09-26T03:11:16.527Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "key",
+            "key": "Enter",
+            "reason": "伦敦已高亮，按 Enter 确认时区选择。",
+            "plan": "确认伦敦时区，保存并确认，检查 PASS。",
+            "text_values": [
+              "伦敦"
+            ]
+          },
+          "timestamp": "2026-09-26T03:11:16.528Z"
+        },
+        {
+          "event": "action_result",
+          "step": 5,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:11:16.693Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 23062,
+          "cost": null,
+          "input_tokens": 18783,
+          "output_tokens": 73,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 339,
+            "turn.started": 352,
+            "item.completed": 18732,
+            "turn.completed": 18819,
+            "process_closed": 23052
+          },
+          "payload_bytes": 2664,
+          "image_bytes": 30114,
+          "timestamp": "2026-09-26T03:11:39.756Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 213,
+            "y": 665,
+            "reason": "邮件关闭、短信开启、时区伦敦均已符合要求，保存设置。",
+            "plan": "保存后确认，检查 PASS。",
+            "text_values": [
+              "伦敦"
+            ]
+          },
+          "timestamp": "2026-09-26T03:11:39.756Z"
+        },
+        {
+          "event": "action_result",
+          "step": 6,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:11:39.926Z"
+        },
+        {
+          "event": "usage",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "billing": "codex-subscription",
+          "elapsed_ms": 18673,
+          "cost": null,
+          "input_tokens": 18505,
+          "output_tokens": 71,
+          "cached_input_tokens": 13952,
+          "timings": {
+            "thread.started": 330,
+            "turn.started": 349,
+            "item.completed": 15433,
+            "turn.completed": 15562,
+            "process_closed": 18663
+          },
+          "payload_bytes": 1638,
+          "image_bytes": 39406,
+          "timestamp": "2026-09-26T03:11:58.601Z"
+        },
+        {
+          "event": "decision",
+          "role": "s2",
+          "model": "gpt-6-astra",
+          "action": {
+            "action": "click",
+            "x": 608,
+            "y": 535,
+            "reason": "确认信息符合要求：邮件关闭、短信开启、时区伦敦。",
+            "plan": "点击确认保存，检查 PASS。",
+            "text_values": [
+              "伦敦"
+            ]
+          },
+          "timestamp": "2026-09-26T03:11:58.602Z"
+        },
+        {
+          "event": "action_result",
+          "step": 7,
+          "ok": true,
+          "changed": true,
+          "detail": "",
+          "timestamp": "2026-09-26T03:11:58.770Z"
+        }
+      ],
+      "events_sha256": "304c4ba4a539f2f6c5d509eb06a4a52ad54db79d3b712a56f7bd907481794200",
+      "planner_input_tokens": 130219,
+      "planner_event_window_ms": 112694,
+      "planner_outside_event_window_ms": 56308
+    },
+    {
+      "scenario": "settings_b",
+      "mode": "dual",
+      "status": "skipped",
+      "reason": "Unsettled API request; no additional paid calls"
+    }
+  ],
+  "finished": "2026-09-26T03:11:58.990Z",
+  "summary": {
+    "dual": {
+      "planned": 6,
+      "attempted": 4,
+      "passed": 3,
+      "skipped": 2,
+      "cost_usd": 0.0011688179999999999,
+      "codex_calls": 6
+    },
+    "s2-only": {
+      "planned": 6,
+      "attempted": 6,
+      "passed": 4,
+      "skipped": 0,
+      "cost_usd": 0,
+      "codex_calls": 36
+    }
+  },
+  "median_paired_ratio": 2.10620060031574,
+  "budget_after": {
+    "limit": 5,
+    "charged": 0.03802335499999996,
+    "pending": 0.001344
+  }
+}

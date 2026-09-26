@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Computer use · 合成工作台</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,sans-serif;color:#243447;background:#edf1f5}header{padding:20px 40px;background:#243447;color:white}main{max-width:1050px;margin:35px auto}section,article{padding:24px;background:white;border:1px solid #c8d2dd;border-radius:8px;margin:18px 0}h1{font-size:28px}button,input,select{font:inherit;padding:9px 15px;margin:6px;border:1px solid #788fa3;border-radius:5px}button{cursor:pointer;background:#24537b;color:white}label{display:block;margin:14px 0}table{width:100%;border-collapse:collapse}td,th{text-align:left;border-bottom:1px solid #ccc;padding:12px}output{display:block;min-height:32px}dialog{min-width:450px;max-width:650px;border:1px solid #788fa3;border-radius:8px;padding:24px}dialog::backdrop{background:#142b4480}.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}.cards article{margin:0}nav{display:flex;gap:12px}[aria-pressed=true]{background:#137345}
+</style>
+<header>合成工作台 · 仅本地数据</header><main><h1 id="title"></h1><section><strong>任务</strong><p id="task"></p></section><section id="workspace"></section><output id="result" aria-live="polite"></output></main>
+<dialog id="confirm"><h2>核对并确认</h2><div id="summary"></div><button id="cancel">返回修改</button><button id="approve">确认保存</button></dialog>
+<script type="application/json" id="scenario">{}</script>
+<script>
+const config=JSON.parse(document.getElementById('scenario').textContent),$=id=>document.getElementById(id);
+const tickets=[{id:'T-41',department:'研发',priority:'普通'},{id:'T-28',department:'财务',priority:'普通'},{id:'T-63',department:'财务',priority:'紧急'},{id:'T-19',department:'研发',priority:'紧急'}];
+const rooms=[{id:'北楼 201',day:'周二',period:'上午',capacity:4,free:true},{id:'南楼 310',day:'周三',period:'下午',capacity:12,free:true},{id:'北楼 202',day:'周二',period:'上午',capacity:8,free:true},{id:'南楼 311',day:'周三',period:'下午',capacity:16,free:false}];
+let selected=null,email=false,sms=true,settingsOpen=false;
+function invalidate(){window.labResult=null;$('result').textContent='';delete $('result').dataset.error}
+function fail(message){invalidate();$('result').textContent=message;$('result').dataset.error='true'}
+function showSummary(text){invalidate();$('summary').textContent=text;$('confirm').showModal()}
+$('task').textContent=config.task;
+if(config.kind==='tickets'){
+  $('title').textContent='工单分派';
+  $('workspace').innerHTML='<table><thead><tr><th>编号</th><th>部门</th><th>优先级</th><th>操作</th></tr></thead><tbody>'+tickets.map(t=>`<tr><td>${t.id}</td><td>${t.department}</td><td>${t.priority}</td><td><button data-ticket="${t.id}">打开 ${t.id}</button></td></tr>`).join('')+'</tbody></table><div id="detail"></div>';
+  document.querySelectorAll('[data-ticket]').forEach(b=>b.onclick=()=>{invalidate();selected=tickets.find(t=>t.id===b.dataset.ticket);$('detail').innerHTML=`<h2>工单 ${selected.id} · ${selected.department} · ${selected.priority}</h2><label>负责人<select id="owner"><option value="">请选择</option><option>林禾</option><option>周宁</option><option>陈青</option></select></label><button id="submit">分派工单</button>`;$('owner').onchange=invalidate;$('submit').onclick=()=>{if(!$('owner').value)return fail('请选择负责人');showSummary(`${selected.id} 分派给 ${$('owner').value}`)}});
+}else if(config.kind==='booking'){
+  $('title').textContent='会议室预约';
+  $('workspace').innerHTML='<div class="cards">'+rooms.map((r,i)=>`<article><h2>${r.id}</h2><p>${r.day} · ${r.period} · 容量 ${r.capacity} 人 · ${r.free?'可用':'已占用'}</p><button data-room="${i}" ${r.free?'':'disabled'}>选择 ${r.id}</button></article>`).join('')+'</div><p id="selected">尚未选择会议室</p><label>申请人<input id="name" autocomplete="off"></label><button id="submit">预约并核对</button>';
+  document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{invalidate();selected=rooms[Number(b.dataset.room)];$('selected').textContent=`已选：${selected.id} · ${selected.day} · ${selected.period}`});
+  $('name').oninput=invalidate;$('submit').onclick=()=>{if(!selected||!$('name').value.trim())return fail('请选择会议室并填写申请人');showSummary(`${$('selected').textContent} · 申请人 ${$('name').value.trim()}`)};
+}else if(config.kind==='settings'){
+  $('title').textContent='账户偏好';$('workspace').innerHTML='<nav><button id="profile">个人资料</button><button id="notifications">通知设置</button></nav><div id="panel">请选择设置分类。</div>';
+  $('profile').onclick=()=>{invalidate();settingsOpen=false;$('panel').textContent='这是合成账户，个人资料无需修改。'};
+  $('notifications').onclick=()=>{invalidate();settingsOpen=true;$('panel').innerHTML='<label>邮件通知<button id="email" aria-pressed="false">关闭</button></label><label>短信通知<button id="sms" aria-pressed="true">开启</button></label><label>时区<select id="zone"><option>纽约</option><option>上海</option><option>伦敦</option></select></label><button id="submit">保存通知设置</button>';email=false;sms=true;for(const id of ['email','sms'])$(id).onclick=()=>{invalidate();if(id==='email')email=!email;else sms=!sms;$(id).textContent=(id==='email'?email:sms)?'开启':'关闭';$(id).setAttribute('aria-pressed',String(id==='email'?email:sms))};$('zone').onchange=invalidate;$('submit').onclick=()=>showSummary(`邮件${email?'开启':'关闭'}，短信${sms?'开启':'关闭'}，时区${$('zone').value}`)};
+}
+$('cancel').onclick=()=>$('confirm').close();
+$('approve').onclick=()=>{
+  let passed=false;
+  if(config.kind==='tickets')passed=selected?.department===config.department&&selected?.priority===config.priority&&$('owner').value===config.owner;
+  if(config.kind==='booking')passed=selected?.free&&selected.day===config.day&&selected.period===config.period&&selected.capacity>=config.capacity&&$('name').value.trim()===config.name;
+  if(config.kind==='settings')passed=settingsOpen&&email===config.email&&sms===config.sms&&$('zone').value===config.zone;
+  $('confirm').close();$('result').textContent=passed?'PASS · 实际状态符合任务并已确认。':'FAIL · 保存的内容不符合任务，请核对。';if(!passed)$('result').dataset.error='true';
+  window.labResult={passed:!!passed,kind:config.kind};
+};
+</script></html>

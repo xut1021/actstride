@@ -15,7 +15,7 @@ export async function openLab({ headless = false, channel, scenario = 'baseline'
   const browser = await chromium.launch({ headless, ...(channel ? { channel } : {}) });
   try {
     const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: 1, serviceWorkers: 'block', acceptDownloads: false });
-    const html = (await readFile(new URL('./index.html', import.meta.url), 'utf8')).replace(/(<script type="application\/json" id="scenario">)[\s\S]*?(<\/script>)/, (_, start, end) => start + JSON.stringify(config) + end);
+    const html = (await readFile(new URL(config.kind ? './extended.html' : './index.html', import.meta.url), 'utf8')).replace(/(<script type="application\/json" id="scenario">)[\s\S]*?(<\/script>)/, (_, start, end) => start + JSON.stringify(config) + end);
     // The test domain is fulfilled from this file; every other request is blocked.
     await context.route('**/*', route => route.request().url() === LAB_URL && route.request().method() === 'GET'
       ? route.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: html }) : route.abort());

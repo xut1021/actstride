@@ -6,7 +6,7 @@
 
 Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不复刻它的记忆系统，也不把它的实验数字当作 computer use 的提速证据。
 
-目前支持仓库自带的五种本地合成场景：基础流程、替换任务、调整布局、延迟加载、提交失败后的恢复。通过 Playwright 的鼠标和键盘操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。通用桌面和任意网站尚未支持。
+目前支持仓库自带的十一种本地合成场景，覆盖物品搜索与填表、工单分派、会议室预约、通知设置，并包含布局变化、延迟加载和提交失败恢复。通过 Playwright 的鼠标和键盘操作，允许读取可见控件结构，因此属于 **DOM 辅助的浏览器 computer use**。通用桌面和任意网站尚未支持。
 
 ## 快速开始
 
@@ -32,7 +32,9 @@ npm start -- --mode s2-only --scenario baseline
 
 双模型模式中，快速决策消耗 OpenRouter 余额，规划消耗 Codex 订阅额度；仅规划模型的对照模式无需 OpenRouter 密钥。启动时显示实际模型和计费路线。订阅认证或额度出错时直接停止，不自动切换到付费 API。具体型号、CLI 版本要求和其他配置见[配置说明](docs/configuration.md)。
 
-可选场景：`baseline`、`alternate`、`shifted`、`delayed`、`recovery`。脚本回放只支持 baseline。每次运行使用独立浏览器，不读取个人浏览器资料，页面不向外部提交信息。
+原有场景：`baseline`、`alternate`、`shifted`、`delayed`、`recovery`。新增场景：`tickets_a`、`tickets_b`、`booking_a`、`booking_b`、`settings_a`、`settings_b`。脚本回放只支持 baseline。每次运行使用独立浏览器，不读取个人浏览器资料，页面不向外部提交信息。
+
+执行六个新增用例的双模型与仅规划模型配对实验：`node scripts/benchmark.mjs --channel msedge`。共计划 12 次真实运行，交替模式顺序，每个组合最多 24 步。失败不自动重试；存在未结算费用时，余下付费组合标记为未执行。
 
 所有真实运行共享 `runs/budget.json`。5 美元是累计上限，不是消费目标。请求前预留费用，按提供方返回的费用结算；未知费用或中断保留预留并阻止后续消费，不自动重试。此限制依赖提供方价格和用量信息，是客户端记账，不是服务端硬限额。不要删除账本绕过限制。
 
@@ -60,7 +62,7 @@ flowchart LR
 
 ## 验证与边界
 
-真实运行记录见[场景验证](docs/scenario-validation.md)和[第二轮复测](docs/scenario-retest.md)。早期单页面实验见[原始记录](docs/validation.md)和[订阅规划记录](docs/astra-validation.md)；历史记录保留当时使用的配置与所有尝试。
+新的多任务配对结果见[扩大测试](docs/expanded-validation.md)。原有页面结果见[场景验证](docs/scenario-validation.md)和[第二轮复测](docs/scenario-retest.md)。早期单页面实验见[原始记录](docs/validation.md)和[订阅规划记录](docs/astra-validation.md)；历史记录保留当时使用的配置与所有尝试。
 
 单次和少量重复不能证明普遍提速或通用可靠性。两种模式必须在相同场景下比较，且订阅规划调用的启动开销计入耗时。新增日志分别记录初始化、浏览器、观察、执行和模型调用耗时；CLI 事件时间包含通信与推理，不能当作纯推理耗时。
 
