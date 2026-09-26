@@ -6,6 +6,8 @@ Computer use with reusable skills and deliberate planning.
 
 [阶段总结（2026-09-27）](docs/project-summary.md)：已实现能力、真实提速证据、失败样本与后续模型适配方向。
 
+[其他快速模型实测](docs/fast-chat-validation.md)：同一组六道桌面判断题各重复两轮，Gemini 3.5 Flash-Lite 正确 9/12，GPT-4.1 Nano 正确 6/12；任务中位耗时约 1.3 秒，包含错误样本。尚未证明换模型能提高正确率。
+
 参考 [Jev-Mem](https://github.com/libingzheren/Jev-Mem)（System-One-Controlled Agentic Memory）将高频决策与深度推理解耦的思路，本项目把这种分工用于 **computer use 提速实验**：System 2 看截图和可见控件，给出计划；System 1 从当前页面生成的候选动作中选择下一步。遇到错误、低置信度或连续无进展，再交回 System 2。
 
 Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不复刻它的记忆系统，也不把它的实验数字当作 computer use 的提速证据。
