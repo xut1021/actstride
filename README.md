@@ -34,11 +34,23 @@ npm start -- --mode s2-only --scenario baseline
 
 双模型模式中，快速决策消耗 OpenRouter 余额，规划消耗 Codex 订阅额度；仅规划模型的对照模式无需 OpenRouter 密钥。启动时显示实际模型和计费路线。订阅认证或额度出错时直接停止，不自动切换到付费 API。具体型号、CLI 版本要求和其他配置见[配置说明](docs/configuration.md)。
 
+System 1 可以替换。新增实验性 **SystemOne 本机接口**，按 Laya、Kev 的文本决策协议，以及社区 OpenJev Multimodal 的截图协议实现。先自行启动对应服务，再运行：
+
+```sh
+# 文本后端：控件结构、任务和计划 → 候选动作或技能
+npm start -- --fast-provider systemone --fast-endpoint http://127.0.0.1:8000/v1/systemone --skills
+
+# 仅图像后端：另附每一步的当前截图
+npm start -- --fast-provider systemone --fast-endpoint http://127.0.0.1:8000/v1/systemone --fast-images --skills
+```
+
+端口按自己的服务设置；文本服务不要加 `--fast-images`。这条路线默认仍用订阅规划器，不需要 OpenRouter 密钥；本机服务可选用独立的 `FAST_API_KEY`。当前只验证了模拟服务协议与控制器衔接，未运行这些模型权重。Laya 的短上下文尤其需要另行检查。协议差异、多模态参考与验证边界见[快速模型后端](docs/fast-backends.md)。
+
 原有场景：`baseline`、`alternate`、`shifted`、`delayed`、`recovery`。新增场景：`tickets_a`、`tickets_b`、`booking_a`、`booking_b`、`settings_a`、`settings_b`。脚本回放只支持 baseline。每次运行使用独立浏览器，不读取个人浏览器资料，页面不向外部提交信息。
 
 执行六个新增用例的双模型与仅规划模型配对实验：`node scripts/benchmark.mjs --channel msedge`。共计划 12 次真实运行，交替模式顺序，每个组合最多 24 步。失败不自动重试；存在未结算费用时，余下付费组合标记为未执行。
 
-所有真实运行共享 `runs/budget.json`。5 美元是累计上限，不是消费目标。请求前预留费用，按提供方返回的费用结算；未知费用或中断保留预留并阻止后续消费，不自动重试。此限制依赖提供方价格和用量信息，是客户端记账，不是服务端硬限额。不要删除账本绕过限制。
+所有 OpenRouter 调用共享 `runs/budget.json`。5 美元是累计上限，不是消费目标。请求前预留费用，按提供方返回的费用结算；未知费用或中断保留预留并阻止后续消费，不自动重试。此限制依赖提供方价格和用量信息，是客户端记账，不是服务端硬限额。不要删除账本绕过限制。本机 SystemOne 用量单独记录，不计入该账本，也不标为免费。
 
 ## 参数化技能（实验功能）
 
@@ -84,7 +96,7 @@ flowchart LR
 
 单次和少量重复不能证明普遍提速或通用可靠性。两种模式必须在相同场景下比较，且订阅规划调用的启动开销计入耗时。新增日志分别记录初始化、浏览器、观察、执行和模型调用耗时；CLI 事件时间包含通信与推理，不能当作纯推理耗时。
 
-本地 `runs/` 保存截图、动作、费用和报告，不纳入 Git。报告的 `cost_usd` 仅统计 OpenRouter 费用，不把订阅用量标为免费。当前场景限制外部浏览器请求和 WebSocket，但并非操作系统安全沙箱；模型请求仍会发往对应服务。
+本地 `runs/` 保存截图、动作、费用和报告，不纳入 Git。报告的 `cost_usd` 仅统计 OpenRouter 费用，订阅与本机服务用量另列、不估算美元费用。当前场景限制外部浏览器请求和 WebSocket，但并非操作系统安全沙箱；模型请求仍会发往对应服务。
 
 ## 希望得到网络环境更稳定的朋友帮助复测
 

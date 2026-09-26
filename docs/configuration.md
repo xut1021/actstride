@@ -2,6 +2,8 @@
 
 Default: paid Jev decisions with the ChatGPT-authenticated Codex planner. The OpenRouter-only planner is opt-in. Exact model IDs below describe configuration, not a requirement of the architecture.
 
+System 1 can instead use a loopback SystemOne server. See [fast backends](fast-backends.md) for Laya/Kev text protocols, the OpenJev Multimodal image extension, input limits, and validation status. Select `--fast-provider systemone --fast-endpoint http://127.0.0.1:8000/v1/systemone`; add `--fast-images` only for an image-capable server. `--fast MODEL` is optional and cannot switch Kev's loaded checkpoint. With the default Codex planner this route does not require an OpenRouter key or touch its ledger. An optional `FAST_API_KEY` is sent only to that local endpoint and stripped from the Codex child process. Self-hosted usage is recorded with unknown cost, not as free inference.
+
 ## Run the real models
 
 Set `OPENROUTER_API_KEY` in the process environment using your preferred secret manager. `.env` files are not automatically loaded. Do not paste keys into issues, command arguments, or source code.
@@ -33,4 +35,3 @@ For headless Edge: append `--headless --channel msedge`. Both modes use a fresh 
 Live runs share a persistent `runs/budget.json` spending limit. **Five dollars is a ceiling, not a target.** The controller reserves a conservative whole-context cost before each request, accounts for reported `usage.cost`, runs one request at a time and performs no automatic retries. Chat requests also set provider price ceilings. The Decisions endpoint uses current endpoint metadata for its reservation; it has no verified per-request price ceiling here. This is client-side accounting dependent on provider metadata and billing, not a provider-enforced dollar cap. Use a separately limited OpenRouter key if you need an account-side limit.
 
 Missing billing, HTTP errors or interrupted requests retain the reservation and block subsequent spending. Reconcile the charge in OpenRouter before adjusting an unsettled ledger. Do not delete the ledger to bypass its limit. Do not run separate copies against a shared spending allowance: the lock and ledger apply to this checkout only.
-

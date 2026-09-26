@@ -1,6 +1,6 @@
 // Build choices from fresh visible controls, never from the task's correct answer.
 export function candidatesFor(ui, textValues = []) {
-  if (!ui || !Array.isArray(ui.controls)) throw Error('Fresh UI structure is required for Jev');
+  if (!ui || !Array.isArray(ui.controls)) throw Error('Fresh UI structure is required for System 1');
   const choices = {};
   for (const c of ui.controls) {
     choices[`click_${c.index}`] = {
@@ -38,7 +38,7 @@ export function candidatesFor(ui, textValues = []) {
     if (available) choices[`scroll_${name}`] = { description: `Scroll ${name} to see more controls`, action: { action: 'scroll', dy, reason: `Scroll ${name}` } };
   }
   if (ui.busy) choices.wait = { description: 'Wait 500 milliseconds for the visible loading state to finish', action: { action: 'wait', reason: 'Wait for loading' } };
-  choices.escalate = { description: 'Ask System 2 to replan: ambiguous next action, missing required text, or repeated failure', action: { action: 'escalate', reason: 'Jev requests replanning' } };
+  choices.escalate = { description: 'Ask System 2 to replan: ambiguous next action, missing required text, or repeated failure', action: { action: 'escalate', reason: 'System 1 requests replanning' } };
   choices.done = { description: 'Finish ONLY if the visible page explicitly reports PASS', action: { action: 'done', reason: 'Visible task completed' } };
   return choices;
 }

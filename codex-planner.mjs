@@ -15,7 +15,7 @@ const schema = { type: 'object', additionalProperties: false, properties: {
 }, required: ['action', 'x', 'y', 'dy', 'key', 'text', 'ref', 'revision', 'value', 'skill', 'reason', 'plan', 'text_values'] };
 
 export function subscriptionEnv(source = process.env) {
-  return Object.fromEntries(Object.entries(source).filter(([key]) => !/^(OPENAI_API_KEY|CODEX_API_KEY|OPENROUTER_API_KEY|OPENAI_BASE_URL)$/i.test(key)));
+  return Object.fromEntries(Object.entries(source).filter(([key]) => !/^(OPENAI_API_KEY|CODEX_API_KEY|OPENROUTER_API_KEY|FAST_API_KEY|OPENAI_BASE_URL)$/i.test(key)));
 }
 
 function command() {

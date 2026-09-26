@@ -9,18 +9,22 @@ import { scenarios } from './scenarios.mjs';
 import { Replay } from './replay.mjs';
 import { CodexPlanner, CODEX_MODEL } from './codex-planner.mjs';
 import { runSkill } from './skill-runner.mjs';
+import { FastDecider, systemOneEndpoint } from './fast-decider.mjs';
 
 const { values: args } = parseArgs({ options: {
   replay: { type: 'boolean', default: false }, headless: { type: 'boolean', default: false },
   mode: { type: 'string', default: 'dual' }, budget: { type: 'string', default: '5' },
   steps: { type: 'string', default: '40' }, channel: { type: 'string' },
-  fast: { type: 'string', default: DEFAULT_MODELS.s1 }, slow: { type: 'string' },
+  fast: { type: 'string' }, slow: { type: 'string' },
+  'fast-provider': { type: 'string', default: 'openrouter' }, 'fast-endpoint': { type: 'string' },
+  'fast-images': { type: 'boolean', default: false },
   'planner-provider': { type: 'string', default: 'codex' },
   scenario: { type: 'string', default: 'baseline' },
   skills: { type: 'boolean', default: false },
   help: { type: 'boolean', default: false },
 } });
 if (args.help) {
+  console.log('Fast backends: --fast-provider openrouter (default), or --fast-provider systemone --fast-endpoint http://127.0.0.1:8000/v1/systemone\nSystemOne: optional --fast MODEL and FAST_API_KEY; --fast-images only for image-capable servers such as OpenJev Multimodal.');
   console.log('ActStride\n  npm run demo -- --headless [--channel msedge]\n  npm start -- --mode dual --budget 5 [--channel msedge]\n  npm start -- --mode dual --scenario tickets_b --skills\n  npm start -- --mode s2-only\nScenarios: ' + Object.keys(scenarios).join(', ') + '. Default planner: codex.\n--skills enables three hand-authored workflows (dual + codex only).\nOpenRouter spending shares runs/budget.json. Codex requires ChatGPT login. Ctrl+C stops.');
   process.exit(0);
 }
@@ -33,7 +37,12 @@ if (!['dual', 's2-only'].includes(args.mode)) throw Error('mode must be dual or 
 if (!['openrouter', 'codex'].includes(args['planner-provider'])) throw Error('planner-provider must be openrouter or codex');
 if (!Number.isFinite(limit) || limit <= 0) throw Error('budget must be positive');
 if (args.channel && !['msedge', 'chrome'].includes(args.channel)) throw Error('channel must be msedge or chrome');
-const needsOpenRouter = args.mode === 'dual' || args['planner-provider'] === 'openrouter';
+const fastProvider = args['fast-provider'];
+if (!['openrouter', 'systemone'].includes(fastProvider)) throw Error('fast-provider must be openrouter or systemone');
+if (fastProvider === 'openrouter' && args['fast-endpoint'] !== undefined) throw Error('--fast-endpoint is only for SystemOne');
+if (args['fast-images'] && (fastProvider !== 'systemone' || args.mode !== 'dual' || args.replay)) throw Error('--fast-images requires dual mode and a multimodal SystemOne endpoint');
+if (!args.replay && args.mode === 'dual' && fastProvider === 'systemone') systemOneEndpoint(args['fast-endpoint']);
+const needsOpenRouter = args.mode === 'dual' && fastProvider === 'openrouter' || args['planner-provider'] === 'openrouter';
 if (!args.replay && needsOpenRouter && !process.env.OPENROUTER_API_KEY) throw Error('Set OPENROUTER_API_KEY before live execution; never put it in arguments');
 
 mkdirSync('runs', { recursive: true });
@@ -57,7 +66,7 @@ let lab, controller, budget, failure = null, result = { passed: false }, actions
 try {
   if (!args.replay) {
     if (needsOpenRouter) budget = new Budget('runs/budget.json', limit);
-    const models = { s1: args.fast, s2: args.slow || (args['planner-provider'] === 'codex' ? CODEX_MODEL : DEFAULT_MODELS.s2) };
+    const models = { s1: args.fast || (fastProvider === 'openrouter' ? DEFAULT_MODELS.s1 : null), s2: args.slow || (args['planner-provider'] === 'codex' ? CODEX_MODEL : DEFAULT_MODELS.s2) };
     const pricing = {};
     let planner;
     if (args['planner-provider'] === 'codex') {
@@ -69,18 +78,21 @@ try {
       const catalog = (await response.json()).data;
       pricing.s2 = modelPricing(catalog.find(m => m.id === models.s2));
     }
-    if (args.mode === 'dual') {
+    if (args.mode === 'dual' && fastProvider === 'openrouter') {
       const endpointResponse = await fetch(`https://openrouter.ai/api/v1/models/${models.s1}/endpoints`, { signal: AbortSignal.timeout(15000) });
-      if (!endpointResponse.ok) throw Error('Could not load Jev endpoint pricing');
+      if (!endpointResponse.ok) throw Error('Could not load fast model endpoint pricing');
       const endpoints = (await endpointResponse.json()).data?.endpoints;
-      if (!Array.isArray(endpoints) || !endpoints.length) throw Error('No Jev endpoint prices');
+      if (!Array.isArray(endpoints) || !endpoints.length) throw Error('No fast model endpoint prices');
       const bounds = endpoints.map(e => e.context_length * Number(e.pricing?.prompt) + (e.max_completion_tokens || e.context_length) * Number(e.pricing?.completion));
-      if (bounds.some(b => !Number.isFinite(b) || b <= 0)) throw Error('Invalid Jev request cost bound');
+      if (bounds.some(b => !Number.isFinite(b) || b <= 0)) throw Error('Invalid fast model request cost bound');
       pricing.s1 = { bound: Math.max(...bounds) };
     }
-    console.log(`System 1: ${args.mode === 'dual' ? models.s1 + ' (OpenRouter paid)' : 'disabled'}; System 2: ${models.s2} (${args['planner-provider'] === 'codex' ? 'Codex subscription' : 'OpenRouter paid'})`);
-    record({ event: 'start', scenario: args.scenario, mode: args.mode, skills: args.skills, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
-    controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, skills: args.skills, record, signal: abort.signal, planner });
+    const fastDecider = args.mode === 'dual' ? new FastDecider({ provider: fastProvider, endpoint: args['fast-endpoint'], model: models.s1, images: args['fast-images'],
+      apiKey: fastProvider === 'openrouter' ? process.env.OPENROUTER_API_KEY : process.env.FAST_API_KEY,
+      budget, price: pricing.s1, signal: abort.signal, record }) : undefined;
+    console.log(`System 1: ${args.mode === 'dual' ? (models.s1 || 'server-configured') + (fastProvider === 'openrouter' ? ' (OpenRouter paid)' : ' (SystemOne self-hosted; cost unknown)') : 'disabled'}; System 2: ${models.s2} (${args['planner-provider'] === 'codex' ? 'Codex subscription' : 'OpenRouter paid'})`);
+    record({ event: 'start', scenario: args.scenario, mode: args.mode, skills: args.skills, fast_provider: args.mode === 'dual' ? fastProvider : null, planner_provider: args['planner-provider'], models, request_bounds_usd: Object.fromEntries(Object.entries(pricing).map(([k, v]) => [k, v.bound])), budget_limit: limit });
+    controller = new Controller({ apiKey: process.env.OPENROUTER_API_KEY, budget, pricing, models, mode: args.mode, skills: args.skills, record, signal: abort.signal, planner, fastDecider });
   } else record({ event: 'start', mode: 'scripted-replay', note: 'No AI calls; fixture may use DOM to generate test coordinates' });
   timings.setup_ms = Date.now() - started;
   lab = await timed('browser_ms', () => openLab({ headless: args.headless, channel: args.channel, scenario: args.scenario }));
@@ -123,10 +135,13 @@ finally {
     scenario: args.scenario, skills: args.skills, skill_attempts: events.filter(e => e.event === 'skill_result').length, skill_failures: events.filter(e => e.event === 'skill_result' && !e.ok).length, timings, mode: args.replay ? 'scripted-replay' : args.mode, planner_provider: args.replay ? null : args['planner-provider'], passed: result.passed,
     ai_verified: !args.replay && result.passed, failure, actions,
     duration_ms: Date.now() - started, model_duration_ms: usage.reduce((s, e) => s + e.elapsed_ms, 0),
-    api_duration_ms: usage.filter(e => e.billing !== 'codex-subscription').reduce((s, e) => s + e.elapsed_ms, 0),
-    api_calls: usage.filter(e => e.billing !== 'codex-subscription').length,
+    fast_provider: args.replay || args.mode !== 'dual' ? null : fastProvider, fast_images: args['fast-images'],
+    api_duration_ms: usage.filter(e => e.billing === 'openrouter').reduce((s, e) => s + e.elapsed_ms, 0),
+    api_calls: usage.filter(e => e.billing === 'openrouter').length,
+    self_hosted_calls: usage.filter(e => e.billing === 'self-hosted').length,
+    self_hosted_duration_ms: usage.filter(e => e.billing === 'self-hosted').reduce((s, e) => s + e.elapsed_ms, 0),
     codex_calls: usage.filter(e => e.billing === 'codex-subscription').length,
-    cost_usd: usage.reduce((s, e) => s + (e.cost ?? 0), 0), cost_scope: 'OpenRouter only; Codex subscription usage is not priced here',
+    cost_usd: usage.filter(e => e.billing === 'openrouter').reduce((s, e) => s + (e.cost ?? 0), 0), cost_scope: 'OpenRouter only; Codex subscription and self-hosted usage are not priced here',
     role_calls: Object.fromEntries(['s1', 's2'].map(role => [role, usage.filter(e => e.role === role).length])),
     escalations: events.filter(e => e.event === 'decision' && e.action.action === 'escalate').length,
     budget: budget?.state, verifier: result.result,

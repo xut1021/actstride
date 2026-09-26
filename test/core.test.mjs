@@ -75,7 +75,7 @@ test('low-confidence Jev escalates; stale choice is rejected after billing', asy
   controller.role = 's1';
   assert.equal((await controller.decide(screenshot)).action.action, 'escalate');
   controller.role = 's1'; choice = 'click_obsolete';
-  await assert.rejects(controller.decide(screenshot), /Invalid Jev/);
+  await assert.rejects(controller.decide(screenshot), /Invalid fast/);
   assert.equal(budget.state.charged, 0.002);
   assert.equal(budget.state.pending, 0);
 });

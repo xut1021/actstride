@@ -5,7 +5,7 @@ import { subscriptionEnv, CODEX_MODEL } from '../codex-planner.mjs';
 
 const observation = { image: 'data:image/png;base64,AA==', width: 1280, height: 960, task: 'fixture', ui: { controls: [] } };
 test('subscription subprocess receives no API key or API base override', () => {
-  const env = subscriptionEnv({ OPENAI_API_KEY: 'not-a-real-key', CODEX_API_KEY: 'fixture', OPENROUTER_API_KEY: 'fixture', openai_base_url: 'https://invalid.test', PATH: '/bin', CODEX_HOME: '/auth-location' });
+  const env = subscriptionEnv({ OPENAI_API_KEY: 'not-a-real-key', CODEX_API_KEY: 'fixture', OPENROUTER_API_KEY: 'fixture', FAST_API_KEY: 'fixture-fast', openai_base_url: 'https://invalid.test', PATH: '/bin', CODEX_HOME: '/auth-location' });
   assert.deepEqual(env, { PATH: '/bin', CODEX_HOME: '/auth-location' });
 });
 test('Codex planner works without OpenRouter key and reports subscription usage separately', async () => {
