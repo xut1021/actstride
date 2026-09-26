@@ -1,0 +1,642 @@
+{
+  "started": "2026-09-26T17:10:53.442Z",
+  "cases": [
+    "inventory_a",
+    "inventory_change"
+  ],
+  "modes": [
+    "astra-jev-skills"
+  ],
+  "repeats": 1,
+  "source_hashes": {
+    "windows/multistep-benchmark.mjs": "64128decc4a8e14902e6357ba4bae458e1684a961548f42b43f84020d8f2b66a",
+    "windows/multistep-policy.mjs": "548fb1a8e1d67ba737c12085eac57142fdd25b2a42a9d0a105ebd2f6e56257d0",
+    "windows/form-skills.mjs": "56c5fbff361a6715ff8bfa42f5ca4f3b49b87d73e1435d642f7fa8d026b38f97",
+    "windows/DesktopLab.cs": "82ddc613cd498179214686eb2e9b2851c658c12ba5a22aad2fbcb344f1bb7af6",
+    "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+    "windows/judgment-config.mjs": "f0a2e159c7ef41166d2fff3e8862f25aa789725e34d6b1e2e885368e7bf5eeaa",
+    "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+    "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+    "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+  },
+  "planner": "gpt-6-astra",
+  "effort": "medium",
+  "fast_model": "typesafe/jev-1.13",
+  "runs": [
+    {
+      "cell": 1,
+      "scenario": "inventory_a",
+      "mode": "astra-jev-skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 1,
+      "replans": 0,
+      "ui_actions": 5,
+      "s2_ms": 20991,
+      "s1_ms": 4078,
+      "ui_ms": 945,
+      "cost_usd": 0.00005376,
+      "skill_calls": 1,
+      "setup_ms": 502,
+      "passed": true,
+      "task_ms": 26014,
+      "wall_ms": 26576,
+      "events": [
+        {
+          "event": "initial",
+          "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+          "visible": [
+            {
+              "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Item",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Item",
+              "type": "edit",
+              "value": "",
+              "enabled": true
+            },
+            {
+              "name": "Quantity",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Quantity",
+              "type": "edit",
+              "value": "",
+              "enabled": true
+            },
+            {
+              "name": "Destination",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Destination",
+              "type": "edit",
+              "value": "",
+              "enabled": true
+            },
+            {
+              "name": "Review",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Result: Not submitted",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "最小化",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "最大化",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "关闭",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "event": "planner",
+          "action": {
+            "skill": "submit_form",
+            "fields": [
+              {
+                "name": "Item",
+                "value": "Cable"
+              },
+              {
+                "name": "Quantity",
+                "value": "3"
+              },
+              {
+                "name": "Destination",
+                "value": "East"
+              }
+            ]
+          },
+          "usage": {
+            "input_tokens": 17041,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 44,
+            "reasoning_output_tokens": 0
+          },
+          "timings": {
+            "thread.started": 387,
+            "turn.started": 403,
+            "item.completed": 11067,
+            "turn.completed": 11067,
+            "process_closed": 20982
+          },
+          "payload_bytes": 1935,
+          "image_bytes": 0
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13-20260917",
+          "requested_model": "typesafe/jev-1.13",
+          "fast_provider": "openrouter",
+          "billing": "openrouter",
+          "routing": null,
+          "elapsed_ms": 4076,
+          "cost": 0.00005376,
+          "input_tokens": 1280,
+          "output_tokens": 35,
+          "choice": "use_skill",
+          "choice_probabilities": {
+            "escalate": 0.15,
+            "use_skill": 0.85
+          },
+          "provider_confidence": 0.69,
+          "image_bytes": 0
+        },
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.85,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.69,
+          "model": "typesafe/jev-1.13-20260917"
+        },
+        {
+          "event": "skill_start",
+          "binding": {
+            "skill": "submit_form",
+            "fields": [
+              {
+                "name": "Item",
+                "value": "Cable"
+              },
+              {
+                "name": "Quantity",
+                "value": "3"
+              },
+              {
+                "name": "Destination",
+                "value": "East"
+              }
+            ]
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Item",
+            "value": "Cable"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Quantity",
+            "value": "3"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Destination",
+            "value": "East"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "invoke",
+            "name": "Review"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "invoke",
+            "name": "Confirm"
+          }
+        },
+        {
+          "event": "skill_end",
+          "skill": "submit_form",
+          "status": "completed",
+          "reason": null
+        },
+        {
+          "event": "receipt",
+          "result": {
+            "scenario": "inventory_a",
+            "values": {
+              "Item": "Cable",
+              "Quantity": "3",
+              "Destination": "East"
+            },
+            "passed": true
+          }
+        }
+      ]
+    },
+    {
+      "cell": 2,
+      "scenario": "inventory_change",
+      "mode": "astra-jev-skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 2,
+      "s1_calls": 2,
+      "replans": 1,
+      "ui_actions": 8,
+      "s2_ms": 51147,
+      "s1_ms": 2776,
+      "ui_ms": 1710,
+      "cost_usd": 0.000129234,
+      "skill_calls": 2,
+      "setup_ms": 408,
+      "passed": true,
+      "task_ms": 55637,
+      "wall_ms": 56095,
+      "events": [
+        {
+          "event": "initial",
+          "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+          "visible": [
+            {
+              "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Item",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Item",
+              "type": "edit",
+              "value": "",
+              "enabled": true
+            },
+            {
+              "name": "Quantity",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Quantity",
+              "type": "edit",
+              "value": "",
+              "enabled": true
+            },
+            {
+              "name": "Destination",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Destination",
+              "type": "edit",
+              "value": "",
+              "enabled": true
+            },
+            {
+              "name": "Review",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "Result: Not submitted",
+              "type": "text",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "最小化",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "最大化",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            },
+            {
+              "name": "关闭",
+              "type": "button",
+              "value": null,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "event": "planner",
+          "action": {
+            "skill": "submit_form",
+            "fields": [
+              {
+                "name": "Item",
+                "value": "Cable"
+              },
+              {
+                "name": "Quantity",
+                "value": "3"
+              },
+              {
+                "name": "Destination",
+                "value": "East"
+              }
+            ]
+          },
+          "usage": {
+            "input_tokens": 17065,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 44,
+            "reasoning_output_tokens": 0
+          },
+          "timings": {
+            "thread.started": 331,
+            "turn.started": 346,
+            "item.completed": 21523,
+            "turn.completed": 22135,
+            "process_closed": 26081
+          },
+          "payload_bytes": 2075,
+          "image_bytes": 0
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13-20260917",
+          "requested_model": "typesafe/jev-1.13",
+          "fast_provider": "openrouter",
+          "billing": "openrouter",
+          "routing": null,
+          "elapsed_ms": 1578,
+          "cost": 0.000054768,
+          "input_tokens": 1304,
+          "output_tokens": 35,
+          "choice": "use_skill",
+          "choice_probabilities": {
+            "use_skill": 0.92,
+            "escalate": 0.08
+          },
+          "provider_confidence": 0.83,
+          "image_bytes": 0
+        },
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.92,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.83,
+          "model": "typesafe/jev-1.13-20260917"
+        },
+        {
+          "event": "skill_start",
+          "binding": {
+            "skill": "submit_form",
+            "fields": [
+              {
+                "name": "Item",
+                "value": "Cable"
+              },
+              {
+                "name": "Quantity",
+                "value": "3"
+              },
+              {
+                "name": "Destination",
+                "value": "East"
+              }
+            ]
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Item",
+            "value": "Cable"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Quantity",
+            "value": "3"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Destination",
+            "value": "East"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "invoke",
+            "name": "Review"
+          }
+        },
+        {
+          "event": "skill_end",
+          "skill": "submit_form",
+          "status": "suspended",
+          "reason": "Unplanned routing notice"
+        },
+        {
+          "event": "planner",
+          "action": {
+            "skill": "acknowledge_update_and_submit",
+            "fields": [
+              {
+                "name": "Item",
+                "value": "Cable"
+              },
+              {
+                "name": "Quantity",
+                "value": "3"
+              },
+              {
+                "name": "Destination",
+                "value": "West"
+              }
+            ]
+          },
+          "usage": {
+            "input_tokens": 17330,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 48,
+            "reasoning_output_tokens": 0
+          },
+          "timings": {
+            "thread.started": 327,
+            "turn.started": 344,
+            "item.completed": 15216,
+            "turn.completed": 16019,
+            "process_closed": 25040
+          },
+          "payload_bytes": 3071,
+          "image_bytes": 0
+        },
+        {
+          "event": "usage",
+          "role": "s1",
+          "model": "typesafe/jev-1.13-20260917",
+          "requested_model": "typesafe/jev-1.13",
+          "fast_provider": "openrouter",
+          "billing": "openrouter",
+          "routing": null,
+          "elapsed_ms": 1197,
+          "cost": 0.000074466,
+          "input_tokens": 1773,
+          "output_tokens": 35,
+          "choice": "use_skill",
+          "choice_probabilities": {
+            "escalate": 0.09,
+            "use_skill": 0.91
+          },
+          "provider_confidence": 0.81,
+          "image_bytes": 0
+        },
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.91,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.81,
+          "model": "typesafe/jev-1.13-20260917"
+        },
+        {
+          "event": "skill_start",
+          "binding": {
+            "skill": "acknowledge_update_and_submit",
+            "fields": [
+              {
+                "name": "Item",
+                "value": "Cable"
+              },
+              {
+                "name": "Quantity",
+                "value": "3"
+              },
+              {
+                "name": "Destination",
+                "value": "West"
+              }
+            ]
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "invoke",
+            "name": "Acknowledge"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "fill",
+            "name": "Destination",
+            "value": "West"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "invoke",
+            "name": "Review"
+          }
+        },
+        {
+          "event": "ui_action",
+          "step": {
+            "action": "invoke",
+            "name": "Confirm"
+          }
+        },
+        {
+          "event": "skill_end",
+          "skill": "acknowledge_update_and_submit",
+          "status": "completed",
+          "reason": null
+        },
+        {
+          "event": "receipt",
+          "result": {
+            "scenario": "inventory_change",
+            "values": {
+              "Item": "Cable",
+              "Quantity": "3",
+              "Destination": "West"
+            },
+            "passed": true
+          }
+        }
+      ]
+    }
+  ],
+  "initial_budget": {
+    "limit": 20,
+    "charged": 0.04232146699999996,
+    "pending": 0
+  },
+  "final_budget": {
+    "limit": 20,
+    "charged": 0.04250446099999996,
+    "pending": 0
+  },
+  "finished": "2026-09-26T17:12:18.953Z",
+  "final_source_hashes": {
+    "windows/multistep-benchmark.mjs": "64128decc4a8e14902e6357ba4bae458e1684a961548f42b43f84020d8f2b66a",
+    "windows/multistep-policy.mjs": "548fb1a8e1d67ba737c12085eac57142fdd25b2a42a9d0a105ebd2f6e56257d0",
+    "windows/form-skills.mjs": "56c5fbff361a6715ff8bfa42f5ca4f3b49b87d73e1435d642f7fa8d026b38f97",
+    "windows/DesktopLab.cs": "82ddc613cd498179214686eb2e9b2851c658c12ba5a22aad2fbcb344f1bb7af6",
+    "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+    "windows/judgment-config.mjs": "f0a2e159c7ef41166d2fff3e8862f25aa789725e34d6b1e2e885368e7bf5eeaa",
+    "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+    "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+    "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+  },
+  "known_cost_usd": 0.000182994
+}
