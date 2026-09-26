@@ -128,6 +128,9 @@ class DesktopLab {
             Left = 20, Top = 20, Width = 590, Height = 70 };
         form.Controls.Add(task);
         var inputs = new Dictionary<string, TextBox>();
+        bool routingUpdate = scenario == "inventory_change";
+        bool updateShown = false;
+        if (routingUpdate) task.Text += " If a routing update appears, use its offered replacement destination.";
         var status = new Label { Text = "Not submitted", AccessibleName = "Result: Not submitted", Left = 20, Top = 360, Width = 580, Height = 45 };
         Action clearResult = () => { status.Text = "Not submitted"; status.AccessibleName = "Result: Not submitted"; if (File.Exists(receipt)) File.Delete(receipt); };
         for (int position = 0; position < names.Length; position++) {
@@ -139,6 +142,20 @@ class DesktopLab {
         var review = new Button { Text = "Review", AccessibleName = "Review", Left = 165, Top = 290, Width = 140, Height = 42 };
         review.Click += (s, e) => {
             if (inputs.Values.Any(t => String.IsNullOrWhiteSpace(t.Text))) { status.Text = "Fill every field"; status.AccessibleName = "Result: Fill every field"; return; }
+            if (routingUpdate && !updateShown) {
+                updateShown = true;
+                using (var notice = new Form { Text = "ActStride Desktop Lab - Routing update", Width = 560, Height = 250, StartPosition = FormStartPosition.CenterParent, Font = form.Font }) {
+                    notice.Controls.Add(new Label { Text = "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.", Left = 20, Top = 20, Width = 510, Height = 100 });
+                    var acknowledge = new Button { Text = "Acknowledge", AccessibleName = "Acknowledge", Left = 150, Top = 140, Width = 220, Height = 45 };
+                    acknowledge.Click += (sender, ev) => {
+                        expected[2] = "West";
+                        task.Text = "Synthetic desktop task: " + String.Join("; ", names.Select((n, i) => n + " = " + expected[i])) + ". Review and confirm.";
+                        clearResult(); notice.Close();
+                    };
+                    notice.Controls.Add(acknowledge); notice.ShowDialog(form);
+                }
+                return;
+            }
             var values = names.ToDictionary(n => n, n => inputs[n].Text);
             using (var dialog = new Form { Text = "ActStride Desktop Lab - Confirm", Width = 500, Height = 280, StartPosition = FormStartPosition.CenterParent, Font = form.Font }) {
                 dialog.Controls.Add(new Label { Text = "Review: " + String.Join("; ", names.Select(n => n + "=" + values[n])), AccessibleName = "Review: " + String.Join("; ", names.Select(n => n + "=" + values[n])), Left = 20, Top = 25, Width = 440, Height = 100 });

@@ -10,6 +10,8 @@ Computer use with reusable skills and deliberate planning.
 
 [Astra 规划 + Jev 执行实测](docs/astra-guided-jev-validation.md)：一轮六题中，Jev 独立判断 5/6 正确，读取 Astra 计划后 6/6 正确，纠正了此前的价格题错误；中位耗时从 0.94 秒增加到 27.95 秒。这轮支持协作改善判断的可能性，未证明多步提速或普遍成功率提升。
 
+[多步操作与中途变化对照](docs/multistep-validation.md)：正常填表中，Astra＋Jev 将规划请求从 5 次减到 1 次，耗时从 107.5 秒降至 28.6 秒；代码执行计划也约 28.6 秒。配送变更场景只有代码计划组通过，Jev 组耗尽规划上限，逐步 Astra 组漏改目的地。每组合仅一次，尚未证明 Jev 的增量收益或可靠恢复。
+
 参考 [Jev-Mem](https://github.com/libingzheren/Jev-Mem)（System-One-Controlled Agentic Memory）将高频决策与深度推理解耦的思路，本项目把这种分工用于 **computer use 提速实验**：System 2 看截图和可见控件，给出计划；System 1 从当前页面生成的候选动作中选择下一步。遇到错误、低置信度或连续无进展，再交回 System 2。
 
 Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不复刻它的记忆系统，也不把它的实验数字当作 computer use 的提速证据。

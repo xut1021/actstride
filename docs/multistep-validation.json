@@ -1,0 +1,5101 @@
+{
+  "date": "2026-09-27",
+  "known_cost_usd": 0.000737436,
+  "normal_dual_speedup": 3.754688645967939,
+  "batches": [
+    {
+      "id": "multistep-2026-09-26T16-51-55.693Z",
+      "started": "2026-09-26T16:51:55.694Z",
+      "cases": [
+        "inventory_a",
+        "inventory_change"
+      ],
+      "modes": [
+        "astra-stepwise",
+        "astra-jev",
+        "astra-code"
+      ],
+      "repeats": 1,
+      "source_hashes": {
+        "windows/multistep-benchmark.mjs": "e71992ff83651e8da763c9c6d8b6d1fd54737f1a7a84790a2c606740b5a88e4e",
+        "windows/multistep-policy.mjs": "548fb1a8e1d67ba737c12085eac57142fdd25b2a42a9d0a105ebd2f6e56257d0",
+        "windows/DesktopLab.cs": "82ddc613cd498179214686eb2e9b2851c658c12ba5a22aad2fbcb344f1bb7af6",
+        "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+        "windows/judgment-config.mjs": "f0a2e159c7ef41166d2fff3e8862f25aa789725e34d6b1e2e885368e7bf5eeaa",
+        "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+        "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+        "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+      },
+      "planner": "gpt-6-astra",
+      "effort": "medium",
+      "fast_model": "typesafe/jev-1.13",
+      "runs": [
+        {
+          "cell": 1,
+          "scenario": "inventory_a",
+          "mode": "astra-stepwise",
+          "status": "passed",
+          "reason": null,
+          "s2_calls": 5,
+          "s1_calls": 0,
+          "replans": 0,
+          "ui_actions": 5,
+          "s2_ms": 106118,
+          "s1_ms": 0,
+          "ui_ms": 1385,
+          "cost_usd": 0,
+          "setup_ms": 453,
+          "passed": true,
+          "task_ms": 107508,
+          "wall_ms": 108014,
+          "events": [
+            {
+              "event": "initial",
+              "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "usage": {
+                "input_tokens": 16985,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 471,
+                "turn.started": 507,
+                "item.completed": 18006,
+                "turn.completed": 18126,
+                "process_closed": 22782
+              },
+              "payload_bytes": 1641,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "usage": {
+                "input_tokens": 17000,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 325,
+                "turn.started": 342,
+                "item.completed": 13024,
+                "turn.completed": 16287,
+                "process_closed": 22859
+              },
+              "payload_bytes": 1693,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "usage": {
+                "input_tokens": 17014,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 321,
+                "turn.started": 342,
+                "item.completed": 15509,
+                "turn.completed": 15706,
+                "process_closed": 22576
+              },
+              "payload_bytes": 1742,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "invoke",
+                "name": "Review"
+              },
+              "usage": {
+                "input_tokens": 17028,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 310,
+                "turn.started": 324,
+                "item.completed": 13325,
+                "turn.completed": 13429,
+                "process_closed": 18478
+              },
+              "payload_bytes": 1800,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review"
+              },
+              "visible": [
+                {
+                  "name": "Review: Item=Cable; Quantity=3; Destination=East",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Confirm",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Cancel",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "invoke",
+                "name": "Confirm"
+              },
+              "usage": {
+                "input_tokens": 17249,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 334,
+                "turn.started": 352,
+                "item.completed": 12327,
+                "turn.completed": 13130,
+                "process_closed": 19374
+              },
+              "payload_bytes": 2599,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Confirm"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: PASS",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "receipt",
+              "result": {
+                "scenario": "inventory_a",
+                "values": {
+                  "Item": "Cable",
+                  "Quantity": "3",
+                  "Destination": "East"
+                },
+                "passed": true
+              }
+            }
+          ]
+        },
+        {
+          "cell": 2,
+          "scenario": "inventory_a",
+          "mode": "astra-jev",
+          "status": "passed",
+          "reason": null,
+          "s2_calls": 1,
+          "s1_calls": 5,
+          "replans": 0,
+          "ui_actions": 5,
+          "s2_ms": 24251,
+          "s1_ms": 2993,
+          "ui_ms": 1386,
+          "cost_usd": 0.00030744,
+          "setup_ms": 407,
+          "passed": true,
+          "task_ms": 28633,
+          "wall_ms": 29092,
+          "events": [
+            {
+              "event": "initial",
+              "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "fill",
+                    "name": "Item",
+                    "value": "Cable"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Quantity",
+                    "value": "3"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "East"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17001,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 75,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 330,
+                "turn.started": 345,
+                "item.completed": 13639,
+                "turn.completed": 13982,
+                "process_closed": 24239
+              },
+              "payload_bytes": 1650,
+              "image_bytes": 0
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 1512,
+              "cost": 0.00005796,
+              "input_tokens": 1380,
+              "output_tokens": 59,
+              "choice": "c0",
+              "choice_probabilities": {
+                "escalate": 0.1,
+                "c0": 0.73,
+                "c3": 0.12,
+                "c1": 0.02,
+                "c2": 0.03
+              },
+              "provider_confidence": 0.68,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.73,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.68,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 393,
+              "cost": 0.000058044,
+              "input_tokens": 1382,
+              "output_tokens": 51,
+              "choice": "c0",
+              "choice_probabilities": {
+                "c0": 0.93,
+                "c2": 0.01,
+                "c1": 0.02,
+                "escalate": 0.04
+              },
+              "provider_confidence": 0.9,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.93,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.9,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 368,
+              "cost": 0.000058128,
+              "input_tokens": 1384,
+              "output_tokens": 43,
+              "choice": "c0",
+              "choice_probabilities": {
+                "escalate": 0.01,
+                "c1": 0.01,
+                "c0": 0.98
+              },
+              "provider_confidence": 0.97,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.98,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.97,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 347,
+              "cost": 0.000058212,
+              "input_tokens": 1386,
+              "output_tokens": 35,
+              "choice": "c0",
+              "choice_probabilities": {
+                "escalate": 0.03,
+                "c0": 0.97
+              },
+              "provider_confidence": 0.93,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.97,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.93,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Review: Item=Cable; Quantity=3; Destination=East",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Confirm",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Cancel",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 367,
+              "cost": 0.000075096,
+              "input_tokens": 1788,
+              "output_tokens": 35,
+              "choice": "c0",
+              "choice_probabilities": {
+                "c0": 0.68,
+                "escalate": 0.32
+              },
+              "provider_confidence": 0.36,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.68,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.36,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Confirm",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: PASS",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "receipt",
+              "result": {
+                "scenario": "inventory_a",
+                "values": {
+                  "Item": "Cable",
+                  "Quantity": "3",
+                  "Destination": "East"
+                },
+                "passed": true
+              }
+            }
+          ]
+        },
+        {
+          "cell": 3,
+          "scenario": "inventory_a",
+          "mode": "astra-code",
+          "status": "passed",
+          "reason": null,
+          "s2_calls": 1,
+          "s1_calls": 0,
+          "replans": 0,
+          "ui_actions": 5,
+          "s2_ms": 27231,
+          "s1_ms": 0,
+          "ui_ms": 1388,
+          "cost_usd": 0,
+          "setup_ms": 429,
+          "passed": true,
+          "task_ms": 28621,
+          "wall_ms": 29102,
+          "events": [
+            {
+              "event": "initial",
+              "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "fill",
+                    "name": "Item",
+                    "value": "Cable"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Quantity",
+                    "value": "3"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "East"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17001,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 75,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 323,
+                "turn.started": 337,
+                "item.completed": 15228,
+                "turn.completed": 15456,
+                "process_closed": 27221
+              },
+              "payload_bytes": 1650,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Review: Item=Cable; Quantity=3; Destination=East",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Confirm",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Cancel",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Confirm",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: PASS",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "receipt",
+              "result": {
+                "scenario": "inventory_a",
+                "values": {
+                  "Item": "Cable",
+                  "Quantity": "3",
+                  "Destination": "East"
+                },
+                "passed": true
+              }
+            }
+          ]
+        },
+        {
+          "cell": 4,
+          "scenario": "inventory_change",
+          "mode": "astra-jev",
+          "status": "failed",
+          "reason": "Replan limit",
+          "s2_calls": 3,
+          "s1_calls": 7,
+          "replans": 2,
+          "ui_actions": 5,
+          "s2_ms": 57470,
+          "s1_ms": 29447,
+          "ui_ms": 1374,
+          "cost_usd": 0.000429996,
+          "setup_ms": 438,
+          "passed": false,
+          "task_ms": 88294,
+          "wall_ms": 88754,
+          "events": [
+            {
+              "event": "initial",
+              "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "fill",
+                    "name": "Item",
+                    "value": "Cable"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Quantity",
+                    "value": "3"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "East"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17025,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 75,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 330,
+                "turn.started": 344,
+                "item.completed": 12692,
+                "turn.completed": 13189,
+                "process_closed": 18660
+              },
+              "payload_bytes": 1790,
+              "image_bytes": 0
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 3378,
+              "cost": 0.000058968,
+              "input_tokens": 1404,
+              "output_tokens": 59,
+              "choice": "c3",
+              "choice_probabilities": {
+                "c2": 0.04,
+                "c1": 0.01,
+                "c3": 0.47,
+                "escalate": 0.04,
+                "c0": 0.44
+              },
+              "provider_confidence": 0.34,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c3",
+              "confidence": 0.47,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.34,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "fill",
+                    "name": "Item",
+                    "value": "Cable"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Quantity",
+                    "value": "3"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "East"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17025,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 75,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 320,
+                "turn.started": 337,
+                "item.completed": 18072,
+                "turn.completed": 18267,
+                "process_closed": 21671
+              },
+              "payload_bytes": 1790,
+              "image_bytes": 0
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 3818,
+              "cost": 0.000058968,
+              "input_tokens": 1404,
+              "output_tokens": 59,
+              "choice": "c0",
+              "choice_probabilities": {
+                "escalate": 0.07,
+                "c0": 0.58,
+                "c1": 0.01,
+                "c3": 0.3,
+                "c2": 0.04
+              },
+              "provider_confidence": 0.48,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.58,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.48,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 365,
+              "cost": 0.000059052,
+              "input_tokens": 1406,
+              "output_tokens": 51,
+              "choice": "c0",
+              "choice_probabilities": {
+                "c1": 0.04,
+                "c2": 0.05,
+                "c0": 0.87,
+                "escalate": 0.04
+              },
+              "provider_confidence": 0.84,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.87,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.84,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 419,
+              "cost": 0.000059136,
+              "input_tokens": 1408,
+              "output_tokens": 43,
+              "choice": "c0",
+              "choice_probabilities": {
+                "c0": 0.98,
+                "c1": 0.02,
+                "escalate": 0
+              },
+              "provider_confidence": 0.96,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.98,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.96,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 893,
+              "cost": 0.00005922,
+              "input_tokens": 1410,
+              "output_tokens": 35,
+              "choice": "c0",
+              "choice_probabilities": {
+                "escalate": 0.02,
+                "c0": 0.98
+              },
+              "provider_confidence": 0.95,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.98,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.95,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Acknowledge",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "host_boundary",
+              "reason": "Unplanned active control: Acknowledge",
+              "visible": [
+                {
+                  "name": "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Acknowledge",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "invoke",
+                    "name": "Acknowledge",
+                    "value": null
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "West"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17272,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 65,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 325,
+                "turn.started": 340,
+                "item.completed": 11772,
+                "turn.completed": 13386,
+                "process_closed": 17110
+              },
+              "payload_bytes": 2716,
+              "image_bytes": 0
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 19594,
+              "cost": 0.00007329,
+              "input_tokens": 1745,
+              "output_tokens": 35,
+              "choice": "c0",
+              "choice_probabilities": {
+                "escalate": 0.34,
+                "c0": 0.66
+              },
+              "provider_confidence": 0.33,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "c0",
+              "confidence": 0.66,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.33,
+              "model": "typesafe/jev-1.13-20260917"
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Acknowledge",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "usage",
+              "role": "s1",
+              "model": "typesafe/jev-1.13-20260917",
+              "requested_model": "typesafe/jev-1.13",
+              "fast_provider": "openrouter",
+              "billing": "openrouter",
+              "routing": null,
+              "elapsed_ms": 972,
+              "cost": 0.000061362,
+              "input_tokens": 1461,
+              "output_tokens": 44,
+              "choice": "escalate",
+              "choice_probabilities": {
+                "escalate": 0.5,
+                "c0": 0.27,
+                "c1": 0.23
+              },
+              "provider_confidence": 0.25,
+              "image_bytes": 0
+            },
+            {
+              "event": "fast_choice",
+              "choice": "escalate",
+              "confidence": 0.5,
+              "confidence_metric": "selected-probability",
+              "provider_confidence": 0.25,
+              "model": "typesafe/jev-1.13-20260917"
+            }
+          ]
+        },
+        {
+          "cell": 5,
+          "scenario": "inventory_change",
+          "mode": "astra-code",
+          "status": "skipped",
+          "reason": "Replan limit",
+          "s2_calls": 0,
+          "s1_calls": 0,
+          "replans": 0,
+          "ui_actions": 0,
+          "s2_ms": 0,
+          "s1_ms": 0,
+          "ui_ms": 0,
+          "cost_usd": 0,
+          "events": []
+        },
+        {
+          "cell": 6,
+          "scenario": "inventory_change",
+          "mode": "astra-stepwise",
+          "status": "skipped",
+          "reason": "Replan limit",
+          "s2_calls": 0,
+          "s1_calls": 0,
+          "replans": 0,
+          "ui_actions": 0,
+          "s2_ms": 0,
+          "s1_ms": 0,
+          "ui_ms": 0,
+          "cost_usd": 0,
+          "events": []
+        }
+      ],
+      "initial_budget": {
+        "limit": 20,
+        "charged": 0.041584030999999966,
+        "pending": 0
+      },
+      "final_budget": {
+        "limit": 20,
+        "charged": 0.04232146699999996,
+        "pending": 0
+      },
+      "finished": "2026-09-26T16:56:12.689Z",
+      "final_source_hashes": {
+        "windows/multistep-benchmark.mjs": "e71992ff83651e8da763c9c6d8b6d1fd54737f1a7a84790a2c606740b5a88e4e",
+        "windows/multistep-policy.mjs": "548fb1a8e1d67ba737c12085eac57142fdd25b2a42a9d0a105ebd2f6e56257d0",
+        "windows/DesktopLab.cs": "82ddc613cd498179214686eb2e9b2851c658c12ba5a22aad2fbcb344f1bb7af6",
+        "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+        "windows/judgment-config.mjs": "f0a2e159c7ef41166d2fff3e8862f25aa789725e34d6b1e2e885368e7bf5eeaa",
+        "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+        "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+        "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+      }
+    },
+    {
+      "id": "multistep-2026-09-26T16-56-52.580Z",
+      "started": "2026-09-26T16:56:52.580Z",
+      "cases": [
+        "inventory_change"
+      ],
+      "modes": [
+        "astra-code",
+        "astra-stepwise"
+      ],
+      "repeats": 1,
+      "source_hashes": {
+        "windows/multistep-benchmark.mjs": "3635d42c084f0a8002a58d1ca4fd1e4650ac7579cbd045bc3ccf87290b613235",
+        "windows/multistep-policy.mjs": "548fb1a8e1d67ba737c12085eac57142fdd25b2a42a9d0a105ebd2f6e56257d0",
+        "windows/DesktopLab.cs": "82ddc613cd498179214686eb2e9b2851c658c12ba5a22aad2fbcb344f1bb7af6",
+        "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+        "windows/judgment-config.mjs": "f0a2e159c7ef41166d2fff3e8862f25aa789725e34d6b1e2e885368e7bf5eeaa",
+        "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+        "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+        "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+      },
+      "planner": "gpt-6-astra",
+      "effort": "medium",
+      "fast_model": "typesafe/jev-1.13",
+      "runs": [
+        {
+          "cell": 1,
+          "scenario": "inventory_change",
+          "mode": "astra-code",
+          "status": "passed",
+          "reason": null,
+          "s2_calls": 2,
+          "s1_calls": 0,
+          "replans": 1,
+          "ui_actions": 8,
+          "s2_ms": 34883,
+          "s1_ms": 0,
+          "ui_ms": 2310,
+          "cost_usd": 0,
+          "setup_ms": 472,
+          "passed": true,
+          "task_ms": 37199,
+          "wall_ms": 37721,
+          "events": [
+            {
+              "event": "initial",
+              "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "fill",
+                    "name": "Item",
+                    "value": "Cable"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Quantity",
+                    "value": "3"
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "East"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17025,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 75,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 328,
+                "turn.started": 343,
+                "item.completed": 10739,
+                "turn.completed": 10850,
+                "process_closed": 15423
+              },
+              "payload_bytes": 1790,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Acknowledge",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "host_boundary",
+              "reason": "Unplanned active control: Acknowledge",
+              "visible": [
+                {
+                  "name": "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Acknowledge",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "steps": [
+                  {
+                    "action": "invoke",
+                    "name": "Acknowledge",
+                    "value": null
+                  },
+                  {
+                    "action": "fill",
+                    "name": "Destination",
+                    "value": "West"
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Review",
+                    "value": null
+                  },
+                  {
+                    "action": "invoke",
+                    "name": "Confirm",
+                    "value": null
+                  }
+                ]
+              },
+              "usage": {
+                "input_tokens": 17272,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 65,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 327,
+                "turn.started": 342,
+                "item.completed": 11447,
+                "turn.completed": 12227,
+                "process_closed": 19441
+              },
+              "payload_bytes": 2716,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Acknowledge",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "West"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "West"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Review: Item=Cable; Quantity=3; Destination=West",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Confirm",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Cancel",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "West"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Confirm",
+                "value": null
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "West"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: PASS",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "receipt",
+              "result": {
+                "scenario": "inventory_change",
+                "values": {
+                  "Item": "Cable",
+                  "Quantity": "3",
+                  "Destination": "West"
+                },
+                "passed": true
+              }
+            }
+          ]
+        },
+        {
+          "cell": 2,
+          "scenario": "inventory_change",
+          "mode": "astra-stepwise",
+          "status": "failed",
+          "reason": null,
+          "s2_calls": 7,
+          "s1_calls": 0,
+          "replans": 0,
+          "ui_actions": 7,
+          "s2_ms": 152156,
+          "s1_ms": 0,
+          "ui_ms": 2149,
+          "cost_usd": 0,
+          "setup_ms": 469,
+          "passed": false,
+          "task_ms": 154311,
+          "wall_ms": 154828,
+          "events": [
+            {
+              "event": "initial",
+              "task": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "usage": {
+                "input_tokens": 17009,
+                "cached_input_tokens": 13824,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 349,
+                "turn.started": 366,
+                "item.completed": 15596,
+                "turn.completed": 16286,
+                "process_closed": 20419
+              },
+              "payload_bytes": 1781,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Item",
+                "value": "Cable"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "usage": {
+                "input_tokens": 17024,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 314,
+                "turn.started": 331,
+                "item.completed": 15393,
+                "turn.completed": 15739,
+                "process_closed": 20193
+              },
+              "payload_bytes": 1833,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Quantity",
+                "value": "3"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": ""
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "usage": {
+                "input_tokens": 17038,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 308,
+                "turn.started": 325,
+                "item.completed": 10247,
+                "turn.completed": 10693,
+                "process_closed": 14616
+              },
+              "payload_bytes": 1882,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "fill",
+                "name": "Destination",
+                "value": "East"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "invoke",
+                "name": "Review"
+              },
+              "usage": {
+                "input_tokens": 17052,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 341,
+                "turn.started": 359,
+                "item.completed": 16854,
+                "turn.completed": 16854,
+                "process_closed": 31897
+              },
+              "payload_bytes": 1940,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review"
+              },
+              "visible": [
+                {
+                  "name": "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Acknowledge",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = East. Review and confirm. If a routing update appears, use its offered replacement destination.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "invoke",
+                "name": "Acknowledge"
+              },
+              "usage": {
+                "input_tokens": 17252,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 25,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 322,
+                "turn.started": 337,
+                "item.completed": 11648,
+                "turn.completed": 11648,
+                "process_closed": 16664
+              },
+              "payload_bytes": 2694,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Acknowledge"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "invoke",
+                "name": "Review"
+              },
+              "usage": {
+                "input_tokens": 17058,
+                "cached_input_tokens": 0,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 109,
+                "reasoning_output_tokens": 84
+              },
+              "timings": {
+                "thread.started": 318,
+                "turn.started": 334,
+                "item.completed": 13001,
+                "turn.completed": 13185,
+                "process_closed": 18417
+              },
+              "payload_bytes": 1960,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Review"
+              },
+              "visible": [
+                {
+                  "name": "Review: Item=Cable; Quantity=3; Destination=East",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Confirm",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Cancel",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": false,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "Result: Not submitted",
+                  "type": "text",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": false,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "planner",
+              "action": {
+                "action": "invoke",
+                "name": "Confirm"
+              },
+              "usage": {
+                "input_tokens": 17279,
+                "cached_input_tokens": 13824,
+                "cache_write_input_tokens": 0,
+                "output_tokens": 23,
+                "reasoning_output_tokens": 0
+              },
+              "timings": {
+                "thread.started": 312,
+                "turn.started": 327,
+                "item.completed": 22436,
+                "turn.completed": 22611,
+                "process_closed": 29881
+              },
+              "payload_bytes": 2746,
+              "image_bytes": 0
+            },
+            {
+              "event": "ui_action",
+              "step": {
+                "action": "invoke",
+                "name": "Confirm"
+              },
+              "visible": [
+                {
+                  "name": "Synthetic desktop task: Item = Cable; Quantity = 3; Destination = West. Review and confirm.",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Item",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "Cable"
+                },
+                {
+                  "name": "Quantity",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Quantity",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "3"
+                },
+                {
+                  "name": "Destination",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Destination",
+                  "type": "edit",
+                  "enabled": true,
+                  "value": "East"
+                },
+                {
+                  "name": "Review",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "Result: FAIL",
+                  "type": "text",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最小化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "最大化",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                },
+                {
+                  "name": "关闭",
+                  "type": "button",
+                  "enabled": true,
+                  "value": null
+                }
+              ]
+            },
+            {
+              "event": "receipt",
+              "result": {
+                "scenario": "inventory_change",
+                "values": {
+                  "Item": "Cable",
+                  "Quantity": "3",
+                  "Destination": "East"
+                },
+                "passed": false
+              }
+            }
+          ]
+        }
+      ],
+      "initial_budget": {
+        "limit": 20,
+        "charged": 0.04232146699999996,
+        "pending": 0
+      },
+      "final_budget": {
+        "limit": 20,
+        "charged": 0.04232146699999996,
+        "pending": 0
+      },
+      "finished": "2026-09-26T17:00:07.455Z",
+      "final_source_hashes": {
+        "windows/multistep-benchmark.mjs": "3635d42c084f0a8002a58d1ca4fd1e4650ac7579cbd045bc3ccf87290b613235",
+        "windows/multistep-policy.mjs": "548fb1a8e1d67ba737c12085eac57142fdd25b2a42a9d0a105ebd2f6e56257d0",
+        "windows/DesktopLab.cs": "82ddc613cd498179214686eb2e9b2851c658c12ba5a22aad2fbcb344f1bb7af6",
+        "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+        "windows/judgment-config.mjs": "f0a2e159c7ef41166d2fff3e8862f25aa789725e34d6b1e2e885368e7bf5eeaa",
+        "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+        "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+        "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+      }
+    }
+  ]
+}
