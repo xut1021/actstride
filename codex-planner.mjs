@@ -65,9 +65,10 @@ function run(cmd, args, { cwd, input = '', signal, timeout = 180000 } = {}) {
 }
 
 export class CodexPlanner {
-  constructor({ directory, model = CODEX_MODEL, signal } = {}) {
+  constructor({ directory, model = CODEX_MODEL, signal, outputSchema = schema, instructions = PLANNER_INSTRUCTIONS } = {}) {
     this.directory = resolve(directory); this.model = model; this.signal = signal; this.index = 0;
     this.cmd = command();
+    this.outputSchema = outputSchema; this.instructions = instructions;
   }
   async checkAuth() {
     const result = await run(this.cmd, ['login', 'status'], { timeout: 15000, signal: this.signal });
@@ -76,14 +77,14 @@ export class CodexPlanner {
   async decide(observation) {
     const dir = join(this.directory, String(++this.index).padStart(3, '0')); mkdirSync(dir, { recursive: true });
     const screenshot = join(dir, 'screen.png'), schemaFile = join(dir, 'schema.json'), instructions = join(dir, 'instructions.txt'), output = join(dir, 'action.json');
-    writeFileSync(screenshot, Buffer.from(observation.image.split(',')[1], 'base64'));
-    writeFileSync(schemaFile, JSON.stringify(schema)); writeFileSync(instructions, PLANNER_INSTRUCTIONS);
+    if (observation.image) writeFileSync(screenshot, Buffer.from(observation.image.split(',')[1], 'base64'));
+    writeFileSync(schemaFile, JSON.stringify(this.outputSchema)); writeFileSync(instructions, this.instructions);
     const { image, png, ...state } = observation;
     const args = ['exec', '--ignore-user-config', '--ephemeral', '--skip-git-repo-check', '--sandbox', 'read-only',
       '--disable', 'shell_tool', '--disable', 'multi_agent', '--disable', 'apps', '--disable', 'hooks',
       '-c', 'project_doc_max_bytes=0', '-c', 'forced_login_method="chatgpt"', '-c', 'model_provider="openai"',
       '-c', 'model_reasoning_effort="medium"', '-c', `model_instructions_file=${JSON.stringify(instructions)}`,
-      '--model', this.model, '--cd', dir, '--image', screenshot, '--output-schema', schemaFile,
+      '--model', this.model, '--cd', dir, ...(observation.image ? ['--image', screenshot] : []), '--output-schema', schemaFile,
       '--output-last-message', output, '--json', '-'];
     const result = await run(this.cmd, args, { cwd: dir, input: JSON.stringify(state), signal: this.signal });
     writeFileSync(join(dir, 'events.jsonl'), result.stdout);
@@ -93,6 +94,6 @@ export class CodexPlanner {
     if (events.some(e => e.item && !['agent_message', 'reasoning'].includes(e.item.type))) throw Error('Unexpected Codex tool activity; planner must only return an action');
     const raw = JSON.parse(readFileSync(output, 'utf8'));
     const action = Object.fromEntries(Object.entries(raw).filter(([, value]) => value !== null));
-    return { action, usage: completed.usage, timings: result.timings, payload_bytes: Buffer.byteLength(JSON.stringify(state)), image_bytes: Buffer.from(image.split(',')[1], 'base64').length };
+    return { action, usage: completed.usage, timings: result.timings, payload_bytes: Buffer.byteLength(JSON.stringify(state)), image_bytes: image ? Buffer.from(image.split(',')[1], 'base64').length : 0 };
   }
 }
