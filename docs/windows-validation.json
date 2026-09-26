@@ -1,0 +1,1238 @@
+{
+  "batches": [
+    {
+      "id": "windows-benchmark-2026-09-26T15-13-31.562Z",
+      "started": "2026-09-26T15:13:31.563Z",
+      "finished": "2026-09-26T15:20:49.668Z",
+      "error": null,
+      "source_hashes": {
+        "windows/benchmark.mjs": "fc317f555e250c365e5df27768ec34b97bf0e2d8762cab98139348f3b0a3da60",
+        "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+        "windows/DesktopLab.cs": "06b8a3fe2b69e5f7916ae4832b556c47dd50f0ef453a9ea1486cfed934be670b",
+        "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+        "desktop.mjs": "6b231f4215d93debbb17463cf6c1780a1b02abee3cc16301f45c7353a53abd6f",
+        "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+        "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+      },
+      "initial_budget": {
+        "limit": 20,
+        "charged": 0.039343288999999976,
+        "pending": 0
+      },
+      "final_budget": {
+        "limit": 20,
+        "charged": 0.03944526499999998,
+        "pending": 0
+      }
+    },
+    {
+      "id": "windows-benchmark-2026-09-26T15-21-07.670Z",
+      "started": "2026-09-26T15:21:07.670Z",
+      "finished": "2026-09-26T15:28:35.353Z",
+      "error": null,
+      "source_hashes": {
+        "windows/benchmark.mjs": "fc317f555e250c365e5df27768ec34b97bf0e2d8762cab98139348f3b0a3da60",
+        "windows/backend.mjs": "25e9da817593a7fa37b663d1a19085602694ef47fd6fe26cf854ed3826ba7677",
+        "windows/DesktopLab.cs": "06b8a3fe2b69e5f7916ae4832b556c47dd50f0ef453a9ea1486cfed934be670b",
+        "codex-planner.mjs": "c2b1d1de0b395ec31949e595068e1a5cadd51444546aa427ffd6331345228d11",
+        "desktop.mjs": "6b231f4215d93debbb17463cf6c1780a1b02abee3cc16301f45c7353a53abd6f",
+        "fast-decider.mjs": "6cf9e54ec66d88a4418aed668858373da6e6382bb64df28af6600cede6c91413",
+        "budget.mjs": "b5d2daad88fb800cfee69a650573a0227b9577df4ecc02f673ea68ccf29f1736"
+      },
+      "initial_budget": {
+        "limit": 20,
+        "charged": 0.03944526499999998,
+        "pending": 0
+      },
+      "final_budget": {
+        "limit": 20,
+        "charged": 0.03954724099999998,
+        "pending": 0
+      }
+    }
+  ],
+  "groups": {
+    "stepwise": {
+      "started": 4,
+      "passed": 4,
+      "skipped": 0,
+      "median_success_ms": 150878
+    },
+    "skills": {
+      "started": 4,
+      "passed": 4,
+      "skipped": 0,
+      "median_success_ms": 32634
+    },
+    "dual-skills": {
+      "started": 4,
+      "passed": 4,
+      "skipped": 0,
+      "median_success_ms": 32568.5
+    }
+  },
+  "pairs": [
+    {
+      "batch": 1,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "skills_speedup": 3.461138123976837,
+      "dual_speedup": 4.451728472658705,
+      "dual_vs_skills_time_ratio": 0.7774818579421897
+    },
+    {
+      "batch": 1,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "skills_speedup": 3.9858592400690847,
+      "dual_speedup": 4.62719298245614,
+      "dual_vs_skills_time_ratio": 0.8613989637305699
+    },
+    {
+      "batch": 2,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "skills_speedup": 5.616794271941018,
+      "dual_speedup": 3.9166790251618964,
+      "dual_vs_skills_time_ratio": 1.4340706082518078
+    },
+    {
+      "batch": 2,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "skills_speedup": 5.597151576805697,
+      "dual_speedup": 4.637866152873529,
+      "dual_vs_skills_time_ratio": 1.2068376689434674
+    }
+  ],
+  "runs": [
+    {
+      "batch": 1,
+      "cell": 1,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "mode": "stepwise",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 5,
+      "s1_calls": 0,
+      "s2_ms": 140693,
+      "s1_ms": 0,
+      "ui_ms": 955,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 570,
+      "passed": true,
+      "task_ms": 141654,
+      "wall_ms": 142280,
+      "planner_usage": [
+        {
+          "input_tokens": 17124,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 39,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17155,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 39,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17185,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 39,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17139,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 45,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17458,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 51,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r2_3",
+            "value": "Cable",
+            "fields": [],
+            "reason": "Set Item to the requested value."
+          },
+          "timestamp": "2026-09-26T15:13:56.878Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r3_5",
+            "value": "3",
+            "fields": [],
+            "reason": "Set Quantity to the requested value."
+          },
+          "timestamp": "2026-09-26T15:14:25.264Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r4_7",
+            "value": "East",
+            "fields": [],
+            "reason": "Set Destination to the requested value."
+          },
+          "timestamp": "2026-09-26T15:14:57.888Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r5_8",
+            "fields": [],
+            "reason": "All fields match the task; open Review to verify before confirming."
+          },
+          "timestamp": "2026-09-26T15:15:24.057Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r7_2",
+            "fields": [],
+            "reason": "Review verified: Item=Cable; Quantity=3; Destination=East. Confirm the form."
+          },
+          "timestamp": "2026-09-26T15:15:57.134Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "inventory_a",
+        "values": {
+          "Item": "Cable",
+          "Quantity": "3",
+          "Destination": "East"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 1,
+      "cell": 2,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "mode": "skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 0,
+      "s2_ms": 40000,
+      "s1_ms": 0,
+      "ui_ms": 927,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 467,
+      "passed": true,
+      "task_ms": 40927,
+      "wall_ms": 41457,
+      "planner_usage": [
+        {
+          "input_tokens": 17075,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 67,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Item",
+          "elapsed_ms": 94,
+          "timestamp": "2026-09-26T15:16:37.864Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Quantity",
+          "elapsed_ms": 119,
+          "timestamp": "2026-09-26T15:16:37.984Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Destination",
+          "elapsed_ms": 108,
+          "timestamp": "2026-09-26T15:16:38.092Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:16:38.549Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:16:38.696Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "inventory_a",
+        "values": {
+          "Item": "Cable",
+          "Quantity": "3",
+          "Destination": "East"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 1,
+      "cell": 3,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "mode": "dual-skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 1,
+      "s2_ms": 27590,
+      "s1_ms": 3171,
+      "ui_ms": 1058,
+      "ui_actions": 5,
+      "cost_usd": 0.000050778,
+      "setup_ms": 415,
+      "passed": true,
+      "task_ms": 31820,
+      "wall_ms": 32296,
+      "planner_usage": [
+        {
+          "input_tokens": 17079,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 66,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.65,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.31,
+          "model": "typesafe/jev-1.13-20260917",
+          "timestamp": "2026-09-26T15:17:10.035Z"
+        }
+      ],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Item",
+          "elapsed_ms": 99,
+          "timestamp": "2026-09-26T15:17:10.134Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Quantity",
+          "elapsed_ms": 131,
+          "timestamp": "2026-09-26T15:17:10.266Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Destination",
+          "elapsed_ms": 142,
+          "timestamp": "2026-09-26T15:17:10.408Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:17:10.918Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:17:11.093Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "inventory_a",
+        "values": {
+          "Item": "Cable",
+          "Quantity": "3",
+          "Destination": "East"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 1,
+      "cell": 4,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "mode": "skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 0,
+      "s2_ms": 36028,
+      "s1_ms": 0,
+      "ui_ms": 1028,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 468,
+      "passed": true,
+      "task_ms": 37056,
+      "wall_ms": 37573,
+      "planner_usage": [
+        {
+          "input_tokens": 17155,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 68,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Room",
+          "elapsed_ms": 143,
+          "timestamp": "2026-09-26T15:17:47.905Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Day",
+          "elapsed_ms": 124,
+          "timestamp": "2026-09-26T15:17:48.030Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Attendees",
+          "elapsed_ms": 139,
+          "timestamp": "2026-09-26T15:17:48.169Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:17:48.641Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:17:48.789Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "booking_b",
+        "values": {
+          "Room": "Cedar",
+          "Day": "Friday",
+          "Attendees": "8"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 1,
+      "cell": 5,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "mode": "dual-skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 1,
+      "s2_ms": 28386,
+      "s1_ms": 2603,
+      "ui_ms": 930,
+      "ui_actions": 5,
+      "cost_usd": 0.000051198,
+      "setup_ms": 440,
+      "passed": true,
+      "task_ms": 31920,
+      "wall_ms": 32423,
+      "planner_usage": [
+        {
+          "input_tokens": 17159,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 69,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.57,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.13,
+          "model": "typesafe/jev-1.13-20260917",
+          "timestamp": "2026-09-26T15:18:20.383Z"
+        }
+      ],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Room",
+          "elapsed_ms": 122,
+          "timestamp": "2026-09-26T15:18:20.506Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Day",
+          "elapsed_ms": 106,
+          "timestamp": "2026-09-26T15:18:20.613Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Attendees",
+          "elapsed_ms": 108,
+          "timestamp": "2026-09-26T15:18:20.721Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:18:21.168Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:18:21.313Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "booking_b",
+        "values": {
+          "Room": "Cedar",
+          "Day": "Friday",
+          "Attendees": "8"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 1,
+      "cell": 6,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "mode": "stepwise",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 5,
+      "s1_calls": 0,
+      "s2_ms": 146725,
+      "s1_ms": 0,
+      "ui_ms": 973,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 432,
+      "passed": true,
+      "task_ms": 147700,
+      "wall_ms": 148192,
+      "planner_usage": [
+        {
+          "input_tokens": 17052,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 40,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17160,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 39,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17114,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 40,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17146,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 45,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17390,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 51,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r3_3",
+            "value": "8",
+            "fields": [],
+            "reason": "Set Attendees to the requested value."
+          },
+          "timestamp": "2026-09-26T15:18:52.253Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r4_5",
+            "value": "Friday",
+            "fields": [],
+            "reason": "Set Day to the requested value."
+          },
+          "timestamp": "2026-09-26T15:19:20.165Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r5_7",
+            "value": "Cedar",
+            "fields": [],
+            "reason": "Set Room to the requested value."
+          },
+          "timestamp": "2026-09-26T15:19:42.309Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r6_8",
+            "fields": [],
+            "reason": "All fields match the task; open Review to verify before confirming."
+          },
+          "timestamp": "2026-09-26T15:20:13.116Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r8_2",
+            "fields": [],
+            "reason": "Verified review matches Room=Cedar, Day=Friday, Attendees=8; confirm submission."
+          },
+          "timestamp": "2026-09-26T15:20:49.607Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "booking_b",
+        "values": {
+          "Room": "Cedar",
+          "Day": "Friday",
+          "Attendees": "8"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 2,
+      "cell": 1,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "mode": "stepwise",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 5,
+      "s1_calls": 0,
+      "s2_ms": 157564,
+      "s1_ms": 0,
+      "ui_ms": 889,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 492,
+      "passed": true,
+      "task_ms": 158461,
+      "wall_ms": 159013,
+      "planner_usage": [
+        {
+          "input_tokens": 17052,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 40,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17084,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 39,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17190,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 40,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17146,
+          "cached_input_tokens": 7040,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 45,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17390,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 50,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r3_3",
+            "value": "8",
+            "fields": [],
+            "reason": "Set Attendees to the requested value."
+          },
+          "timestamp": "2026-09-26T15:21:49.270Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r4_5",
+            "value": "Friday",
+            "fields": [],
+            "reason": "Set Day to the requested value."
+          },
+          "timestamp": "2026-09-26T15:22:15.308Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r5_7",
+            "value": "Cedar",
+            "fields": [],
+            "reason": "Set Room to the requested value."
+          },
+          "timestamp": "2026-09-26T15:22:52.590Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r6_8",
+            "fields": [],
+            "reason": "All fields match the task; open Review to verify before confirming."
+          },
+          "timestamp": "2026-09-26T15:23:22.837Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r8_2",
+            "fields": [],
+            "reason": "Review matches Room=Cedar, Day=Friday, and Attendees=8; confirm."
+          },
+          "timestamp": "2026-09-26T15:23:48.832Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "booking_b",
+        "values": {
+          "Room": "Cedar",
+          "Day": "Friday",
+          "Attendees": "8"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 2,
+      "cell": 2,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "mode": "skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 0,
+      "s2_ms": 27300,
+      "s1_ms": 0,
+      "ui_ms": 912,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 419,
+      "passed": true,
+      "task_ms": 28212,
+      "wall_ms": 28677,
+      "planner_usage": [
+        {
+          "input_tokens": 17155,
+          "cached_input_tokens": 13952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 69,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Attendees",
+          "elapsed_ms": 90,
+          "timestamp": "2026-09-26T15:24:16.804Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Day",
+          "elapsed_ms": 110,
+          "timestamp": "2026-09-26T15:24:16.915Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Room",
+          "elapsed_ms": 112,
+          "timestamp": "2026-09-26T15:24:17.027Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:24:17.479Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:24:17.624Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "booking_b",
+        "values": {
+          "Room": "Cedar",
+          "Day": "Friday",
+          "Attendees": "8"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 2,
+      "cell": 3,
+      "scenario": "booking_b",
+      "repeat": 1,
+      "mode": "dual-skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 1,
+      "s2_ms": 34216,
+      "s1_ms": 5318,
+      "ui_ms": 923,
+      "ui_actions": 5,
+      "cost_usd": 0.000051198,
+      "setup_ms": 423,
+      "passed": true,
+      "task_ms": 40458,
+      "wall_ms": 40933,
+      "planner_usage": [
+        {
+          "input_tokens": 17083,
+          "cached_input_tokens": 13952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 68,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.58,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.15,
+          "model": "typesafe/jev-1.13-20260917",
+          "timestamp": "2026-09-26T15:24:57.734Z"
+        }
+      ],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Room",
+          "elapsed_ms": 118,
+          "timestamp": "2026-09-26T15:24:57.852Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Day",
+          "elapsed_ms": 112,
+          "timestamp": "2026-09-26T15:24:57.964Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Attendees",
+          "elapsed_ms": 110,
+          "timestamp": "2026-09-26T15:24:58.075Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:24:58.514Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:24:58.657Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "booking_b",
+        "values": {
+          "Room": "Cedar",
+          "Day": "Friday",
+          "Attendees": "8"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 2,
+      "cell": 4,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "mode": "skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 0,
+      "s2_ms": 26622,
+      "s1_ms": 0,
+      "ui_ms": 902,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 445,
+      "passed": true,
+      "task_ms": 27524,
+      "wall_ms": 28012,
+      "planner_usage": [
+        {
+          "input_tokens": 17151,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 66,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Item",
+          "elapsed_ms": 95,
+          "timestamp": "2026-09-26T15:25:25.971Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Quantity",
+          "elapsed_ms": 113,
+          "timestamp": "2026-09-26T15:25:26.084Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Destination",
+          "elapsed_ms": 108,
+          "timestamp": "2026-09-26T15:25:26.192Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:25:26.628Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:25:26.778Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "inventory_a",
+        "values": {
+          "Item": "Cable",
+          "Quantity": "3",
+          "Destination": "East"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 2,
+      "cell": 5,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "mode": "dual-skills",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 1,
+      "s1_calls": 1,
+      "s2_ms": 30303,
+      "s1_ms": 1987,
+      "ui_ms": 926,
+      "ui_actions": 5,
+      "cost_usd": 0.000050778,
+      "setup_ms": 449,
+      "passed": true,
+      "task_ms": 33217,
+      "wall_ms": 33711,
+      "planner_usage": [
+        {
+          "input_tokens": 17155,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 66,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [
+        {
+          "event": "fast_choice",
+          "choice": "use_skill",
+          "confidence": 0.68,
+          "confidence_metric": "selected-probability",
+          "provider_confidence": 0.36,
+          "model": "typesafe/jev-1.13-20260917",
+          "timestamp": "2026-09-26T15:25:59.663Z"
+        }
+      ],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Item",
+          "elapsed_ms": 103,
+          "timestamp": "2026-09-26T15:25:59.766Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Quantity",
+          "elapsed_ms": 116,
+          "timestamp": "2026-09-26T15:25:59.882Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "fill",
+          "name": "Destination",
+          "elapsed_ms": 115,
+          "timestamp": "2026-09-26T15:25:59.998Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Review",
+          "timestamp": "2026-09-26T15:26:00.439Z"
+        },
+        {
+          "event": "ui_action",
+          "action": "invoke",
+          "name": "Confirm",
+          "timestamp": "2026-09-26T15:26:00.589Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "inventory_a",
+        "values": {
+          "Item": "Cable",
+          "Quantity": "3",
+          "Destination": "East"
+        },
+        "passed": true
+      }
+    },
+    {
+      "batch": 2,
+      "cell": 6,
+      "scenario": "inventory_a",
+      "repeat": 1,
+      "mode": "stepwise",
+      "status": "passed",
+      "reason": null,
+      "s2_calls": 5,
+      "s1_calls": 0,
+      "s2_ms": 152755,
+      "s1_ms": 0,
+      "ui_ms": 1297,
+      "ui_actions": 5,
+      "cost_usd": 0,
+      "setup_ms": 474,
+      "passed": true,
+      "task_ms": 154056,
+      "wall_ms": 154594,
+      "planner_usage": [
+        {
+          "input_tokens": 17124,
+          "cached_input_tokens": 13952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 37,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17153,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 38,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17182,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 37,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17210,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 41,
+          "reasoning_output_tokens": 0
+        },
+        {
+          "input_tokens": 17373,
+          "cached_input_tokens": 13952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 48,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "fast_decisions": [],
+      "ui_actions_log": [
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r3_3",
+            "value": "Cable",
+            "fields": [],
+            "reason": "Set Item to Cable."
+          },
+          "timestamp": "2026-09-26T15:26:34.653Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r4_5",
+            "value": "3",
+            "fields": [],
+            "reason": "Set Quantity to 3."
+          },
+          "timestamp": "2026-09-26T15:27:05.623Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "fill",
+            "reference": "r5_7",
+            "value": "East",
+            "fields": [],
+            "reason": "Set Destination to East."
+          },
+          "timestamp": "2026-09-26T15:27:40.818Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r6_8",
+            "fields": [],
+            "reason": "All fields match the task; open Review."
+          },
+          "timestamp": "2026-09-26T15:28:07.745Z"
+        },
+        {
+          "event": "ui_action",
+          "action": {
+            "action": "invoke",
+            "reference": "r8_2",
+            "fields": [],
+            "reason": "Review matches Item=Cable, Quantity=3, Destination=East; confirm."
+          },
+          "timestamp": "2026-09-26T15:28:35.288Z"
+        }
+      ],
+      "receipt": {
+        "scenario": "inventory_a",
+        "values": {
+          "Item": "Cable",
+          "Quantity": "3",
+          "Destination": "East"
+        },
+        "passed": true
+      }
+    }
+  ],
+  "known_api_cost_usd": 0.000203952,
+  "limits": [
+    "Synthetic WinForms desktop fixture only",
+    "UIA semantic operations; no pure-vision comparison",
+    "Fresh Codex CLI startup/exit included per request",
+    "Small descriptive sample, no population success-rate claim",
+    "Subscription usage is separate from API dollar cost"
+  ]
+}

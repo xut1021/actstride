@@ -12,6 +12,8 @@ Jev-Mem 研究的是智能体记忆，本项目是独立的浏览器实现，不
 
 ## 快速开始
 
+Windows 桌面实验另见[独立 UIA 后端](docs/windows-backend.md)和[12 次真实对照结果](docs/windows-validation.md)。三组在相同后端比较逐步规划、技能执行和双模型技能：技能路线已观察到提速，Jev 的额外收益尚未证明。当前仅支持自带测试应用，不代表通用桌面能力。
+
 需要 Node.js 22+。
 
 ```sh
