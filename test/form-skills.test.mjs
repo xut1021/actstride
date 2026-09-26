@@ -16,18 +16,20 @@ test('skill bindings reject invented skills, duplicate and unavailable fields', 
 });
 test('real multi-step skills complete normal form and suspend/resume routing change', { skip: process.platform !== 'win32' || process.env.ACTSTRIDE_WINDOWS_TEST !== '1' }, async () => {
   const exe = buildDesktopLab(), out = mkdtempSync(join(tmpdir(), 'actstride-form-skills-'));
-  for (const scenario of ['inventory_a', 'inventory_change']) {
+  for (const scenario of ['inventory_a', 'inventory_change', 'inventory_change_b']) {
     const receipt = join(out, scenario + '.json'), lab = new WindowsLab(exe, scenario, receipt), actions = [];
     try {
       const state = await lab.waitFor(s => s.controls.filter(c => c.type === 'edit').length === 3);
-      let result = await executeFormSkill(lab, state, { skill: 'submit_form', fields: fields('East') }, e => actions.push(e));
-      if (scenario === 'inventory_change') {
+      const bindingFields = destination => scenario.endsWith('_b') ? [{ name: 'Item', value: 'Adapter' }, { name: 'Quantity', value: '7' }, { name: 'Destination', value: destination }] : fields(destination);
+      let result = await executeFormSkill(lab, state, { skill: 'submit_form', fields: bindingFields(scenario.endsWith('_b') ? 'West' : 'East') }, e => actions.push(e));
+      if (scenario.startsWith('inventory_change')) {
         assert.equal(result.status, 'suspended'); assert.equal(actions.length, 4); assert.equal(existsSync(receipt), false);
         assert.equal(actions.some(s => s.name === 'Confirm'), false);
-        result = await executeFormSkill(lab, result.state, { skill: 'acknowledge_update_and_submit', fields: fields('West') }, e => actions.push(e));
+        result = await executeFormSkill(lab, result.state, { skill: 'acknowledge_update_and_submit', fields: bindingFields(scenario.endsWith('_b') ? 'North' : 'West') }, e => actions.push(e));
         assert.equal(actions.length, 8);
       } else assert.equal(actions.length, 5);
       assert.equal(result.status, 'completed'); assert.equal(JSON.parse(readFileSync(receipt, 'utf8')).passed, true);
+      if (scenario.endsWith('_b')) assert.equal(JSON.parse(readFileSync(receipt, 'utf8')).values.Destination, 'North');
     } finally { await lab.close(); }
   }
 });

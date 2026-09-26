@@ -11,15 +11,16 @@ import { stepSchema, planSchema, instructions, validateSteps, boundary, candidat
 import { bindingSchema, bindingInstructions, skillDescriptions, validateBinding, executeFormSkill } from './form-skills.mjs';
 
 const { values: args } = parseArgs({ options: { cases: { type: 'string', default: 'inventory_a,inventory_change' },
-  modes: { type: 'string', default: 'astra-stepwise,astra-jev,astra-code' } } });
-const cases = args.cases.split(','), modes = args.modes.split(',');
-if (!cases.length || new Set(cases).size !== cases.length || cases.some(s => !['inventory_a', 'inventory_change'].includes(s))) throw Error('Invalid cases');
-if (!modes.length || new Set(modes).size !== modes.length || modes.some(s => !['astra-stepwise', 'astra-jev', 'astra-code', 'astra-jev-skills'].includes(s))) throw Error('Invalid modes');
+  modes: { type: 'string', default: 'astra-stepwise,astra-jev,astra-code' }, repeats: { type: 'string', default: '1' } } });
+const cases = args.cases.split(','), modes = args.modes.split(','), repeats = Number(args.repeats);
+if (!Number.isInteger(repeats) || repeats < 1 || repeats > 3) throw Error('Repeats must be 1..3');
+if (!cases.length || new Set(cases).size !== cases.length || cases.some(s => !['inventory_a', 'inventory_change', 'inventory_change_b'].includes(s))) throw Error('Invalid cases');
+if (!modes.length || new Set(modes).size !== modes.length || modes.some(s => !['astra-stepwise', 'astra-jev', 'astra-code', 'astra-jev-skills', 'astra-direct-skills'].includes(s))) throw Error('Invalid modes');
 const directory = resolve(`runs/multistep-${new Date().toISOString().replaceAll(':', '-')}`);
 mkdirSync(directory, { recursive: true });
 const sources = ['windows/multistep-benchmark.mjs', 'windows/multistep-policy.mjs', 'windows/form-skills.mjs', 'windows/DesktopLab.cs', 'windows/backend.mjs', 'windows/judgment-config.mjs', 'codex-planner.mjs', 'fast-decider.mjs', 'budget.mjs'];
 const hashes = () => Object.fromEntries(sources.map(p => [p, createHash('sha256').update(readFileSync(p)).digest('hex')]));
-const manifest = { started: new Date().toISOString(), cases, modes, repeats: 1, source_hashes: hashes(), planner: 'gpt-6-astra', effort: 'medium', fast_model: 'typesafe/jev-1.13', runs: [] };
+const manifest = { started: new Date().toISOString(), cases, modes, repeats, source_hashes: hashes(), planner: 'gpt-6-astra', effort: 'medium', fast_model: 'typesafe/jev-1.13', runs: [] };
 const save = () => writeFileSync(join(directory, 'manifest.json'), JSON.stringify(manifest, null, 2));
 const lock = openSync('runs/session.lock', 'wx'); let halted;
 const signature = state => JSON.stringify(state.controls.map(({ name, type, value, enabled }) => ({ name, type, value, enabled })));
@@ -30,17 +31,18 @@ try {
   manifest.initial_budget = { ...budget.state }; save();
   const price = await judgmentPrice(manifest.fast_model);
   const exe = buildDesktopLab(); await new CodexPlanner({ directory: join(directory, 'auth') }).checkAuth();
-  for (let index = 0; index < cases.length; index++) {
-    const order = [...modes.slice(index), ...modes.slice(0, index)];
+  for (let repeat = 1; repeat <= repeats; repeat++) for (let index = 0; index < cases.length; index++) {
+    const offset = (index + repeat - 1) % modes.length;
+    const order = [...modes.slice(offset), ...modes.slice(0, offset)];
     for (const mode of order) {
-      const run = { cell: manifest.runs.length + 1, scenario: cases[index], mode, status: halted ? 'skipped' : 'running', reason: halted ?? null,
+      const run = { cell: manifest.runs.length + 1, scenario: cases[index], repeat, mode, status: halted ? 'skipped' : 'running', reason: halted ?? null,
         s2_calls: 0, s1_calls: 0, replans: 0, ui_actions: 0, s2_ms: 0, s1_ms: 0, ui_ms: 0, cost_usd: 0 };
       manifest.runs.push(run); save(); if (halted) continue;
       if (JSON.stringify(hashes()) !== JSON.stringify(manifest.source_hashes)) throw Error('Source changed');
       const out = join(directory, String(run.cell).padStart(2, '0')); mkdirSync(out);
       const record = e => appendFileSync(join(out, 'events.jsonl'), JSON.stringify(e) + '\n');
       const receipt = join(out, 'receipt.json'), lab = new WindowsLab(exe, run.scenario, receipt);
-      const skillMode = mode === 'astra-jev-skills';
+      const skillMode = ['astra-jev-skills', 'astra-direct-skills'].includes(mode);
       if (skillMode) run.skill_calls = 0;
       const planner = new CodexPlanner({ directory: join(out, 'codex'), outputSchema: skillMode ? bindingSchema : mode === 'astra-stepwise' ? stepSchema : planSchema,
         instructions: skillMode ? bindingInstructions : instructions });
@@ -63,11 +65,13 @@ try {
             run.s2_ms += Date.now() - t; if (run.s2_calls > 1) run.replans++;
             record({ event: 'planner', ...result });
             const binding = validateBinding(result.action, state);
-            t = Date.now(); run.s1_calls++;
-            const decision = await fast.decide({ state: { task, ui: state, history, binding, description: skillDescriptions[binding.skill] },
-              criteria: { use_skill: 'Invoke the offered multi-step skill with the bound parameters', escalate: 'Request a revised binding from Astra; do not act' } });
-            run.s1_ms += Date.now() - t; record({ event: 'fast_choice', ...decision });
-            if (decision.choice !== 'use_skill' || decision.confidence < 0.55) { history.push({ event: 'skill_declined', binding }); continue; }
+            if (mode === 'astra-jev-skills') {
+              t = Date.now(); run.s1_calls++;
+              const decision = await fast.decide({ state: { task, ui: state, history, binding, description: skillDescriptions[binding.skill] },
+                criteria: { use_skill: 'Invoke the offered multi-step skill with the bound parameters', escalate: 'Request a revised binding from Astra; do not act' } });
+              run.s1_ms += Date.now() - t; record({ event: 'fast_choice', ...decision });
+              if (decision.choice !== 'use_skill' || decision.confidence < 0.55) { history.push({ event: 'skill_declined', binding }); continue; }
+            }
             t = Date.now(); const live = await lab.observe();
             if (signature(live) !== signature(state)) throw Error('UI changed during decision');
             run.skill_calls++; record({ event: 'skill_start', binding });

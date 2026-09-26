@@ -128,7 +128,8 @@ class DesktopLab {
             Left = 20, Top = 20, Width = 590, Height = 70 };
         form.Controls.Add(task);
         var inputs = new Dictionary<string, TextBox>();
-        bool routingUpdate = scenario == "inventory_change";
+        bool routingUpdate = scenario == "inventory_change" || scenario == "inventory_change_b";
+        string replacementDestination = scenario == "inventory_change_b" ? "North" : "West";
         bool updateShown = false;
         if (routingUpdate) task.Text += " If a routing update appears, use its offered replacement destination.";
         var status = new Label { Text = "Not submitted", AccessibleName = "Result: Not submitted", Left = 20, Top = 360, Width = 580, Height = 45 };
@@ -145,10 +146,10 @@ class DesktopLab {
             if (routingUpdate && !updateShown) {
                 updateShown = true;
                 using (var notice = new Form { Text = "ActStride Desktop Lab - Routing update", Width = 560, Height = 250, StartPosition = FormStartPosition.CenterParent, Font = form.Font }) {
-                    notice.Controls.Add(new Label { Text = "Routing update: East is unavailable. Use West instead. Acknowledge, change Destination to West, then review again.", Left = 20, Top = 20, Width = 510, Height = 100 });
+                    notice.Controls.Add(new Label { Text = "Routing update: " + expected[2] + " is unavailable. Use " + replacementDestination + " instead. Acknowledge, change Destination to " + replacementDestination + ", then review again.", Left = 20, Top = 20, Width = 510, Height = 100 });
                     var acknowledge = new Button { Text = "Acknowledge", AccessibleName = "Acknowledge", Left = 150, Top = 140, Width = 220, Height = 45 };
                     acknowledge.Click += (sender, ev) => {
-                        expected[2] = "West";
+                        expected[2] = replacementDestination;
                         task.Text = "Synthetic desktop task: " + String.Join("; ", names.Select((n, i) => n + " = " + expected[i])) + ". Review and confirm.";
                         clearResult(); notice.Close();
                     };

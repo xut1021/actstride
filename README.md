@@ -102,6 +102,8 @@ flowchart LR
 
 ## 验证与边界
 
+[同一套 Skill 的 Jev 对照](docs/skill-ablation-validation.md)：在新配送变更任务变体上交换顺序各测两次，两组均 2/2 通过。Astra 直接调用 Skill 的完整耗时中位数为 40.68 秒，加入 Jev 为 49.73 秒；两组均调用 Astra 两次，本轮未观察到 Jev 的额外收益。部分时间差来自 Astra 请求波动，不能全部归因于 Jev。
+
 新的多任务配对结果见[扩大测试](docs/expanded-validation.md)。原有页面结果见[场景验证](docs/scenario-validation.md)和[第二轮复测](docs/scenario-retest.md)。早期单页面实验见[原始记录](docs/validation.md)和[订阅规划记录](docs/astra-validation.md)；历史记录保留当时使用的配置与所有尝试。
 
 项目原名 `fastercomputeruse`。历史实验记录与源码哈希保留原样，对应各次实验的版本。
