@@ -4,6 +4,8 @@ Computer use with reusable skills and deliberate planning.
 
 **用可复用技能与审慎规划完成电脑操作。**
 
+这是维护者与 Codex 协作编写的集成实验：浏览器执行依赖 Playwright，原生桌面执行依赖 OpenAI `@oai/sky`，规划与快速决策依赖外部模型。项目实现的是调度、协议适配、固定技能和实验验证。逐模块对应关系见[代码来源与第三方依赖](docs/provenance.md)，不把底层自动化和模型能力算作本项目原创。
+
 原生桌面技能默认采用 **主模型规划＋直接推进 Skill**，省去额外的快速模型确认。**Jev 接入完整保留，可按任务显式启用**；目前的实验尚未证明它在同一套 Skill 上的增量收益，不代表以后没有适用场景。浏览器实验的 `dual` 模式仍保留原有行为。
 
 [阶段总结（2026-09-27）](docs/project-summary.md)：已实现能力、真实提速证据、失败样本与后续模型适配方向。
@@ -144,7 +146,7 @@ npm run demo -- --headless
 - [Jev-Mem](https://github.com/libingzheren/Jev-Mem)：System 1 / System 2 分工的参考来源。
 - [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver)、[Agent Skill Induction](https://github.com/zorazrw/agent-skill-induction)：可执行、经过验证的流程技能设计参考。
 - [Agent Workflow Memory](https://github.com/zorazrw/agent-workflow-memory)：流程经验记录的参考；当前尚未实现自动归纳与检索。
-- [jev-ultrafast-mcp](https://github.com/jiawei686/jev-ultrafast-mcp)：稳定引用、语义操作和执行检查的参考。上述项目代码未复制进本仓库。
+- [jev-ultrafast-mcp](https://github.com/jiawei686/jev-ultrafast-mcp)：稳定引用、语义操作和执行检查的设计参考。具体依赖、协议参考及未完成逐行来源审计的边界见[来源说明](docs/provenance.md)。
 - [OpenRouter Jev 使用说明](https://openrouter.ai/blog/tutorials/how-to-use-jev/)
 - [OpenRouter Decisions API](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request)
 

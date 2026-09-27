@@ -61,4 +61,4 @@ node scripts/benchmark.mjs --skills --channel msedge
 
 本轮没有新增 OpenRouter 调用。此前请求仍有未结算预留，费用账本保持不变；因此三组真实对照尚未执行，不能给出新增技能后的提速倍数。历史实验使用的是旧执行接口，也不能直接当作这版的无技能基线。
 
-设计参考 [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver)、[Agent Skill Induction](https://github.com/zorazrw/agent-skill-induction)、[AWM](https://github.com/zorazrw/agent-workflow-memory) 和 [jev-ultrafast-mcp](https://github.com/jiawei686/jev-ultrafast-mcp)。实现为本项目编写，未复制上述仓库代码。
+设计参考 [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver)、[Agent Skill Induction](https://github.com/zorazrw/agent-skill-induction)、[AWM](https://github.com/zorazrw/agent-workflow-memory) 和 [jev-ultrafast-mcp](https://github.com/jiawei686/jev-ultrafast-mcp)。当前为本项目固定流程实现，未完成与上游逐行来源比对，不以“未复制”作绝对保证。依赖和参考关系见[来源说明](provenance.md)。

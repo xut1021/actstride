@@ -43,7 +43,7 @@ SystemOne 使用 `billing:self-hosted`、`cost:null`，无论响应是否带有�
 | [Visual-Jev](https://github.com/jiangxiluning/Visual-Jev/tree/2d68c11011a16e5ef3a473dedc25ef64acf088de) | Qwen 视觉分支和 Torch/CUDA 候选评分 | 输入是 JSONL 的图片路径，输出为候选数组；并非本轮 SystemOne 即插即用服务 |
 | [Jev Visual](https://github.com/hr98w/jev-visual/tree/4382bba455647400951429134ceb012ca155e3fe) | MLX 小视觉模型、共享图像前缀、候选评分 | `/v1/judge` 协议、2–26 候选，需另写适配；本轮未接入 |
 
-优先研究的是视觉条件下的有限候选选择，以及相同观察下共享图像计算。如果以后加前缀缓存，必须按截图内容与状态失效；仅比较图片文件路径会在原路径覆盖新截图时复用旧画面。本轮没有添加视觉缓存，也没有复制这些项目的实现代码。
+优先研究的是视觉条件下的有限候选选择，以及相同观察下共享图像计算。如果以后加前缀缓存，必须按截图内容与状态失效；仅比较图片文件路径会在原路径覆盖新截图时复用旧画面。本轮没有添加视觉缓存；已实现的是参照上游协议的客户端，未包含上游模型或视觉推理后端。逐模块来源及审计边界见[来源说明](provenance.md)。
 
 文本协议依据：[Laya](https://github.com/NandhaKishorM/laya/tree/4066d5d5fbf08b66c6757ddeedbd797bd7655bc0)、[Kev](https://github.com/jaredpalmer/kev/tree/968966692d5f57805c5124a6d05191f5b18e4694)。多模态请求依据：[OpenJev schema](https://github.com/jev-skills/openjev-multimodal/blob/c23bba19751a7b3008c58a86f77f2cc2129357fc/src/openjev/schema.py#L40-L68)、[真实图像传递](https://github.com/jev-skills/openjev-multimodal/blob/c23bba19751a7b3008c58a86f77f2cc2129357fc/src/openjev/backends/llamacpp.py#L249-L290)。
 
