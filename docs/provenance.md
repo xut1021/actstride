@@ -15,6 +15,7 @@
 | `controller.mjs`、`candidates.mjs`、`progress.mjs`、`budget.mjs` | 当前提交历史中的项目实现，运行于 Node.js；设计受下述项目启发 | 模型调度、候选生成、进展检查和本地预算账本 |
 | `skills.mjs`、`skill-runner.mjs`、`windows/form-skills.mjs`、`desktop.mjs` 的草稿阶段 | 项目中编写的固定、参数化流程；不是自动学习出来的技能，不是 SkillWeaver 等项目的完整实现 | 任务绑定、分步检查、暂停和验证；三种执行后端的能力边界不同 |
 | `index.html`、`extended.html`、`scenarios.mjs`、`test/`、各 benchmark 和 `docs/*validation*` | 项目合成任务、测试及运行记录；使用 Node 测试框架及上述后端 | 可复现实验和证据记录，不是第三方通用桌面基准成绩 |
+| `stream.html`、`windows/stream-browser.mjs`、`windows/stream-skills.mjs`、`windows/stream-benchmark.mjs` | 与 Codex 协作编写的在线合成工单实验，使用 Playwright / Edge 和既有模型适配器；选题参考 WorkArena++ 的组合流程方向 | 未使用 WorkArena 源码、数据或评分器；文件虽位于 windows/，本轮实际后端为无头浏览器，参见[预定方案](stream-experiment.md) |
 
 ## 具体参考过哪些源码／设计
 
